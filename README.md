@@ -39,5 +39,7 @@ Was testing around 4 hours how everything works. Learning how to work with Splun
 <img width="1920" height="1080" alt="Captura de pantalla 2025-09-29 155801" src="https://github.com/user-attachments/assets/5450a37f-b098-4de9-8e21-7d7bdae49cec" />
 <img width="1920" height="1080" alt="Captura de pantalla 2025-09-29 155316" src="https://github.com/user-attachments/assets/44ea47af-0b7c-464d-9b15-f9dc780a8c47" />
 
+
+
 Plan for Day 3 is: configure the alerts (want to recive them on my email or phone)also learn how to work with Splunk Dashboard. Improving work speed and understanding of functionality of Splunk. 
 
