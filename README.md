@@ -41,5 +41,5 @@ Was testing around 4 hours how everything works. Learning how to work with Splun
 
 
 
-Plan for Day 3 is: configure the alerts (want to recive them on my email or phone)also learn how to work with Splunk Dashboard. Improving work speed and understanding of functionality of Splunk. 
+Plan for Day 3 is: configure the alerts (want to recive them on my email or phone)also learn how to work with Splunk Dashboard. Improving work speed and understanding of functionality of Splunk. Mange alle documentation (comands,analyze,results etc)
 
