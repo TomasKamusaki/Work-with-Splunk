@@ -38,7 +38,6 @@ Was testing around 4 hours how everything works. Learning how to work with Splun
 <img width="1920" height="1080" alt="Captura de pantalla 2025-09-29 124025" src="https://github.com/user-attachments/assets/8f363536-d402-49b3-923c-fd8cc9da1315" />
 <img width="1920" height="1080" alt="Captura de pantalla 2025-09-29 155801" src="https://github.com/user-attachments/assets/5450a37f-b098-4de9-8e21-7d7bdae49cec" />
 <img width="1920" height="1080" alt="Captura de pantalla 2025-09-29 155316" src="https://github.com/user-attachments/assets/44ea47af-0b7c-464d-9b15-f9dc780a8c47" />
-<img width="1920" height="1080" alt="Captura de pantalla 2025-09-29 154930" src="https://github.com/user-attachments/assets/8c53e0f2-bb99-4fda-9b64-4708283dd1a6" />
 <img width="1920" height="1080" alt="Captura de pantalla 2025-09-29 133340" src="https://github.com/user-attachments/assets/c36cdf92-cc3f-4ab6-80b6-529b6ab18495" />
 
 
