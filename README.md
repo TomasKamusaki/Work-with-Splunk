@@ -33,10 +33,5 @@ index=simulated_logs
 | rex "(?<level>\w+)\s+(?<msg>.+)"
 | stats count by level
 
-<img width="1920" height="1080" alt="Captura de pantalla 2025-09-29 140459" src="https://github.com/user-attachments/assets/308ffac9-54dd-43cf-911f-4b1dc0036a61" />
-<img width="1920" height="1080" alt="Captura de pantalla 2025-09-29 140250" src="https://github.com/user-attachments/assets/18c4c670-ecaa-4b69-9a5f-af00f2679b13" />
-<img width="1920" height="1080" alt="Captura de pantalla 2025-09-29 125852" src="https://github.com/user-attachments/assets/0a1afd7c-7ae7-4130-9e9c-4be5a0d0e508" />
-<img width="1920" height="1080" alt="Captura de pantalla 2025-09-29 124025" src="https://github.com/user-attachments/assets/8e7f91e6-ce47-4981-9188-a2626fdf178b" />
-<img width="1920" height="1080" alt="Captura de pantalla 2025-09-29 123405" src="https://github.com/user-attachments/assets/91376a7c-95f9-4b36-aa34-fcd258f1ed30" />
-<img width="1920" height="1080" alt="Captura de pantalla 2025-09-29 155801" src="https://github.com/user-attachments/assets/1d001f44-7002-4cc8-a1ad-e5eb1aed7ca3" />
-<img width="1920" height="1080" alt="Captura de pantalla 2025-09-29 155316" src="https://github.com/user-attachments/assets/9c4f3eb3-d5a1-4047-a95a-20b0b8ad4e82" />
+<img width="1920" height="1080" alt="Captura de pantalla 2025-09-29 123405" src="https://github.com/user-attachments/assets/2bea63a8-8a1e-4e7b-9128-5dea1bcccbf7" />
+
