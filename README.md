@@ -14,19 +14,21 @@ Also created a txt file with all commands that i need to check and maintain Wind
 
 
 ## Day 2  Splunk Home Lab - Event Monitoring & Alerts
+Was testing around 4 hours how everything works
 
-
-## 1️⃣ Machine Connectivity
+## 1️ Machine Connectivity
 - Connected multiple machines in a closed network.
 - Verified that events are sent and received correctly between machines.
 - Ensured proper data flow to Splunk indexes for monitoring.
 
 ---
 
-## 2️⃣ Log Generation & Analysis
+## 2️ Log Generation & Analysis
 - Generated 3,000–4,000 simulated log events with levels INFO, WARN, ERROR.
 - Logs uploaded to Splunk and each event verified.
 - Extracted important fields using rex.
+
+## 3 Created alerts and learned how to save cvs files
 
 
 <img width="1920" height="1080" alt="Captura de pantalla 2025-09-29 123405" src="https://github.com/user-attachments/assets/2bea63a8-8a1e-4e7b-9128-5dea1bcccbf7" />
