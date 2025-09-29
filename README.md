@@ -1,6 +1,6 @@
 # Work-with-Splunk
 
-Day 1 
+## Day 1 Checked all connection and functionality 
 Have to check everything and make some configurations after that going to creat some events on Windows pc to see if everything works fine on Ubuntu and i can read logs. Let's rock
 
 Faced with a couple errors i guess the reason was my antivirus wich was blocked partly connect between two computers.Everything was solved after on my windows pc through the powershall i made a folder and txt document in spluk directory through this file o power shall command i can send different events on my host ubuntu VM. Sent 1 event first after 10 and 100 with different marks Error, Info etc.
@@ -12,7 +12,9 @@ Also created a txt file with all commands that i need to check and maintain Wind
 <img width="1920" height="923" alt="Screenshot from 2025-09-27 12-45-01" src="https://github.com/user-attachments/assets/59a0584b-834c-410b-a45b-f300433a3686" />
 
 
-Day 2  Splunk Home Lab - Event Monitoring & Alerts
+
+## Day 2  Splunk Home Lab - Event Monitoring & Alerts
+
 
 ## 1️⃣ Machine Connectivity
 - Connected multiple machines in a closed network.
