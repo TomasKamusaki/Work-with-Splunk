@@ -84,3 +84,44 @@ Lessons Learned
 ![photo_2025-10-05_23-46-03](https://github.com/user-attachments/assets/2aab05a9-65f2-42b9-ac05-3c1e7dd564c6)
 ![photo_2025-10-05_23-46-14](https://github.com/user-attachments/assets/731778df-ede0-479b-b2b2-72ea159929c6)
 
+
+## Day 4 Practice fully on Ubuntu
+
+Today I set up a small Splunk home lab to practice log ingestion, forwarding, and alerting in a fully offline environment. The lab consisted of:
+ • Host machine: Ubuntu 24.04 VM running Splunk Enterprise
+ • Secondary machine: Physical Ubuntu PC acting as a Splunk Universal Forwarder
+
+Key Steps Completed
+
+ 1. Clean Setup & Installation
+ • Installed Splunk Universal Forwarder on Ubuntu2.
+ • Configured forwarding to the host Splunk Enterprise instance.
+ • Verified service status and active forwarders with splunk list forward-server.
+ 2. Log Ingestion Practice
+ • Created custom log file /var/log/custom_test.log with multiple event types (INFO, WARN, ERROR) using bash loops.
+ • Configured inputs.conf to monitor the custom log file and assigned index=main and sourcetype=custom_test.
+ • Confirmed logs appeared in Splunk Web using searches like:
+
+3. Forwarding & Connectivity Tests
+ • Verified network connectivity between Ubuntu2 (forwarder) and host VM via ping and nc -vz <host_ip> 9997.
+ • Observed forwarded events arriving correctly in the host Splunk instance.
+ 4. Alerts & Testing
+ • Practiced creating alerts on custom log events (INFO/WARN/ERROR).
+ 
+ 5. Lessons Learned
+ • Linux permissions are crucial; most errors were caused by incorrect ownership or missing directories.
+ • Forwarder configuration and network setup must match IPs and open ports.
+ • Offline labs are fully functional for ingesting, searching, and alerting without needing internet.
+
+<img width="1920" height="922" alt="Screenshot from 2025-10-02 13-53-51" src="https://github.com/user-attachments/assets/88f5ff00-c5a7-46da-ac2d-f79eea4ee57a" />
+<img width="1920" height="922" alt="Screenshot from 2025-10-02 13-48-49" src="https://github.com/user-attachments/assets/4ad67967-89a1-4424-81a9-f99e0144c355" />
+<img width="1920" height="922" alt="Screenshot from 2025-10-02 13-36-13" src="https://github.com/user-attachments/assets/b90f234a-8c03-48b8-8550-079310b60a06" />
+<img width="1920" height="922" alt="Screenshot from 2025-10-02 13-31-13" src="https://github.com/user-attachments/assets/6462bec6-74a2-4b9c-941f-0b58e80c6ee2" />
+<img width="1920" height="922" alt="Screenshot from 2025-10-02 13-09-39" src="https://github.com/user-attachments/assets/ba9b2614-651e-4b11-80d9-08b205b7b5b9" />
+<img width="1920" height="922" alt="Screenshot from 2025-10-02 12-58-25" src="https://github.com/user-attachments/assets/c84740a9-50b3-4426-95c1-e61e38782163" />
+<img width="1920" height="922" alt="Screenshot from 2025-10-02 12-47-40" src="https://github.com/user-attachments/assets/5d9a3e69-fed6-44bf-9c86-d96795aa2d35" />
+<img width="1920" height="922" alt="Screenshot from 2025-10-02 12-44-59" src="https://github.com/user-attachments/assets/dfacacc0-3d2d-42b4-9bf0-fb7730ce9bae" />
+<img width="1920" height="922" alt="Screenshot from 2025-10-02 12-35-49" src="https://github.com/user-attachments/assets/64536968-89a0-4a38-9b56-1d10000efd0c" />
+<img width="1920" height="922" alt="Screenshot from 2025-10-02 12-20-43" src="https://github.com/user-attachments/assets/44b97a8d-625a-4ee7-8127-f242e8b5a503" />
+<img width="1805" height="698" alt="Screenshot from 2025-10-02 14-58-41" src="https://github.com/user-attachments/assets/3cfa4a2f-82d5-4470-98a3-327e7fb9e130" />
+
