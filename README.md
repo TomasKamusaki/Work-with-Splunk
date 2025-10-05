@@ -78,3 +78,9 @@ Lessons Learned
  • Linux installation is much more transparent (untar + run commands).
  • Always have a backup platform (Ubuntu) to continue practicing if one system blocks progress.
  • Network and permissions issues are easier to debug on Linux with standard tools (tar, ss, nc, ping, etc.).
+
+
+ ![photo_2025-10-05_23-45-55](https://github.com/user-attachments/assets/bd539b81-e15c-4c36-b9b9-4adfe043eb92)
+![photo_2025-10-05_23-46-03](https://github.com/user-attachments/assets/2aab05a9-65f2-42b9-ac05-3c1e7dd564c6)
+![photo_2025-10-05_23-46-14](https://github.com/user-attachments/assets/731778df-ede0-479b-b2b2-72ea159929c6)
+
