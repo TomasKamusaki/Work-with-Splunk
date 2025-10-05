@@ -43,7 +43,7 @@ Was testing around 4 hours how everything works. Learning how to work with Splun
 
 ## Day 3 Splunk Installation Failure on Windows
 
-I thought that everything works fine but when i started practice on sending events the splunk connection got broken and events stop coming on me host pc.So i decided to take anothere pc and install everything on more time but on clean windows 10.
+I thought that everything works fine but when i started practice on sending events the splunk connection got broken and events stop coming on me host pc. So i decided to take anothere pc and install everything on more time but on clean windows 10.
 
 Goal: Install Splunk Universal Forwarder on Windows and connect it to my Splunk Enterprise instance.
 Result: ❌ Unsuccessful — encountered repeated MSI installer errors and permission issues.
