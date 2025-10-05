@@ -83,6 +83,7 @@ Lessons Learned
 ![photo_2025-10-05_23-46-14](https://github.com/user-attachments/assets/731778df-ede0-479b-b2b2-72ea159929c6)
 
 
+
 ## Day 4 Practice fully on Ubuntu
 
 Today I set up a small Splunk home lab to practice log ingestion, forwarding, and alerting in a fully offline environment. The lab consisted of:
