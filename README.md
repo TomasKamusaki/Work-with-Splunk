@@ -86,9 +86,9 @@ Lessons Learned
 
 ## Day 4 Practice fully on Ubuntu
 
-Today I set up a small Splunk home lab to practice log ingestion, forwarding, and alerting in a fully offline environment. The lab consisted of:
+Today I set up my home lab but based on Linux to practice log ingestion, forwarding, and alerting in a fully offline environment. The lab consisted of:
  • Host machine: Ubuntu 24.04 VM running Splunk Enterprise
- • Secondary machine: Physical Ubuntu PC acting as a Splunk Universal Forwarder
+ • Secondary machine: Physical Ubuntu PC acting as a Splunk Universal Forwarder also 24.04
 
 Key Steps Completed
 
