@@ -21,8 +21,6 @@ Was testing around 4 hours how everything works. Learning how to work with Splun
 - Verified that events are sent and received correctly between machines.
 - Ensured proper data flow to Splunk indexes for monitoring.
 
----
-
 ## 2️ Log Generation & Analysis
 - Generated 3,000–4,000 simulated log events with levels INFO, WARN, ERROR.
 - Logs uploaded to Splunk and each event verified.
@@ -49,19 +47,19 @@ Goal: Install Splunk Universal Forwarder on Windows and connect it to my Splunk 
 Result: ❌ Unsuccessful — encountered repeated MSI installer errors and permission issues.
 
 Steps Taken
- 1. ✅ Downloaded the official Splunk Universal Forwarder .msi from Splunk’s website.
- 2. ❌ Tried to install normally → No “Run as administrator” button available.
- 3. ✅ Attempted installation via Command Prompt and PowerShell with:
+ 1. Downloaded the official Splunk Universal Forwarder .msi from Splunk’s website.
+ 2. Tried to install normally → No “Run as administrator” button available.
+ 3. Attempted installation via Command Prompt and PowerShell with:
 
 → Result: “No se puede abrir este paquete de instalación…” error.
 
- 4. ✅ Verified the MSI file was not corrupted.
- 5. ✅ Checked permissions — account had administrator rights.
- 6. ❌ Tried extracting MSI to TEMP and running from there → same error.
- 7. ❌ Attempted to enable logging and check Windows Installer service — error 2203 and 1402, Rollback\Scripts key missing.
- 8. ❌ Even on a brand new Windows PC the same MSI error appeared.
- 9. ✅ Disabled antivirus and firewalls — still failed.
- 10. ❌ After 8+ hours of troubleshooting (MSI repair, permissions, logs) → no progress.
+ 4. Verified the MSI file was not corrupted.
+ 5. Checked permissions — account had administrator rights.
+ 6. Tried extracting MSI to TEMP and running from there → same error.
+ 7. Attempted to enable logging and check Windows Installer service — error 2203 and 1402, Rollback\Scripts key missing.
+ 8. Even on a brand new Windows PC the same MSI error appeared.
+ 9. Disabled antivirus and firewalls — still failed.
+ 10. After 8+ hours of troubleshooting (MSI repair, permissions, logs) → no progress.
 
 Errors Encountered
  • Windows Installer Error 2203 & 1402 (permissions & missing registry keys).
