@@ -41,5 +41,40 @@ Was testing around 4 hours how everything works. Learning how to work with Splun
 <img width="1920" height="1080" alt="Captura de pantalla 2025-09-29 154930" src="https://github.com/user-attachments/assets/6a502b2d-5397-4efe-b916-7624e8194afc" />
 
 
-Plan for Day 3 is: configure the alerts (want to recive them on my email or phone)also learn how to work with Splunk Dashboard. Improving work speed and understanding of functionality of Splunk. Mange alle documentation (comands,analyze,results etc)
+## Day 3 Splunk Installation Failure on Windows
 
+I thought that everything works fine but when i started practice on sending events the splunk connection got broken and events stop coming on me host pc.So i decided to take anothere pc and install everything on more time but on clean windows 10.
+
+Goal: Install Splunk Universal Forwarder on Windows and connect it to my Splunk Enterprise instance.
+Result: ❌ Unsuccessful — encountered repeated MSI installer errors and permission issues.
+
+Steps Taken
+ 1. ✅ Downloaded the official Splunk Universal Forwarder .msi from Splunk’s website.
+ 2. ❌ Tried to install normally → No “Run as administrator” button available.
+ 3. ✅ Attempted installation via Command Prompt and PowerShell with:
+
+→ Result: “No se puede abrir este paquete de instalación…” error.
+
+ 4. ✅ Verified the MSI file was not corrupted.
+ 5. ✅ Checked permissions — account had administrator rights.
+ 6. ❌ Tried extracting MSI to TEMP and running from there → same error.
+ 7. ❌ Attempted to enable logging and check Windows Installer service — error 2203 and 1402, Rollback\Scripts key missing.
+ 8. ❌ Even on a brand new Windows PC the same MSI error appeared.
+ 9. ✅ Disabled antivirus and firewalls — still failed.
+ 10. ❌ After 8+ hours of troubleshooting (MSI repair, permissions, logs) → no progress.
+
+Errors Encountered
+ • Windows Installer Error 2203 & 1402 (permissions & missing registry keys).
+ • “No se puede abrir este paquete de instalación…” despite valid MSI.
+ • No Rollback\Scripts registry keys present.
+ • Installation fails before any UI appears.
+
+Resolution
+
+💡 Switched to Linux. Installed Splunk Forwarder on Ubuntu in minutes using .tgz, configured forwarding to Splunk Enterprise, and started generating and analyzing events successfully.
+
+Lessons Learned
+ • Windows MSI installers can fail even on fresh systems, and debugging is often time-consuming.
+ • Linux installation is much more transparent (untar + run commands).
+ • Always have a backup platform (Ubuntu) to continue practicing if one system blocks progress.
+ • Network and permissions issues are easier to debug on Linux with standard tools (tar, ss, nc, ping, etc.).
