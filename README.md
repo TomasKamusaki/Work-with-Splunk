@@ -140,3 +140,23 @@ I also explored sending SSH connection logs, alerting on connection errors, and 
 <img width="1920" height="923" alt="Screenshot from 2025-10-06 15-01-07" src="https://github.com/user-attachments/assets/c73cfbde-483a-4e14-8d25-3fa846f88f35" />
 <img width="1920" height="923" alt="Screenshot from 2025-10-06 15-30-52" src="https://github.com/user-attachments/assets/d92c9421-b811-4957-91ab-a0fb66e30862" />
 <img width="1920" height="923" alt="Screenshot from 2025-10-06 15-36-10" src="https://github.com/user-attachments/assets/47be3a54-0c19-4410-bf81-62af176eb315" />
+
+
+## Day 6 Events,Dashboards
+At the beginning like usual had to checked any updatesc and all connections between Host and Ubuntu2.
+
+<img width="1920" height="923" alt="Screenshot from 2025-10-07 18-10-57" src="https://github.com/user-attachments/assets/2d8e66b2-7334-4423-8617-9ed680233edb" />
+
+After sent some events to try connection
+
+<img width="1920" height="923" alt="Screenshot from 2025-10-07 18-16-59" src="https://github.com/user-attachments/assets/0b2ce272-2e2b-42cd-9c01-af2127c9813d" />
+
+
+Dashboard
+<img width="1080" height="1795" alt="Screenshot from 2025-10-07 18-30-32" src="https://github.com/user-attachments/assets/ed3292bc-8d47-4f18-b265-4ba05de46044" />
+
+<img width="1080" height="1795" alt="Screenshot from 2025-10-07 18-31-58" src="https://github.com/user-attachments/assets/cf1649f8-862a-4168-a2e9-9a979c728196" />
+
+<img width="1080" height="1795" alt="Screenshot from 2025-10-07 18-45-09" src="https://github.com/user-attachments/assets/27b4f6ab-b4dc-4823-a60f-f359de8447ed" />
+<img width="1080" height="1795" alt="Screenshot from 2025-10-07 18-57-36" src="https://github.com/user-attachments/assets/bc91f61b-a593-499e-a159-8a25a92585b3" />
+<img width="1080" height="1795" alt="Screenshot from 2025-10-07 18-58-28" src="https://github.com/user-attachments/assets/8cb85e0d-e178-4198-a06d-218b1f7e09a4" />
