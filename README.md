@@ -137,7 +137,6 @@ I also explored sending SSH connection logs, alerting on connection errors, and 
 <img width="1920" height="922" alt="Screenshot from 2025-10-02 13-31-13" src="https://github.com/user-attachments/assets/3c020aa0-3814-4412-90e6-fa0d9e9a595c" />
 <img width="1920" height="922" alt="Screenshot from 2025-10-02 13-48-49" src="https://github.com/user-attachments/assets/70b8344c-1441-4cfd-b6c3-ba7212cd141f" />
 <img width="1920" height="922" alt="Screenshot from 2025-10-02 13-53-51" src="https://github.com/user-attachments/assets/9b1011f7-8ab0-499e-b0e6-a5eddaf06198" />
-<img width="1920" height="923" alt="Screenshot from 2025-10-06 14-58-36" src="https://github.com/user-attachments/assets/fc54dbeb-08cb-4199-9f29-c991d72bb94a" />
 <img width="1920" height="923" alt="Screenshot from 2025-10-06 15-01-07" src="https://github.com/user-attachments/assets/c73cfbde-483a-4e14-8d25-3fa846f88f35" />
 <img width="1920" height="923" alt="Screenshot from 2025-10-06 15-30-52" src="https://github.com/user-attachments/assets/d92c9421-b811-4957-91ab-a0fb66e30862" />
 <img width="1920" height="923" alt="Screenshot from 2025-10-06 15-36-10" src="https://github.com/user-attachments/assets/47be3a54-0c19-4410-bf81-62af176eb315" />
