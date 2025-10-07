@@ -124,3 +124,20 @@ Key Steps Completed
 <img width="1920" height="922" alt="Screenshot from 2025-10-02 12-20-43" src="https://github.com/user-attachments/assets/44b97a8d-625a-4ee7-8127-f242e8b5a503" />
 <img width="1805" height="698" alt="Screenshot from 2025-10-02 14-58-41" src="https://github.com/user-attachments/assets/3cfa4a2f-82d5-4470-98a3-327e7fb9e130" />
 
+## Day 5 SSH,events, more practice
+
+During today’s session, I continued practicing with Splunk by setting up a functional lab environment using my physical Ubuntu machine as the forwarder and my Ubuntu VM (hosted on Windows) as the Splunk indexer. I verified network connectivity, configured ports and firewalls, and ensured proper forwarding between the two systems.
+
+I generated different types of custom log events (INFO, WARN, and ERROR) and sent them to Splunk for indexing. After confirming their ingestion, I set up alerts based on specific event types to simulate security monitoring scenarios. Additionally, I began working with Dashboards, creating visual representations of the data to improve analysis capabilities.
+
+I also explored sending SSH connection logs, alerting on connection errors, and visualizing this data in real time. This helped reinforce essential SOC skills like log collection, event classification, alerting, and visualization — all crucial for incident detection and response workflows.
+
+<img width="1920" height="922" alt="Screenshot from 2025-10-02 12-20-43" src="https://github.com/user-attachments/assets/c10a84bf-cd62-46e0-b761-ad8727fc1147" />
+<img width="1920" height="922" alt="Screenshot from 2025-10-02 12-47-40" src="https://github.com/user-attachments/assets/80aeeb0e-1698-4868-8832-a41dd7278376" />
+<img width="1920" height="922" alt="Screenshot from 2025-10-02 13-31-13" src="https://github.com/user-attachments/assets/3c020aa0-3814-4412-90e6-fa0d9e9a595c" />
+<img width="1920" height="922" alt="Screenshot from 2025-10-02 13-48-49" src="https://github.com/user-attachments/assets/70b8344c-1441-4cfd-b6c3-ba7212cd141f" />
+<img width="1920" height="922" alt="Screenshot from 2025-10-02 13-53-51" src="https://github.com/user-attachments/assets/9b1011f7-8ab0-499e-b0e6-a5eddaf06198" />
+<img width="1920" height="923" alt="Screenshot from 2025-10-06 14-58-36" src="https://github.com/user-attachments/assets/fc54dbeb-08cb-4199-9f29-c991d72bb94a" />
+<img width="1920" height="923" alt="Screenshot from 2025-10-06 15-01-07" src="https://github.com/user-attachments/assets/c73cfbde-483a-4e14-8d25-3fa846f88f35" />
+<img width="1920" height="923" alt="Screenshot from 2025-10-06 15-30-52" src="https://github.com/user-attachments/assets/d92c9421-b811-4957-91ab-a0fb66e30862" />
+<img width="1920" height="923" alt="Screenshot from 2025-10-06 15-36-10" src="https://github.com/user-attachments/assets/47be3a54-0c19-4410-bf81-62af176eb315" />
