@@ -143,11 +143,24 @@ I also explored sending SSH connection logs, alerting on connection errors, and 
 
 
 ## Day 6 Events,Dashboards
-At the beginning like usual had to checked any updatesc and all connections between Host and Ubuntu2.
+
+What was done
+ • Reviewed and analyzed previously generated test events (Error, Info, Warning, SSH).
+ • Verified that events were correctly indexed and visible through the Search & Reporting app.
+ • Created and customized a Classic Dashboard in Splunk:
+ • Added multiple visualizations including pie charts, bar charts, and single value panels.
+ • Grouped events by sourcetype and severity level.
+ • Displayed SSH activity over time and error counts in real-time.
+ • Practiced alerting concepts and reviewed email alert limitations in closed lab networks.
+ • Fixed permission issues related to event generation and log file monitoring.
+ • Sent and monitored over 100 SSH-related events to test dashboard responsiveness.
+
+ Key Learnings
+ • How to build and structure dashboards in Splunk using classic panels.
+ • Importance of permissions when creating and writing to log files.
+ • Understanding how different sourcetypes and event severities can be visualized together.
 
 <img width="1920" height="923" alt="Screenshot from 2025-10-07 18-10-57" src="https://github.com/user-attachments/assets/2d8e66b2-7334-4423-8617-9ed680233edb" />
-
-After sent some events to try connection
 
 <img width="1920" height="923" alt="Screenshot from 2025-10-07 18-16-59" src="https://github.com/user-attachments/assets/0b2ce272-2e2b-42cd-9c01-af2127c9813d" />
 
@@ -160,3 +173,31 @@ Dashboard
 <img width="1080" height="1795" alt="Screenshot from 2025-10-07 18-45-09" src="https://github.com/user-attachments/assets/27b4f6ab-b4dc-4823-a60f-f359de8447ed" />
 <img width="1080" height="1795" alt="Screenshot from 2025-10-07 18-57-36" src="https://github.com/user-attachments/assets/bc91f61b-a593-499e-a159-8a25a92585b3" />
 <img width="1080" height="1795" alt="Screenshot from 2025-10-07 18-58-28" src="https://github.com/user-attachments/assets/8cb85e0d-e178-4198-a06d-218b1f7e09a4" />
+
+## Day 7 Splunk Log Monitoring & SOC Lab
+
+Today I focused on building a hands-on log monitoring workflow using Splunk Enterprise and Splunk Forwarder. The main tasks completed were:
+ 1. Environment Setup: Verified connectivity between Ubuntu VMs, ensuring the forwarder sends logs to Splunk Enterprise successfully.
+ 2. Log Generation & Testing: Created synthetic logs including INFO, WARN, ERROR, and SSH failed login events. After starting the log generator, events were received in real time by Splunk.
+ 3. Live Event Dashboard: Built a SOC-style dashboard displaying event counts by type, top SSH attacker IPs, and recent events, with color-coded severity for easy visualization.
+ 4. Alerts Configuration: Set up real-time alerts for SSH failures, ERRORs, and WARNs, enabling immediate notification of anomalies.
+
+Key Learnings:
+ • Handling unmatched events (NULL) and labeling them for better visualization.
+ • Creating real-time dashboards and alerts to simulate SOC monitoring.
+ • Practical experience with log generation, ingestion, and visualization in a controlled lab environment.
+<img width="1080" height="1795" alt="Screenshot from 2025-10-13 09-39-06" src="https://github.com/user-attachments/assets/3050506c-cac4-4a75-83d4-348b78cec7d0" />
+<img width="1080" height="1795" alt="Screenshot from 2025-10-13 12-19-25" src="https://github.com/user-attachments/assets/653e3143-323d-4cc3-88ff-95fed222c042" />
+<img width="1080" height="1795" alt="Screenshot from 2025-10-13 12-21-25" src="https://github.com/user-attachments/assets/6e10c0a2-7df9-4ff6-b16e-30a847a6d619" />
+<img width="1080" height="1795" alt="Screenshot from 2025-10-13 13-05-45" src="https://github.com/user-attachments/assets/753a158b-f8fb-46f0-82f4-10b16664a89b" />
+<img width="1080" height="1795" alt="Screenshot from 2025-10-13 13-22-57" src="https://github.com/user-attachments/assets/e86f1437-e1b9-4cef-987d-9f6fe4090b5c" />
+<img width="1080" height="1795" alt="Screenshot from 2025-10-13 13-36-42" src="https://github.com/user-attachments/assets/22a61653-0e56-42e3-9eca-5e96ec8c1327" />
+<img width="1920" height="1080" alt="Screenshot from 2025-10-13 11-35-20" src="https://github.com/user-attachments/assets/33d85491-c816-4356-a815-9e686c4cb9fa" />
+<img width="1920" height="1080" alt="Screenshot from 2025-10-13 11-52-11" src="https://github.com/user-attachments/assets/c120cb57-8c85-4cbb-af1e-b6a3bdb6c8ac" />
+<img width="1920" height="1080" alt="Screenshot from 2025-10-13 12-03-49" src="https://github.com/user-attachments/assets/be6a6619-40fe-4f56-8edd-6a0405d36d97" />
+<img width="1920" height="1080" alt="Screenshot from 2025-10-13 14-16-13" src="https://github.com/user-attachments/assets/2b1569ae-f981-45cc-af60-7fbf58eb58c6" />
+<img width="1920" height="1080" alt="Screenshot from 2025-10-13 15-43-12" src="https://github.com/user-attachments/assets/2978d4d5-ee7e-44b0-abef-d37beae3a55f" />
+
+ 
+
+Next Steps: Extend the lab with correlation searches and more complex SOC scenarios for enhanced security monitoring practice.
