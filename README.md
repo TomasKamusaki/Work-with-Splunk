@@ -183,9 +183,12 @@ Today I focused on building a hands-on log monitoring workflow using Splunk Ente
  4. Alerts Configuration: Set up real-time alerts for SSH failures, ERRORs, and WARNs, enabling immediate notification of anomalies.
 
 Key Learnings:
- • Handling unmatched events (NULL) and labeling them for better visualization.
- • Creating real-time dashboards and alerts to simulate SOC monitoring.
- • Practical experience with log generation, ingestion, and visualization in a controlled lab environment.
+ 
+• Handling unmatched events (NULL) and labeling them for better visualization.
+
+• Creating real-time dashboards and alerts to simulate SOC monitoring.
+
+• Practical experience with log generation, ingestion, and visualization in a controlled lab environment.
 <img width="1080" height="1795" alt="Screenshot from 2025-10-13 09-39-06" src="https://github.com/user-attachments/assets/3050506c-cac4-4a75-83d4-348b78cec7d0" />
 <img width="1080" height="1795" alt="Screenshot from 2025-10-13 12-19-25" src="https://github.com/user-attachments/assets/653e3143-323d-4cc3-88ff-95fed222c042" />
 <img width="1080" height="1795" alt="Screenshot from 2025-10-13 12-21-25" src="https://github.com/user-attachments/assets/6e10c0a2-7df9-4ff6-b16e-30a847a6d619" />
