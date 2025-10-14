@@ -1,6 +1,6 @@
 # Work-with-Splunk
 
-## Day 1 Checked all connections and functionality 
+## Day 1 - Checked all connections and functionality 
 Have to check everything and make some configurations after that going to creat some events on Windows pc to see if everything works fine on Ubuntu and i can read logs. Let's rock
 
 Faced with a couple errors i guess the reason was my antivirus wich was blocked partly connection between two computers.Everything was solved after on my windows pc through the powershall i made a folder and txt document in spluk directory through this file o power shall command i can send different events on my host ubuntu VM. Sent 1 event first after 10 and 100 with different marks Error, Info, Warn.
@@ -13,7 +13,7 @@ Also created a txt file with all commands that i need to check and maintain Wind
 
 
 
-## Day 2  Splunk Home Lab - Event Monitoring & Alerts
+## Day 2 - Splunk Home Lab - Event Monitoring & Alerts
 Was testing around 4 hours how everything works. Learning how to work with Splunk web.
 
 1️. Machine Connectivity
@@ -39,7 +39,7 @@ Was testing around 4 hours how everything works. Learning how to work with Splun
 <img width="1920" height="1080" alt="Captura de pantalla 2025-09-29 154930" src="https://github.com/user-attachments/assets/6a502b2d-5397-4efe-b916-7624e8194afc" />
 
 
-## Day 3 Splunk Installation Failure on Windows
+## Day 3 - Splunk Installation Failure on Windows
 
 I thought that everything works fine but when i started practice on sending events the splunk connection got broken and events stop coming on me host pc. So i decided to take anothere pc and install everything on more time but on clean windows 10.
 
@@ -84,7 +84,7 @@ Lessons Learned
 
 
 
-## Day 4 Practice fully on Ubuntu
+## Day 4 - Practice fully on Ubuntu
 
 Today I set up my home lab but based on Linux to practice log ingestion, forwarding, and alerting in a fully offline environment. The lab consisted of:
  • Host machine: Ubuntu 24.04 VM running Splunk Enterprise
@@ -124,7 +124,7 @@ Key Steps Completed
 <img width="1920" height="922" alt="Screenshot from 2025-10-02 12-20-43" src="https://github.com/user-attachments/assets/44b97a8d-625a-4ee7-8127-f242e8b5a503" />
 <img width="1805" height="698" alt="Screenshot from 2025-10-02 14-58-41" src="https://github.com/user-attachments/assets/3cfa4a2f-82d5-4470-98a3-327e7fb9e130" />
 
-## Day 5 SSH,events, more practice
+## Day 5 - SSH,events, more practice
 
 During today’s session, I continued practicing with Splunk by setting up a functional lab environment using my physical Ubuntu machine as the forwarder and my Ubuntu VM (hosted on Windows) as the Splunk indexer. I verified network connectivity, configured ports and firewalls, and ensured proper forwarding between the two systems.
 
@@ -142,7 +142,7 @@ I also explored sending SSH connection logs, alerting on connection errors, and 
 <img width="1920" height="923" alt="Screenshot from 2025-10-06 15-36-10" src="https://github.com/user-attachments/assets/47be3a54-0c19-4410-bf81-62af176eb315" />
 
 
-## Day 6 Events,Dashboards
+## Day 6 - Events,Dashboards
 
 What was done
  • Reviewed and analyzed previously generated test events (Error, Info, Warning, SSH).
@@ -174,7 +174,7 @@ Dashboard
 <img width="1080" height="1795" alt="Screenshot from 2025-10-07 18-57-36" src="https://github.com/user-attachments/assets/bc91f61b-a593-499e-a159-8a25a92585b3" />
 <img width="1080" height="1795" alt="Screenshot from 2025-10-07 18-58-28" src="https://github.com/user-attachments/assets/8cb85e0d-e178-4198-a06d-218b1f7e09a4" />
 
-## Day 7 Splunk Log Monitoring & SOC Lab
+## Day 7 - Splunk Log Monitoring & SOC Lab
 
 Today I focused on building a hands-on log monitoring workflow using Splunk Enterprise and Splunk Forwarder. The main tasks completed were:
  1. Environment Setup: Verified connectivity between Ubuntu VMs, ensuring the forwarder sends logs to Splunk Enterprise successfully.
@@ -201,3 +201,65 @@ Key Learnings:
  
 
 Next Steps: Extend the lab with correlation searches and more complex SOC scenarios for enhanced security monitoring practice.
+
+## Day 8 - Splunk Lab: Real-Time Log Monitoring, Field Extraction, Dashboards & Alerts
+
+Environment Setup
+ • Host PC: Ubuntu with Splunk Enterprise
+ • VM / Remote PC: Ubuntu with Splunk Universal Forwarder
+ • Verified SSH connectivity between host and forwarder.
+ • Splunk Forwarder installed and configured to send logs to Splunk Enterprise.
+
+⸻
+
+Log Preparation
+ • Created a custom log file: /var/log/custom_test.log
+ • Generated different log types:
+ • INFO → normal events (e.g., User logged in, Page served)
+ • WARN → warnings (e.g., Slow DB query, High memory usage)
+ • ERROR → errors (e.g., Permission denied, Service crashed)
+ • Simulated failed SSH login attempts with dynamic usernames, IPs, and ports.
+ • Confirmed logs were ingested in real-time by Splunk after enabling the log generator.
+
+⸻
+
+Field Extraction
+ • Used Field Extractor (rex) to extract:
+ • username
+ • src_ip
+ • port
+ • Verified fields appeared correctly in search results and in dashboard panels.
+ • This allowed aggregation, visualization, and alerting.
+
+⸻
+
+Dashboard Creation
+ • Created a new dashboard combining all extracted fields.
+ • Panels included:
+ • Top attacking IP addresses
+ • Top targeted usernames
+ • Recent failed login events
+ • Set dashboard to refresh every 1 minute for real-time monitoring.
+ • Tested PDF export functionality to practice report sharing.
+
+⸻
+
+Alerts
+ • Created alerts for suspicious IPs based on thresholds (e.g., multiple failed logins).
+ • Alerts were linked to extracted fields (src_ip) and could trigger notifications.
+
+⸻
+
+Observations
+ • Real-time logs worked as expected 👍
+ • NULL values appeared in some columns — caused by failed SSH login events, normal in this lab setup
+ • Geolocation columns (Country/City) were empty because IPs were private lab addresses — expected behavior in a home lab
+ • Dashboard visualization allowed quick identification of suspicious activity across multiple fields
+
+⸻
+
+Next Steps / To-Do
+ • Extend dashboards for error/warn/info logs
+ • Test alerts by generating more SSH failed login events
+ • Explore additional SPL commands: timechart, top, where
+ • Simulate public IPs to enable geolocation mapping in dashboards
