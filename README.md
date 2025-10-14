@@ -221,20 +221,31 @@ Next Steps: Extend the lab with correlation searches and more complex SOC scenar
 ## Day 8 - Splunk Lab: Real-Time Log Monitoring, Field Extraction, Dashboards & Alerts
 
 Environment Setup
+ 
  • Host PC: Ubuntu with Splunk Enterprise
+ 
  • VM / Remote PC: Ubuntu with Splunk Universal Forwarder
+ 
  • Verified SSH connectivity between host and forwarder.
+ 
  • Splunk Forwarder installed and configured to send logs to Splunk Enterprise.
 
 ⸻
 
 Log Preparation
+
  • Created a custom log file: /var/log/custom_test.log
+ 
  • Generated different log types:
+ 
  • INFO → normal events (e.g., User logged in, Page served)
+ 
  • WARN → warnings (e.g., Slow DB query, High memory usage)
+ 
  • ERROR → errors (e.g., Permission denied, Service crashed)
+ 
  • Simulated failed SSH login attempts with dynamic usernames, IPs, and ports.
+
  • Confirmed logs were ingested in real-time by Splunk after enabling the log generator.
 
 ⸻
@@ -301,3 +312,15 @@ Next Steps / To-Do
  • Explore additional SPL commands: timechart, top, where
  
  • Simulate public IPs to enable geolocation mapping in dashboards
+
+<img width="1080" height="1795" alt="Screenshot from 2025-10-14 09-58-41" src="https://github.com/user-attachments/assets/ad9a2db7-ab87-423a-bf21-ce1455d7a42c" />
+<img width="1080" height="1795" alt="Screenshot from 2025-10-14 10-02-26" src="https://github.com/user-attachments/assets/9e3f466a-1079-4077-8fac-f7c25faebb7e" />
+<img width="1080" height="1795" alt="Screenshot from 2025-10-14 10-06-19" src="https://github.com/user-attachments/assets/e219c75e-6c11-44f2-9a2f-702b9adb351b" />
+<img width="1080" height="1795" alt="Screenshot from 2025-10-14 10-15-32" src="https://github.com/user-attachments/assets/d53995c3-c334-4c90-a265-b22e11838127" />
+<img width="1080" height="1795" alt="Screenshot from 2025-10-14 11-23-36" src="https://github.com/user-attachments/assets/823c745e-3c14-4820-8e0e-033fe275ac8f" />
+<img width="1080" height="1795" alt="Screenshot from 2025-10-14 11-24-00" src="https://github.com/user-attachments/assets/f21f8b95-53a4-4bcd-936b-c6d220661c11" />
+<img width="1080" height="1795" alt="Screenshot from 2025-10-14 11-43-46" src="https://github.com/user-attachments/assets/b33f2606-f4af-4b11-9687-651e57d40bbf" />
+<img width="1080" height="1795" alt="Screenshot from 2025-10-14 11-50-33" src="https://github.com/user-attachments/assets/b011348a-1eb7-4735-add1-9f9b18b8bc78" />
+<img width="1080" height="1795" alt="Screenshot from 2025-10-14 11-52-12" src="https://github.com/user-attachments/assets/f7599ca8-26de-4958-a3de-8e6b654e3282" />
+<img width="1080" height="1795" alt="Screenshot from 2025-10-14 12-02-31" src="https://github.com/user-attachments/assets/fefca96e-9f11-467a-88c7-249483c7de47" />
+
