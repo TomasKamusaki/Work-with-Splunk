@@ -145,19 +145,31 @@ I also explored sending SSH connection logs, alerting on connection errors, and 
 ## Day 6 - Events,Dashboards
 
 What was done
+ 
  • Reviewed and analyzed previously generated test events (Error, Info, Warning, SSH).
+ 
  • Verified that events were correctly indexed and visible through the Search & Reporting app.
+ 
  • Created and customized a Classic Dashboard in Splunk:
+ 
  • Added multiple visualizations including pie charts, bar charts, and single value panels.
+ 
  • Grouped events by sourcetype and severity level.
+ 
  • Displayed SSH activity over time and error counts in real-time.
+ 
  • Practiced alerting concepts and reviewed email alert limitations in closed lab networks.
+ 
  • Fixed permission issues related to event generation and log file monitoring.
+ 
  • Sent and monitored over 100 SSH-related events to test dashboard responsiveness.
 
  Key Learnings
+ 
  • How to build and structure dashboards in Splunk using classic panels.
+ 
  • Importance of permissions when creating and writing to log files.
+ 
  • Understanding how different sourcetypes and event severities can be visualized together.
 
 <img width="1920" height="923" alt="Screenshot from 2025-10-07 18-10-57" src="https://github.com/user-attachments/assets/2d8e66b2-7334-4423-8617-9ed680233edb" />
@@ -189,6 +201,7 @@ Key Learnings:
 • Creating real-time dashboards and alerts to simulate SOC monitoring.
 
 • Practical experience with log generation, ingestion, and visualization in a controlled lab environment.
+
 <img width="1080" height="1795" alt="Screenshot from 2025-10-13 09-39-06" src="https://github.com/user-attachments/assets/3050506c-cac4-4a75-83d4-348b78cec7d0" />
 <img width="1080" height="1795" alt="Screenshot from 2025-10-13 12-19-25" src="https://github.com/user-attachments/assets/653e3143-323d-4cc3-88ff-95fed222c042" />
 <img width="1080" height="1795" alt="Screenshot from 2025-10-13 12-21-25" src="https://github.com/user-attachments/assets/6e10c0a2-7df9-4ff6-b16e-30a847a6d619" />
@@ -227,42 +240,64 @@ Log Preparation
 ⸻
 
 Field Extraction
+
  • Used Field Extractor (rex) to extract:
+ 
  • username
+ 
  • src_ip
+ 
  • port
+ 
  • Verified fields appeared correctly in search results and in dashboard panels.
+ 
  • This allowed aggregation, visualization, and alerting.
 
 ⸻
 
 Dashboard Creation
+ 
  • Created a new dashboard combining all extracted fields.
+ 
  • Panels included:
+ 
  • Top attacking IP addresses
+ 
  • Top targeted usernames
+ 
  • Recent failed login events
+ 
  • Set dashboard to refresh every 1 minute for real-time monitoring.
+ 
  • Tested PDF export functionality to practice report sharing.
 
 ⸻
 
 Alerts
+ 
  • Created alerts for suspicious IPs based on thresholds (e.g., multiple failed logins).
+ 
  • Alerts were linked to extracted fields (src_ip) and could trigger notifications.
 
 ⸻
 
 Observations
+ 
  • Real-time logs worked as expected 👍
+ 
  • NULL values appeared in some columns — caused by failed SSH login events, normal in this lab setup
+ 
  • Geolocation columns (Country/City) were empty because IPs were private lab addresses — expected behavior in a home lab
+ 
  • Dashboard visualization allowed quick identification of suspicious activity across multiple fields
 
 ⸻
 
 Next Steps / To-Do
  • Extend dashboards for error/warn/info logs
+ 
  • Test alerts by generating more SSH failed login events
+ 
  • Explore additional SPL commands: timechart, top, where
+ 
  • Simulate public IPs to enable geolocation mapping in dashboards
