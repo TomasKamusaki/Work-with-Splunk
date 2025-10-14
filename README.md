@@ -302,16 +302,6 @@ Observations
  
  • Dashboard visualization allowed quick identification of suspicious activity across multiple fields
 
-⸻
-
-Next Steps / To-Do
- • Extend dashboards for error/warn/info logs
- 
- • Test alerts by generating more SSH failed login events
- 
- • Explore additional SPL commands: timechart, top, where
- 
- • Simulate public IPs to enable geolocation mapping in dashboards
 
 <img width="1080" height="1795" alt="Screenshot from 2025-10-14 09-58-41" src="https://github.com/user-attachments/assets/ad9a2db7-ab87-423a-bf21-ce1455d7a42c" />
 <img width="1080" height="1795" alt="Screenshot from 2025-10-14 10-02-26" src="https://github.com/user-attachments/assets/9e3f466a-1079-4077-8fac-f7c25faebb7e" />
@@ -324,3 +314,13 @@ Next Steps / To-Do
 <img width="1080" height="1795" alt="Screenshot from 2025-10-14 11-52-12" src="https://github.com/user-attachments/assets/f7599ca8-26de-4958-a3de-8e6b654e3282" />
 <img width="1080" height="1795" alt="Screenshot from 2025-10-14 12-02-31" src="https://github.com/user-attachments/assets/fefca96e-9f11-467a-88c7-249483c7de47" />
 
+
+Next Steps / To-Do
+ 
+ • Extend dashboards for error/warn/info logs
+ 
+ • Test alerts by generating more SSH failed login events
+ 
+ • Explore additional SPL commands: timechart, top, where
+ 
+ • Simulate public IPs to enable geolocation mapping in dashboards
