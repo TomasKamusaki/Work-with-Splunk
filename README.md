@@ -324,3 +324,82 @@ Next Steps / To-Do
  • Explore additional SPL commands: timechart, top, where
  
  • Simulate public IPs to enable geolocation mapping in dashboards
+
+
+## Day 9 – Home Lab expanded
+Date: 2025-10-16
+
+Summary:
+Today I expanded my home lab by integrating my new server (PC3) with the existing environment. The goal was to practice multi-device log forwarding, SSH management, and real-time monitoring in Splunk.
+
+Work Completed:
+ 1. Hardware Integration:
+ • Added PC3 (i5 4th Gen) to the lab.
+ 
+ • Installed 2×1TB HDDs in PC3.
+ 
+ • Connected PC3, PC2, and the host laptop to the new TL-SG105E switch.
+ 
+ • Configured switch with basic settings:
+ 
+ • Access to web interface.
+
+ • Default QoS and VLAN settings for lab network.
+ 
+ 2. Operating System & Network:
+
+ • Installed Ubuntu Server 22.04 on PC3.
+ 
+ • Configured static IP for PC3: 192.168.1.10/24 via netplan.
+ 
+ • Gateway: 192.168.1.1 (router)
+ 
+ • DNS: 192.168.1.1
+
+ • Connected host laptop via WiFi, PC2 via Ethernet.
+ 
+ • Ensured PC3 is reachable via SSH from PC2.
+
+ • Note: If the router is turned off or devices reconnect, dynamically assigned IPs (DHCP) may change unless static IPs are set on all machines or reserved in the router.
+ 
+ 3. Splunk Forwarder Setup:
+
+ • Installed Splunk Universal Forwarder on PC3.
+
+ • Configured forwarder to send logs to the Splunk host (host laptop).
+ 
+ • Verified connectivity and forwarding using nc and splunk list forward-server.
+ 
+ 4. Testing & Monitoring:
+ 
+ • Confirmed active forwarders on the Splunk host.
+ 
+ • Tested sending logs from PC3 through SSH-managed terminals.
+ 
+ • Verified that the host receives logs correctly.
+
+Challenges:
+ 
+ • Initial confusion with IP addressing and Splunk session login.
+ 
+ • Minor troubleshooting required for firewall and forwarder configuration.
+
+Key Takeaways:
+
+ • Multi-device lab setup allows practicing realistic SOC workflows.
+
+ • SSH access to servers enables headless management.
+ 
+ • Splunk forwarders can be configured on multiple machines, sending logs to a central host for monitoring.
+
+ • Static IPs are important for consistency in lab environments to prevent connection issues.
+
+Next Steps:
+ 
+ • Practice sending custom logs from PC3 and verifying them in Splunk.
+ 
+ • Automate log generation and forwarding for real-time dashboard updates.
+
+ • Continue expanding lab with more scenarios and alerts.
+
+
