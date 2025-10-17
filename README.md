@@ -332,8 +332,9 @@ Date: 2025-10-16
 Summary:
 Today I expanded my home lab by integrating my new server (PC3) with the existing environment. The goal was to practice multi-device log forwarding, SSH management, and real-time monitoring in Splunk.
 
-Work Completed:
- 1. Hardware Integration:
+## Work Completed:
+
+## 1. Hardware Integration:
  • Added PC3 (i5 4th Gen) to the lab.
  
  • Installed 2×1TB HDDs in PC3.
@@ -346,7 +347,7 @@ Work Completed:
 
  • Default QoS and VLAN settings for lab network.
  
- 2. Operating System & Network:
+## 2. Operating System & Network:
 
  • Installed Ubuntu Server 22.04 on PC3.
  
@@ -362,7 +363,7 @@ Work Completed:
 
  • Note: If the router is turned off or devices reconnect, dynamically assigned IPs (DHCP) may change unless static IPs are set on all machines or reserved in the router.
  
- 3. Splunk Forwarder Setup:
+## 3. Splunk Forwarder Setup:
 
  • Installed Splunk Universal Forwarder on PC3.
 
@@ -370,7 +371,7 @@ Work Completed:
  
  • Verified connectivity and forwarding using nc and splunk list forward-server.
  
- 4. Testing & Monitoring:
+## 4. Testing & Monitoring:
  
  • Confirmed active forwarders on the Splunk host.
  
@@ -378,13 +379,13 @@ Work Completed:
  
  • Verified that the host receives logs correctly.
 
-Challenges:
+## Challenges:
  
  • Initial confusion with IP addressing and Splunk session login.
  
  • Minor troubleshooting required for firewall and forwarder configuration.
 
-Key Takeaways:
+## Key Takeaways:
 
  • Multi-device lab setup allows practicing realistic SOC workflows.
 
@@ -394,7 +395,7 @@ Key Takeaways:
 
  • Static IPs are important for consistency in lab environments to prevent connection issues.
 
-Next Steps:
+## Next Steps:
  
  • Practice sending custom logs from PC3 and verifying them in Splunk.
  
@@ -408,3 +409,68 @@ Next Steps:
 <img width="1920" height="1080" alt="Screenshot from 2025-10-16 20-42-32" src="https://github.com/user-attachments/assets/a84843b5-34ef-474c-ac96-dd7f16f6891b" />
 <img width="1920" height="1080" alt="Screenshot from 2025-10-16 21-01-02" src="https://github.com/user-attachments/assets/d61c1389-03e9-4300-add5-5e0424432609" />
 
+
+## Day 10 – Home Lab Practice (Splunk + Server Management)
+
+## What I did today:
+
+ 1. Server Management via SSH
+
+ • Managed PC3 (server) from PC2 using SSH.
+ 
+ • Opened two terminals simultaneously:
+
+ • One for monitoring logs.
+
+ • One for server management and configuration.
+
+ • This setup made managing the server more convenient without needing to use the host laptop directly.
+
+ ## 2. Log Forwarding & Monitoring
+ 
+ • Confirmed that PC2 and PC3 are sending logs to the Host Laptop (running Splunk Enterprise).
+
+ • Tested sending custom logs from PC3 using:
+
+echo "Hello Splunk! $(date)" | sudo tee -a /tmp/test_splunk.log
+
+• Verified logs appear in real-time on Splunk.
+
+ ## 3. Live Log Generator
+ 
+ • Started automatic log generation on PC2 and PC3 (server) to simulate real-time events.
+
+ • Observed logs from both PCs flowing into Splunk dashboards.
+
+ ## 4. Switch Configuration
+
+ • Renamed the switch to a friendly name.
+
+ • Verified port mapping:
+ 
+ • Port 1 → Router
+
+ • Port 2 → PC2
+ 
+ • Port 3 → PC3 (Server)
+
+ • Port 4 → Host Laptop
+
+## Notes & Insights:
+ • Host Laptop is mainly receiving logs; PC2 acts as the control terminal for server management.
+ • Multiple SSH sessions make it easy to monitor and manage the server at the same time.
+ • Lab environment is now fully functional with 3 computers + switch + router, ready for further practice and log experimentation.
+
+<img width="1920" height="1080" alt="Screenshot from 2025-10-17 15-47-43" src="https://github.com/user-attachments/assets/2bc034f0-3f8e-467d-b932-4ea68f936523" />
+<img width="1920" height="1080" alt="Screenshot from 2025-10-17 16-05-05" src="https://github.com/user-attachments/assets/9068ff41-f283-48ab-a347-ecdc0e89e363" />
+<img width="1920" height="922" alt="Screenshot from 2025-10-16 19-47-17" src="https://github.com/user-attachments/assets/2a8f0187-55bf-42a6-b2bf-a103553eb5c8" />
+<img width="1920" height="922" alt="Screenshot from 2025-10-17 13-45-13" src="https://github.com/user-attachments/assets/5fae6cc5-da06-4ef1-a2cf-c5a7306f014e" />
+<img width="1920" height="922" alt="Screenshot from 2025-10-17 13-47-44" src="https://github.com/user-attachments/assets/ed92a973-1aa2-4d18-be57-b3a5acdc5049" />
+<img width="1920" height="922" alt="Screenshot from 2025-10-17 14-00-15" src="https://github.com/user-attachments/assets/21155882-5fd6-4f3c-8e24-bce6753a165c" />
+<img width="1077" height="1914" alt="Captura de pantalla 2025-10-17 163636" src="https://github.com/user-attachments/assets/66db92af-07fc-440a-ae29-2de42fb9a5bd" />
+
+## Next steps:
+ 1. Configure PC3 to forward specific logs needed for testing.
+ 2. Use more an automatic log generator on PC3 like on PC2.
+ 3. Practice more advanced Splunk dashboards and alerts with both forwarders.
+ 4. Explore additional switch features like VLANs or QoS if needed.
