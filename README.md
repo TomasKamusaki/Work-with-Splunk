@@ -403,3 +403,8 @@ Next Steps:
  • Continue expanding lab with more scenarios and alerts.
 
 
+<img width="1920" height="922" alt="Screenshot from 2025-10-16 17-50-32" src="https://github.com/user-attachments/assets/65dd59e5-9051-4928-bb5c-5ea5a77b8270" />
+<img width="1920" height="1080" alt="Screenshot from 2025-10-16 20-11-23" src="https://github.com/user-attachments/assets/c4781938-dbfd-4311-bd5c-3fdadf3e960d" />
+<img width="1920" height="1080" alt="Screenshot from 2025-10-16 20-42-32" src="https://github.com/user-attachments/assets/a84843b5-34ef-474c-ac96-dd7f16f6891b" />
+<img width="1920" height="1080" alt="Screenshot from 2025-10-16 21-01-02" src="https://github.com/user-attachments/assets/d61c1389-03e9-4300-add5-5e0424432609" />
+
