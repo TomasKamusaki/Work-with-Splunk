@@ -531,6 +531,8 @@ sudo systemctl enable ssh
 <img width="1920" height="1080" alt="20251021_16h34m45s_grim" src="https://github.com/user-attachments/assets/ef70ab32-c72a-48f3-8758-81c917fa78a5" />
 <img width="1920" height="1080" alt="Captura de pantalla 2025-10-21 201815" src="https://github.com/user-attachments/assets/d17bb0fa-5161-4893-84ed-c4c4d6533606" />
 <img width="1920" height="1080" alt="Captura de pantalla 2025-10-21 215811" src="https://github.com/user-attachments/assets/40f74bda-f7f0-42af-8e93-b6fb35989558" />
+<img width="1920" height="922" alt="Screenshot from 2025-10-21 19-38-23" src="https://github.com/user-attachments/assets/778b1520-3cce-45d6-a69d-40cd2c5e7800" />
+<img width="1920" height="922" alt="Screenshot from 2025-10-21 19-45-17" src="https://github.com/user-attachments/assets/a54c45c5-0bf3-47f8-bb9f-31b665d888ff" />
 
 
 ## Next Steps
@@ -625,6 +627,13 @@ Focus: Log correlation, Splunk dashboarding, alerts, and network packet analysis
  • Learned how to identify and analyze TCP flows and Splunk communication in Wireshark.
  
  • Practiced remote log management and network packet capture automation.
+
+
+<img width="1920" height="922" alt="Screenshot from 2025-10-22 09-33-40" src="https://github.com/user-attachments/assets/df3e88bb-d5cb-4e67-b0ab-f55ac284e2d5" />
+<img width="1920" height="922" alt="Screenshot from 2025-10-22 09-14-53" src="https://github.com/user-attachments/assets/de222ba6-3fe7-49b7-96cb-92fe5eb51f25" />
+<img width="1920" height="922" alt="Screenshot from 2025-10-22 09-08-36" src="https://github.com/user-attachments/assets/b43ff784-4aba-4626-b80d-81747bb05494" />
+<img width="1920" height="1080" alt="Screenshot from 2025-10-22 10-48-43" src="https://github.com/user-attachments/assets/f01ec5a6-e259-4082-ae7b-f5199151dc04" />
+<img width="1920" height="1080" alt="Captura de pantalla 2025-10-22 114108" src="https://github.com/user-attachments/assets/3145db29-327d-4205-9dcc-0c10e680660b" />
 
 
 ## Next Steps
