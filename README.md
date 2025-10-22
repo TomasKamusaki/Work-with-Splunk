@@ -474,3 +474,65 @@ echo "Hello Splunk! $(date)" | sudo tee -a /tmp/test_splunk.log
  2. Use more an automatic log generator on PC3 like on PC2.
  3. Practice more advanced Splunk dashboards and alerts with both forwarders.
  4. Explore additional switch features like VLANs or QoS if needed.
+
+
+## Day 8 — Raspberry Pi Integration as Network Sensor
+
+## Overview
+
+Today I successfully integrated a Raspberry Pi 4 (8 GB) into my home cybersecurity lab.
+The Pi now works as a network sensor, continuously capturing LAN traffic via the switch’s mirrored port.
+Captured data is later analyzed on my host PC with Wireshark.
+
+## Configuration Summary
+ 
+ • Hardware: Raspberry Pi 4 (8 GB RAM / 64 GB SD Card / Ethernet)
+
+ • Network: Connected through managed switch (TP-Link TL-SG105E) to mirror PC2 + PC3 ports
+ 
+ • Installed and tested tcpdump for manual packet capture
+ 
+ • Built auto-capture script that saves .pcap files every 15 minutes
+ 
+ • Verified cron job activity using journalctl
+ 
+ • Enabled SSH for remote file management and transfer
+ 
+ • Transferred .pcap files to host and opened them in Wireshark
+
+## Key Commands Used
+
+ip a
+
+sudo tcpdump -i eth0 -c 200 -w /home/admin/captures/test_$(date +%F_%H%M%S).pcap
+ls -lh /home/admin/captures
+
+sudo /usr/local/bin/autocapture.sh
+
+sudo crontab -e
+
+sudo journalctl -u cron -b
+
+scp admin@192.-.-.-:/home/admin/captures/*.pcap ~/Desktop/
+
+sudo systemctl enable ssh
+
+## Results
+ • Automatic packet captures confirmed working
+ 
+ • Files transferred successfully and opened in Wireshark
+ 
+ • Raspberry Pi operating fully headless via SSH
+ 
+ • Network traffic from Splunk forwarders visible in live captures
+
+## Next Steps
+ 
+ • Automate file transfer to host for daily review
+ 
+ • Start filtering captures by protocol (DNS, HTTP, TCP, ICMP)
+ 
+ • Identify attack signatures and anomalies in generated traffic
+
+ • Integrate Wireshark filters + Splunk dashboards to correlate data
+ 
