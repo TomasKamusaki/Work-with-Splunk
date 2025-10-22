@@ -542,3 +542,97 @@ sudo systemctl enable ssh
  • Identify attack signatures and anomalies in generated traffic
 
  • Integrate Wireshark filters + Splunk dashboards to correlate data
+
+
+## Day 12 – Splunk Querying, Raspberry Pi Integration & Network Analysis
+
+Focus: Log correlation, Splunk dashboarding, alerts, and network packet analysis
+
+## Main Accomplishments
+ 
+ 1. Checked connectivity and Splunk Forwarders:
+ 
+ • Verified that all machines (PC2, PC3, Raspberry Pi, and host) are connected and forwarding logs to the Splunk indexer successfully.
+
+ • Ensured communication between nodes via Ethernet and network ping tests.
+ 
+ 2. Raspberry Pi Integration:
+ 
+ • Verified sensor functionality and log capture from Raspberry Pi.
+
+ • Executed and validated network capture scripts.
+ 
+ • Successfully transferred .pcap files to host via scp for offline analysis.
+ 
+ 3. SSH Remote Management:
+ 
+ • Connected from PC2 to PC3 (server) via SSH.
+ 
+ • Managed log generation scripts remotely to test real-time Splunk log forwarding.
+
+ 4. Splunk Analysis & Visualization:
+ 
+ • Used multiple search queries to filter and analyze authentication and network logs.
+ 
+ • Built a custom Splunk dashboard visualizing failed/successful login attempts.
+ 
+ • Implemented visual panels for top IPs, top users, and login trends over time.
+ 
+ 5. Splunk Alert Configuration:
+ 
+ • Created an alert trigger for failed login attempts (threshold: >2 attempts).
+ 
+ • Configured alert action for monitoring brute-force activity simulation.
+ 
+ 6. Packet Capture Analysis in Wireshark:
+ 
+ • Pulled last network captures from Raspberry Pi to host using SCP.
+ 
+ • Imported captures into Wireshark.
+ 
+ • Applied filters:
+ 
+ • tcp
+ 
+ • icmp
+ 
+ • tcp.port == 9997 (Splunk traffic filter)
+ 
+ • Observed traffic flow between forwarders and Splunk host.
+
+
+## Tools Used
+ 
+ • Splunk Enterprise (Indexer & Web Interface)
+ 
+ • Splunk Universal Forwarder
+ 
+ • Wireshark
+ 
+ • Raspberry Pi 4 (as passive network sensor)
+
+ • SSH (remote management)
+ 
+ • SCP (secure copy)
+
+
+## Key Learnings
+ 
+ • Improved efficiency in Splunk query building and dashboard customization.
+ 
+ • Understood data flow from system logs → Splunk index → visual dashboard.
+ 
+ • Learned how to identify and analyze TCP flows and Splunk communication in Wireshark.
+ 
+ • Practiced remote log management and network packet capture automation.
+
+
+## Next Steps
+ 
+ • Automate .pcap capture rotation on Raspberry Pi (with cleanup for older captures).
+ 
+ • Configure Splunk to receive and index Raspberry Pi network logs.
+ 
+ • Expand Splunk dashboard to include network flow analysis panels.
+ 
+ • Practice more advanced Splunk search operators (e.g. eval, lookup, stats with conditions).
