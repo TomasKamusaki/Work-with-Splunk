@@ -476,7 +476,7 @@ echo "Hello Splunk! $(date)" | sudo tee -a /tmp/test_splunk.log
  4. Explore additional switch features like VLANs or QoS if needed.
 
 
-## Day 8 — Raspberry Pi Integration as Network Sensor
+## Day 11 — Raspberry Pi Integration as Network Sensor
 
 ## Overview
 
@@ -535,4 +535,11 @@ sudo systemctl enable ssh
  • Identify attack signatures and anomalies in generated traffic
 
  • Integrate Wireshark filters + Splunk dashboards to correlate data
+
  
+<img width="1920" height="1080" alt="20251021_12h06m29s_grim" src="https://github.com/user-attachments/assets/f1d06230-8d5c-4adb-a2e6-5afdde1eb429" />
+<img width="1920" height="1080" alt="20251021_14h34m53s_grim" src="https://github.com/user-attachments/assets/701487d9-fe80-43bc-b20f-d9e74f54b9ee" />
+<img width="1920" height="1080" alt="20251021_16h34m45s_grim" src="https://github.com/user-attachments/assets/ef70ab32-c72a-48f3-8758-81c917fa78a5" />
+<img width="1920" height="1080" alt="Captura de pantalla 2025-10-21 201815" src="https://github.com/user-attachments/assets/d17bb0fa-5161-4893-84ed-c4c4d6533606" />
+<img width="1920" height="1080" alt="Captura de pantalla 2025-10-21 215811" src="https://github.com/user-attachments/assets/40f74bda-f7f0-42af-8e93-b6fb35989558" />
+
