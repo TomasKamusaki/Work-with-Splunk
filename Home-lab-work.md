@@ -54,6 +54,8 @@ My SOC lab consists of multiple systems connected in an isolated network:
 
 ## 🚀 Day 0 — Cybersecurity.Start
 
+Date: September 23, 2025
+ 
  • Installed a clean Windows 10, then upgraded to Windows 11 to avoid compatibility issues.
  
  • Installed VirtualBox and added Ubuntu as the first virtual machine, followed by full updates.
@@ -672,6 +674,8 @@ sudo systemctl enable ssh
 
 ## Day 12 – Splunk Querying, Raspberry Pi Integration & Network Analysis
 
+Date: October 22, 2025
+
 Focus: Log correlation, Splunk dashboarding, alerts, and network packet analysis
 
 ## Main Accomplishments
@@ -774,42 +778,64 @@ Focus: Log correlation, Splunk dashboarding, alerts, and network packet analysis
 
 Date: October 23, 2025
 
-🧩 Summary:
+## 🧩 Summary:
 
 Today I focused on combining Splunk log monitoring with real network traffic analysis using my Raspberry Pi 4 as a network sensor.
+ 
  • Verified Splunk connectivity between all machines (host, PC2, and PC3).
+ 
  • Analyzed SSH brute-force simulation logs in Splunk Web — filtered and visualized failed password attempts, usernames, and IP sources.
+
  • Built new Splunk dashboard panels and refined search queries for security analysis.
+ 
  • Captured real network traffic on the Raspberry Pi and confirmed SSH communication packets between my PCs.
+
  • Learned to interpret TCP 3-way handshake (SYN, SYN/ACK, ACK) in Wireshark and matched it to Splunk logs for correlation.
+ 
  • Practiced packet filtering and analysis in Wireshark using expressions like tcp.port == 22.
+ 
  • Tested automatic log and packet capture scripts — confirmed correct operation.
+
  • Maintained static IP configuration across all systems and verified SSH access stability.
 
-💻 Tools & Technologies:
+## 💻 Tools & Technologies:
+
  • Splunk Enterprise (log indexing & alerting)
+ 
  • Wireshark (network analysis)
+
  • Raspberry Pi 4 (8GB) as network sensor
+ 
  • Ubuntu Server + SSH Forwarders
+ 
  • Custom log generator & Splunk search filters
 
-🧩 Extra Work:
+## 🧩 Extra Work:
+
  • Studied TryHackMe for ~3 hours (topics: Linux privilege escalation & network fundamentals).
+ 
  • Practiced threat analysis and basic attack detection logic.
 
-✅ Achievements:
+## ✅ Achievements:
+ 
  • Successful end-to-end visibility: from simulated logs → network packets → dashboard visualization.
+
  • Confirmed live capture of TCP/SSH handshakes and Splunk correlation.
+
  • Raspberry Pi functioning as independent, passive monitoring node.
 
-🔜 Next Steps:
+## 🔜 Next Steps:
+ 
  • Automate Wireshark/pcap export review workflow.
+ 
  • Explore Splunk correlation searches (match logs + packet timestamps).
+ 
  • Begin building a Security Events Overview dashboard in Splunk.
+
  • Continue THM labs focused on network-based attack detection and log correlation.
 
 
-## Day 12 New Toy
+## Day 13 New Toy
 
 ## 🖥️ New Server Setup (Supermicro Xeon D-1541)
 
