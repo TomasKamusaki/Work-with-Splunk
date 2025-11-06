@@ -10,33 +10,42 @@ Was using my home lab: 2 computers wich had closed local network without interne
 
 During this project, I explored installing and configuring Splunk Universal Forwarder for the first time as part of my introduction to cybersecurity and Linux/Windows systems. I used ChatGPT as a technical assistant to guide me through commands, troubleshooting, and configuration steps.
 
-What I Attempted:
 
-  • Installed Splunk Universal Forwarder on Windows, configuring TCP forwarding to a remote Splunk indexer.
+## What I Attempted:
+ 
+ • Installed Splunk Universal Forwarder on Windows, configuring TCP forwarding to a remote Splunk indexer.
+
  • Tried multiple installation methods, including PowerShell commands and MSI execution with administrative privileges.
+ 
  • Configured forwarders to monitor Windows event logs and forward data to a Splunk indexer.
+ 
  • Attempted installation on Ubuntu 25.04 to explore Linux deployment.
+
  • Worked with two computers (host and target) connected in a closed network via another router without Internet access.
 
-Results – Successes:
+## Results – Successes:
+ 
  
  • Successfully installed and configured Splunk Universal Forwarder on Windows.
+ 
  • Verified network connections and data forwarding through TCP logs.
+ 
  • Learned to read Splunk log files, monitor ingestion, and troubleshoot warnings.
+ 
  • Documented the process with screenshots for future reference.
 
-Challenges / Blockers:
+## Challenges / Blockers:
 
  • Ubuntu 25.04 version was unsupported, causing installation errors and repository issues.
  • MSI installation on Windows initially failed due to command and privilege issues, which required repeated troubleshooting.
 
-Skills Developed:
+## Skills Developed:
 
  • Troubleshooting complex installations in Windows and Linux environments.
  • Learning cybersecurity monitoring tools in a real-world environment.
  • Persistence, documentation, and problem-solving using AI-assisted guidance.
 
-Outcome:
+## Outcome:
  
  • Gained practical experience with Splunk on Windows and Ubuntu.
  • Built a personal learning portfolio with screenshots, logs, and step-by-step documentation.
