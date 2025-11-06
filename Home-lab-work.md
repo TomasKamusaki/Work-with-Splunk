@@ -111,29 +111,45 @@ Lessons Learned
 ## Day 4 - Practice fully on Ubuntu
 
 Today I set up my home lab but based on Linux to practice log ingestion, forwarding, and alerting in a fully offline environment. The lab consisted of:
+
  • Host machine: Ubuntu 24.04 VM running Splunk Enterprise
+ 
  • Secondary machine: Physical Ubuntu PC acting as a Splunk Universal Forwarder also 24.04
 
 Key Steps Completed
 
  1. Clean Setup & Installation
+ 
  • Installed Splunk Universal Forwarder on Ubuntu2.
+ 
  • Configured forwarding to the host Splunk Enterprise instance.
+
  • Verified service status and active forwarders with splunk list forward-server.
+
  2. Log Ingestion Practice
+ 
  • Created custom log file /var/log/custom_test.log with multiple event types (INFO, WARN, ERROR) using bash loops.
+ 
  • Configured inputs.conf to monitor the custom log file and assigned index=main and sourcetype=custom_test.
+ 
  • Confirmed logs appeared in Splunk Web using searches like:
 
 3. Forwarding & Connectivity Tests
+
  • Verified network connectivity between Ubuntu2 (forwarder) and host VM via ping and nc -vz <host_ip> 9997.
+ 
  • Observed forwarded events arriving correctly in the host Splunk instance.
- 4. Alerts & Testing
+
+4. Alerts & Testing
+ 
  • Practiced creating alerts on custom log events (INFO/WARN/ERROR).
  
  5. Lessons Learned
+ 
  • Linux permissions are crucial; most errors were caused by incorrect ownership or missing directories.
+
  • Forwarder configuration and network setup must match IPs and open ports.
+
  • Offline labs are fully functional for ingesting, searching, and alerting without needing internet.
 
 <img width="1920" height="922" alt="Screenshot from 2025-10-02 13-53-51" src="https://github.com/user-attachments/assets/88f5ff00-c5a7-46da-ac2d-f79eea4ee57a" />
