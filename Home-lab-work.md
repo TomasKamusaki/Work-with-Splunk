@@ -1,9 +1,8 @@
 # Home-lab (step by step)
 
 
-## Day 0
+## Day 0 Cybersecurity.Start
 
-Cybersecurity.Start
 
 Setup: main laptop i7 10th 4 cores 16ram ddr4 ssd 1t; old pc ddr4 16gb processor 4 cores i5 6th 120ssd 2t hdd; old router to do a network without internet; one more laptop 2 cores 4ram to do some fast checks in internet or share files.
 
