@@ -20,7 +20,7 @@ After downloaded, installed and updated kali without any problem <
 Next step was unexpected because i spent 3 days on new ubuntu version but i faced a lot off errors trying to install and connect Wazuh and Splunk.I add one more VM version of Ubuntu 24.04 
 reinstalled Splunk on new Ubuntu after that checked everything. Firstly configured Windows pc in PowerShell and cmd later my Ubuntu (host) through terminal. Now Splank works good on both computers and i can start my practice
 
-Also was created a shared folder on my host laptop between Windows and VM Ubuntu to share commands, pictures< files etc.
+Also was created a shared folder on my host laptop between Windows and VM Ubuntu to share commands, pictures, files etc.
 
 
 
