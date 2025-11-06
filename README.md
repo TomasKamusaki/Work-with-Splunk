@@ -1,4 +1,4 @@
-# Work-with-Splunk
+# Home-LAB-work
 
 ## Day 1 - Checked all connections and functionality 
 Have to check everything and make some configurations after that going to creat some events on Windows pc to see if everything works fine on Ubuntu and i can read logs. Let's rock
