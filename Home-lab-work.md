@@ -769,3 +769,22 @@ Focus: Log correlation, Splunk dashboarding, alerts, and network packet analysis
  • Expand Splunk dashboard to include network flow analysis panels.
  
  • Practice more advanced Splunk search operators (e.g. eval, lookup, stats with conditions).
+
+## Day 12 New Toy
+
+## 🖥️ New Server Setup (Supermicro Xeon D-1541)
+
+This week I expanded my cybersecurity and homelab environment with a Supermicro X10SDV-8C-TLN4F server (Intel Xeon D-1541, 128 GB ECC RAM, SSD + HDD storage).
+The system was fully cleaned, inspected in BIOS, and successfully booted into Proxmox VE 8.4.
+
+Work completed so far
+ • Verified all 128 GB RAM, CPU cores, and disks in BIOS and Proxmox.
+ • Installed and configured Proxmox VE 8.4 on SSD (LVM + ZFS storage pools).
+ • Created first VM (Ubuntu 24.04 LTS) and confirmed full functionality.
+ • Tested system stability and temperature monitoring (~53–55 °C under load).
+ • Prepared for network tuning and static IP configuration in Netplan.
+
+Next steps:
+ • Configure static IP on Ubuntu VM.
+ • Add additional VMs for Splunk Forwarder and Raspberry Pi network-sensor integration.
+ • Begin documenting performance benchmarks and automation scripts.
