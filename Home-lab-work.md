@@ -4,9 +4,11 @@
 ## Day 0 - Cybersecurity.Start
 
 
-## Setup (OLD): main laptop i7 10th 4 cores 16ram ddr4 ssd 1t; old pc ddr4 16gb processor 4 cores i5 6th 120ssd 2t hdd; old router to do a network without internet; one more laptop 2 cores 4ram to do some fast checks in internet or share files. 
+## Setup (OLD): 
+Host laptop i7 10th 4 cores 16ram ddr4 ssd 1t; old pc ddr4 16gb processor 4 cores i5 6th 120ssd 2t hdd; old router to do a network without internet; one more laptop 2 cores 4ram to do some fast checks in internet or share files. 
 
-## Setup (NEW): Host laptop i7 10th 4 cores 16ram ddr4 ssd 1t; i5 6th 120ssd Ubuntu; old router to do a network without internet; switch TP-Link 5 ports; Server Supermicro Xeon 8 cores 128gb ram ssd 500gb 2x hdd 2T each(Poxmox); one more laptop 2 cores 4ram to do some fast checks in internet or share files. 
+## Setup (NEW): 
+Host laptop i7 10th 4 cores 16ram ddr4 ssd 1t; i5 6th 120ssd Ubuntu; old router to do a network without internet; switch TP-Link 5 ports; Server Supermicro Xeon 8 cores 128gb ram ssd 500gb 2x hdd 2T each(Poxmox); one more laptop 2 cores 4ram to do some fast checks in internet or share files. 
 
 
 Was instaled clean windows 10 after updated to 11 to avoid any problem on old windows
