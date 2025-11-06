@@ -777,14 +777,25 @@ Focus: Log correlation, Splunk dashboarding, alerts, and network packet analysis
 This week I expanded my cybersecurity and homelab environment with a Supermicro X10SDV-8C-TLN4F server (Intel Xeon D-1541, 128 GB ECC RAM, SSD + HDD storage).
 The system was fully cleaned, inspected in BIOS, and successfully booted into Proxmox VE 8.4.
 
-Work completed so far
+## Work completed so far
+ 
  • Verified all 128 GB RAM, CPU cores, and disks in BIOS and Proxmox.
+ 
  • Installed and configured Proxmox VE 8.4 on SSD (LVM + ZFS storage pools).
+ 
  • Created first VM (Ubuntu 24.04 LTS) and confirmed full functionality.
+ 
  • Tested system stability and temperature monitoring (~53–55 °C under load).
+ 
  • Prepared for network tuning and static IP configuration in Netplan.
 
-Next steps:
+## Next steps:
+ 
  • Configure static IP on Ubuntu VM.
+ 
  • Add additional VMs for Splunk Forwarder and Raspberry Pi network-sensor integration.
+ 
  • Begin documenting performance benchmarks and automation scripts.
+
+<img width="1920" height="1080" alt="Captura de pantalla 2025-10-26 112548" src="https://github.com/user-attachments/assets/d82bb4bd-ec0a-450b-839f-442d329d6b8e" />
+<img width="1920" height="1080" alt="Captura de pantalla 2025-10-26 191212" src="https://github.com/user-attachments/assets/b943da35-c411-43d1-ae74-79881d99d625" />
