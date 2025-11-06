@@ -1,5 +1,26 @@
 # Home-lab (step by step)
 
+## 🏗️ Lab Overview
+
+My SOC lab consists of multiple systems connected in an isolated network:
+
+- Proxmox Server: Core hypervisor running virtual machines  
+- Kali Linux: Attack simulation system  
+- Ubuntu Server (Splunk): Log collection & SIEM analysis  
+- Raspberry Pi 4: Network packet capture node (tcpdump automation)  
+- Windows Host: Analysis and documentation workstation  
+- Wireshark: For traffic inspection and forensic packet analysis
+
+## 🧰 Tools Used
+
+- Splunk (SIEM)
+- Wireshark (Packet Analysis)
+- Tcpdump (Capture automation)
+- Kali Linux (Attack simulation)
+- Proxmox VE (Virtualization)
+- Raspberry Pi 4 (Network sensor)
+- Nmap / Hydra / Netdiscover (Testing & scanning)
+- Scp / SSH (File transfer & remote access)
 
 ## Setup (OLD): 
 Host laptop i7 10th 4 cores 16ram ddr4 ssd 1t; old pc ddr4 16gb processor 4 cores i5 6th 120ssd 2t hdd; old router to do a network without internet; one more laptop 2 cores 4ram to do some fast checks in internet or share files. 
