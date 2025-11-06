@@ -834,6 +834,10 @@ Today I focused on combining Splunk log monitoring with real network traffic ana
 
  • Continue THM labs focused on network-based attack detection and log correlation.
 
+<img width="1920" height="1080" alt="Captura de pantalla 2025-10-23 192948" src="https://github.com/user-attachments/assets/3cc26e6e-d791-4c25-8338-85070cbff4b1" />
+
+<img width="1920" height="1080" alt="Captura de pantalla 2025-10-23 191129" src="https://github.com/user-attachments/assets/5a8ac8da-d4fb-4ad2-872b-0c241c112dc3" />
+
 
 ## Day 13 New Toy
 
@@ -864,3 +868,73 @@ The system was fully cleaned, inspected in BIOS, and successfully booted into Pr
 
 <img width="1920" height="1080" alt="Captura de pantalla 2025-10-26 112548" src="https://github.com/user-attachments/assets/d82bb4bd-ec0a-450b-839f-442d329d6b8e" />
 <img width="1920" height="1080" alt="Captura de pantalla 2025-10-26 191212" src="https://github.com/user-attachments/assets/b943da35-c411-43d1-ae74-79881d99d625" />
+
+
+## Day 14-16 networking, automation, and observability
+
+Date: October 28-30, 2025
+
+Huge progress today across networking, automation, and observability in my home lab.
+
+## ✅ What I accomplished
+
+ • Proxmox & Networking
+ 
+ • Set static IP on my Proxmox Ubuntu VM (ens18) and verified persistence.
+
+ • Integrated the new Supermicro Xeon server into my lab (router + TL-SG105E switch).
+ 
+ • Splunk Forwarding
+
+ • Installed Splunk Universal Forwarder on the Proxmox Ubuntu VM.
+
+ • Configured inputs (syslog + custom file) and connected to my Splunk Enterprise indexer.
+
+ • Deployed a log generator systemd service on the VM to simulate INFO/WARN/ERROR + SSH failed-login lines into /var/log/custom_test.log (ingested live into Splunk).
+
+ • Raspberry Pi Network Sensor
+ 
+ • Pi runs automatic packet captures and SCPs the newest .pcap to my Ubuntu host VM every 15 minutes.
+
+ • Added cron heartbeats and logging; verified hands-off operation.
+
+ 
+ • Ingested Pi sync logs into Splunk for visibility (source=/home/user/pi_sync.log).
+
+ • Dashboards & Alerts
+
+ • Built Splunk dashboards for syslog + simulated app logs (username, src_ip, port extractions).
+
+ • Added alert: >2 failed SSH passwords within 5 minutes.
+
+## 🔧 Key commands/config (high level)
+
+ • UF install on VM: extract → /opt/splunkforwarder/bin/splunk enable boot-start → set outputs to indexer → add monitors.
+
+ • VM log generator: systemd service writing to /var/log/custom_test.log at random intervals.
+
+ • Pi automation: /usr/local/bin/autocapture.sh + sync_latest_capture.sh via cron (*/15 * * * *), SSH keys for passwordless copy, cleanup (find … -mtime +3 -delete).
+
+## 📈 Results
+
+ • End-to-end pipeline now continuous and automated:
+
+ • VM → Splunk (UF) ✅
+ 
+ • Pi → Host VM (SCP) → Wireshark + Splunk log of sync events ✅
+
+ • Real-time visibility verified in Splunk dashboards; alerts firing as expected.
+
+## ⏱️ Study time
+
+~6 hours (plus troubleshooting)
+
+## 🧠 Reflection
+
+Today I connected all moving parts into a cohesive monitoring stack. I’m much more comfortable with netplan/static IPs, systemd services, cron, UF configuration, and Splunk field extraction/alerts. The lab now feels like a mini SOC where I can iterate faster on real data.
+
+<img width="1911" height="1067" alt="Captura de pantalla 2025-10-28 135742" src="https://github.com/user-attachments/assets/56b7eb7f-fa90-438b-833b-f254c09b998e" />
+<img width="1904" height="1069" alt="Captura de pantalla 2025-10-28 135223" src="https://github.com/user-attachments/assets/6d916c59-c7db-4557-86fa-b19c7ebffd0b" />
+<img width="1915" height="1074" alt="Captura de pantalla 2025-10-28 124926" src="https://github.com/user-attachments/assets/7c4443f2-6dfa-4377-bca7-9c85b1e0f677" />
+<img width="1917" height="1069" alt="Captura de pantalla 2025-10-28 183223" src="https://github.com/user-attachments/assets/a82c5573-f142-40d8-8020-b474863b9930" />
+
