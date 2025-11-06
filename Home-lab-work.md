@@ -22,26 +22,40 @@ My SOC lab consists of multiple systems connected in an isolated network:
 - Nmap / Hydra / Netdiscover (Testing & scanning)
 - Scp / SSH (File transfer & remote access)
 
-🖥️ Hardware Setup (OLD)
+## 🖥️ Hardware Setup (OLD)
+ 
  • Host Laptop: Intel i7 10th Gen, 4 cores, 16 GB DDR4, 1 TB SSD
+
  • Secondary PC: Intel i5 6th Gen, 4 cores, 16 GB DDR4, 120 GB SSD + 2 TB HDD
+
  • Router: Used to create an isolated lab network (no internet)
+ 
  • Additional Laptop: Dual-core CPU, 4 GB RAM — for quick checks or file sharing
 
-🧠 Hardware Setup (NEW)
+## 🧠 Hardware Setup (NEW)
+ 
  • Host Laptop: Intel i7 10th Gen, 4 cores, 16 GB DDR4, 1 TB SSD
+ 
  • Server: Supermicro Xeon 8 cores, 128 GB RAM, 500 GB SSD + 2×2 TB HDD (running Proxmox)
+ 
  • Ubuntu System: Intel i5 6th Gen, 120 GB SSD
+
  • Switch: TP-Link 5-Port Gigabit
+ 
  • Additional Laptop: Dual-core CPU, 4 GB RAM — used for internet checks and file sharing
+
  • Router: Old router configured to isolate internal lab network
 
 ⸻
 
-🚀 Day 0 — Cybersecurity.Start
+## 🚀 Day 0 — Cybersecurity.Start
+
  • Installed a clean Windows 10, then upgraded to Windows 11 to avoid compatibility issues.
+ 
  • Installed VirtualBox and added Ubuntu as the first virtual machine, followed by full updates.
+ 
  • Created additional Windows 10 VMs and resolved minor setup issues (e.g., disabling the floppy controller and deleting unnecessary system files).
+ 
  • Installed and updated Kali Linux without issues.
 
 Later, I spent several days troubleshooting Ubuntu 24.04 while trying to install Wazuh and Splunk.
@@ -51,17 +65,23 @@ After multiple attempts, I successfully reinstalled Splunk on the new Ubuntu ver
 
 ⸻
 
-🧩 Day 1 — Checking Connectivity and Functionality
+## 🧩 Day 1 — Checking Connectivity and Functionality
+
  • Verified all network connections and system communication.
+ 
  • Tested Windows → Ubuntu log forwarding using PowerShell event generation.
+
  • Identified an initial issue caused by antivirus interference, which blocked event forwarding.
+ 
  • ✅ Solved by adjusting antivirus rules and reconfiguring permissions.
+ 
  • Successfully sent 1, 10, and 100 events with different log levels: Error, Info, Warning.
+ 
  • Created a command reference text file containing essential maintenance and diagnostic commands for both Windows and Ubuntu, useful when working in Splunk.
 
 ⸻
 
-🧠 This marked the completion of the basic environment setup — fully connected, updated, and ready for deeper SOC and SIEM practice.
+
 <img width="1920" height="923" alt="Screenshot from 2025-09-27 12-38-36" src="https://github.com/user-attachments/assets/b0900b6f-81d7-430c-a73d-2fecbaaead8f" />
 <img width="1025" height="910" alt="Screenshot from 2025-09-27 12-55-11" src="https://github.com/user-attachments/assets/d871db26-7ee2-4201-b39e-78f2623539d0" />
 <img width="1920" height="923" alt="Screenshot from 2025-09-27 12-45-01" src="https://github.com/user-attachments/assets/59a0584b-834c-410b-a45b-f300433a3686" />
