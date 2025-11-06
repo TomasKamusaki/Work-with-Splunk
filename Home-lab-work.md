@@ -60,10 +60,11 @@ My SOC lab consists of multiple systems connected in an isolated network:
 
 Later, I spent several days troubleshooting Ubuntu 24.04 while trying to install Wazuh and Splunk.
 After multiple attempts, I successfully reinstalled Splunk on the new Ubuntu version, configured it, and verified it works properly.
+
  • Configured Windows (PowerShell + CMD) and Ubuntu (Terminal) for event forwarding into Splunk.
+
  • Created a shared folder between Windows and Ubuntu to exchange scripts, screenshots, and logs efficiently.
 
-⸻
 
 ## 🧩 Day 1 — Checking Connectivity and Functionality
 
@@ -78,8 +79,6 @@ After multiple attempts, I successfully reinstalled Splunk on the new Ubuntu ver
  • Successfully sent 1, 10, and 100 events with different log levels: Error, Info, Warning.
  
  • Created a command reference text file containing essential maintenance and diagnostic commands for both Windows and Ubuntu, useful when working in Splunk.
-
-⸻
 
 
 <img width="1920" height="923" alt="Screenshot from 2025-09-27 12-38-36" src="https://github.com/user-attachments/assets/b0900b6f-81d7-430c-a73d-2fecbaaead8f" />
