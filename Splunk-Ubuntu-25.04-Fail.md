@@ -1,5 +1,5 @@
 # Splunk-Ubuntu-25.04-Fail
-
+📘 This lab is for educational and ethical testing only, performed on my own isolated network
 Splunk Installation (Windows & Ubuntu)
 
 My first days in cybersecurity
