@@ -952,7 +952,7 @@ Date: November 1, 2025
 Objective:  
 Validate Raspberry Pi network capture workflow, verify Splunk log ingestion, and confirm visibility of attack events across the lab network.
 
----
+
 
 ### ✅ Accomplished
 - Confirmed network topology and IP mapping
@@ -973,7 +973,7 @@ Validate Raspberry Pi network capture workflow, verify Splunk log ingestion, and
   - Confirmed full SSH session visibility, packet retransmissions, and ACKs  
   - Splunk dashboard received and indexed “failed SSH login” events correctly
 
----
+
 
 ### ⚙️ Current State
 - Raspberry Pi fully operational as a passive network sensor  
@@ -981,7 +981,7 @@ Validate Raspberry Pi network capture workflow, verify Splunk log ingestion, and
 - Automatic data pipeline working end-to-end  
 - Environment stable and validated  
 
----
+
 
 ### 🚀 Next Steps
 1. Remove duplicate cron references (`/usr/local/bin/autocapture.sh`)  
@@ -990,7 +990,7 @@ Validate Raspberry Pi network capture workflow, verify Splunk log ingestion, and
 4. Start correlating packet data (Pi) with Splunk SSH auth logs  
 5. Begin documenting detection rules for brute-force patterns  
 
----
+
 
 Status: ✅ Stable & Verified   
 Focus for Next Session: Cron cleanup + advanced capture scheduling + event correlation  
@@ -1031,6 +1031,7 @@ Date: November 3, 2025
  • Continue documenting each protocol behavior in personal notes.
 
 ## Result:
+
 All systems are stable and functioning as intended. Packet captures and Splunk logs align correctly. The Raspberry Pi automation works as designed, making the lab fully ready for deeper security traffic analysis.
 
 <img width="1918" height="1075" alt="Captura de pantalla 2025-11-03 122946" src="https://github.com/user-attachments/assets/106d3df0-3982-4711-98e8-9a7189a776f8" />
@@ -1048,13 +1049,13 @@ Environment:
 - Windows / Proxmox host network (.50 target)  
 - Wireshark for analysis  
 
----
+
 
 ## 🎯 Objective
 Simulate and analyze basic network reconnaissance techniques in a safe home lab.  
 Today’s focus: detecting ARP sweeps and understanding how they appear in packet captures.
 
----
+
 
 ## 🧩 Tasks Performed
 
@@ -1074,7 +1075,7 @@ Observed typical ARP sweep behavior:
 - Source: Kali VM / Proxmox interface
 - Dozens of ARP requests per second
 
----
+
 
 ### 3. Wireshark Analysis
 Filter used:arp && eth.src == <scanner_mac>
@@ -1084,7 +1085,6 @@ Identified patterns:
 - Confirms active host discovery  
 - Recognized the difference between normal ARP cache traffic vs scanning bursts  
 
----
 
 ## 🧠 Key Learnings
 - How ARP scanning appears in packet captures  
@@ -1092,7 +1092,7 @@ Identified patterns:
 - Practical use of tcpdump filters for continuous network monitoring  
 - Recognizing scanning behavior from timing and sequence patterns  
 
----
+
 
 ## 🧰 Tools Used
 | Tool | Purpose |
@@ -1102,7 +1102,6 @@ Identified patterns:
 | netdiscover | ARP-based host discovery |
 | nmap *(planned next)* | TCP SYN & port scanning |
 
----
 
 ## ✅ Next Steps
 - Simulate TCP SYN scan with nmap -sS 192.168.1.50 -p 1-1024  
@@ -1110,9 +1109,10 @@ Identified patterns:
 - Compare ARP sweep vs TCP scan signatures  
 - Document results in Day 2 report
 
----
+
 
 📘 *This lab is for educational and ethical testing only, performed on my own isolated network.*
+
 <img width="1919" height="1073" alt="Captura de pantalla 2025-11-04 130755" src="https://github.com/user-attachments/assets/e3e52740-5bf5-4cf3-89dd-fbb4b0c04631" />
 <img width="1913" height="1071" alt="Captura de pantalla 2025-11-04 133220" src="https://github.com/user-attachments/assets/2802ffaf-fa76-408d-93ea-0af543f4a544" />
 <img width="1919" height="1076" alt="Captura de pantalla 2025-11-04 143810" src="https://github.com/user-attachments/assets/b478009c-7f0d-48d1-a13a-857afae115eb" />
@@ -1184,17 +1184,6 @@ I confirmed my monitoring setup works correctly and successfully identified SYN 
   - ICMP unreachable alerts.  
   - Server interface outputs (`ip a`, ethtool, `ip route`).  
 
-
-## 📊 Findings
-| Type | Source | Destination | Description |
-|------|---------|--------------|--------------|
-| ARP | Multiple | Broadcast | Normal discovery traffic from netdiscover |
-| SYN Scan | 192.168.1.125 | 192.168.1.10 / .12 / .50 | Port scan (`nmap -sS`) |
-| RST | 192.168.1.10 / .12 | 192.168.1.125 | Closed port responses |
-| ICMP | Router (192.168.1.1) | 192.168.1.125 | Host unreachable messages |
-| Normal Traffic | 192.168.1.1 | External (8.8.8.8) | Confirmed after repeater reset |
-
-
 ## 🧩 Interpretation
 - Network discovery: Repeated ARP requests indicate local subnet enumeration.  
 - SYN activity: High rate of SYNs from Kali shows active scanning (reconnaissance).  
@@ -1217,7 +1206,7 @@ sudo ethtool eno2 | grep "Link detected"
 sudo tcpdump -i eth0 -w "/home/admin/captures/test_$(date +%Y%m%d_%H%M%S).pcap" -G 60 -W 1
 
 # Quick copy of captures to host
-scp /home/admin/captures/*.pcap user@192.168.1.50:/captures/
+scp /home/admin/captures/*.pcap user@192.168.1.:/captures/
 
 
 ## 🧠 Lessons Learned
