@@ -120,3 +120,11 @@ This is a brute-force attack:
 Lab Environment: Proxmox + Kali Linux + Raspberry Pi + Wireshark  
 Focus: SOC Tier 1–2 training, network attack detection & packet analysis  
 Date: *06 November 2025*
+
+<img width="1917" height="1077" alt="Captura de pantalla 2025-11-06 113642" src="https://github.com/user-attachments/assets/9e6719a9-927d-49b3-a9e1-50048f42be32" />
+
+<img width="1916" height="1075" alt="Captura de pantalla 2025-11-06 114206" src="https://github.com/user-attachments/assets/123026cf-f838-4c8c-94ca-c2732219f5fc" />
+
+<img width="1917" height="1067" alt="Captura de pantalla 2025-11-06 114718" src="https://github.com/user-attachments/assets/cce496e1-b93a-4b9a-9052-cae31bcccc13" />
+
+<img width="1916" height="1076" alt="Captura de pantalla 2025-11-06 131412" src="https://github.com/user-attachments/assets/9bd3eae9-2a4b-49ea-b8d8-b5709fd3bfee" />
