@@ -22,36 +22,46 @@ My SOC lab consists of multiple systems connected in an isolated network:
 - Nmap / Hydra / Netdiscover (Testing & scanning)
 - Scp / SSH (File transfer & remote access)
 
-## Setup (OLD): 
-Host laptop i7 10th 4 cores 16ram ddr4 ssd 1t; old pc ddr4 16gb processor 4 cores i5 6th 120ssd 2t hdd; old router to do a network without internet; one more laptop 2 cores 4ram to do some fast checks in internet or share files. 
+🖥️ Hardware Setup (OLD)
+ • Host Laptop: Intel i7 10th Gen, 4 cores, 16 GB DDR4, 1 TB SSD
+ • Secondary PC: Intel i5 6th Gen, 4 cores, 16 GB DDR4, 120 GB SSD + 2 TB HDD
+ • Router: Used to create an isolated lab network (no internet)
+ • Additional Laptop: Dual-core CPU, 4 GB RAM — for quick checks or file sharing
 
-## Setup (NEW): 
-Host laptop i7 10th 4 cores 16ram ddr4 ssd 1t; i5 6th 120ssd Ubuntu; old router to do a network without internet; switch TP-Link 5 ports; Server Supermicro Xeon 8 cores 128gb ram ssd 500gb 2x hdd 2T each(Poxmox); one more laptop 2 cores 4ram to do some fast checks in internet or share files. 
+🧠 Hardware Setup (NEW)
+ • Host Laptop: Intel i7 10th Gen, 4 cores, 16 GB DDR4, 1 TB SSD
+ • Server: Supermicro Xeon 8 cores, 128 GB RAM, 500 GB SSD + 2×2 TB HDD (running Proxmox)
+ • Ubuntu System: Intel i5 6th Gen, 120 GB SSD
+ • Switch: TP-Link 5-Port Gigabit
+ • Additional Laptop: Dual-core CPU, 4 GB RAM — used for internet checks and file sharing
+ • Router: Old router configured to isolate internal lab network
 
-## Day 0 - Cybersecurity.Start
+⸻
 
-Was instaled clean windows 10 after updated to 11 to avoid any problem on old windows
-Instaled VirtualBox + updates after Ubuntu + updates 
-Next step Windows 10 Vms + all updates. Gave me some error but was solved turning off on Disquetera in system setting and deleted one file in vms windows folder
+🚀 Day 0 — Cybersecurity.Start
+ • Installed a clean Windows 10, then upgraded to Windows 11 to avoid compatibility issues.
+ • Installed VirtualBox and added Ubuntu as the first virtual machine, followed by full updates.
+ • Created additional Windows 10 VMs and resolved minor setup issues (e.g., disabling the floppy controller and deleting unnecessary system files).
+ • Installed and updated Kali Linux without issues.
 
-After downloaded, installed and updated kali without any problem <
+Later, I spent several days troubleshooting Ubuntu 24.04 while trying to install Wazuh and Splunk.
+After multiple attempts, I successfully reinstalled Splunk on the new Ubuntu version, configured it, and verified it works properly.
+ • Configured Windows (PowerShell + CMD) and Ubuntu (Terminal) for event forwarding into Splunk.
+ • Created a shared folder between Windows and Ubuntu to exchange scripts, screenshots, and logs efficiently.
 
-Next step was unexpected because i spent 3 days on new ubuntu version but i faced a lot off errors trying to install and connect Wazuh and Splunk.I add one more VM version of Ubuntu 24.04 
-reinstalled Splunk on new Ubuntu after that checked everything. Firstly configured Windows pc in PowerShell and cmd later my Ubuntu (host) through terminal. Now Splank works good on both computers and i can start my practice
+⸻
 
-Also was created a shared folder on my host laptop between Windows and VM Ubuntu to share commands, pictures, files etc.
+🧩 Day 1 — Checking Connectivity and Functionality
+ • Verified all network connections and system communication.
+ • Tested Windows → Ubuntu log forwarding using PowerShell event generation.
+ • Identified an initial issue caused by antivirus interference, which blocked event forwarding.
+ • ✅ Solved by adjusting antivirus rules and reconfiguring permissions.
+ • Successfully sent 1, 10, and 100 events with different log levels: Error, Info, Warning.
+ • Created a command reference text file containing essential maintenance and diagnostic commands for both Windows and Ubuntu, useful when working in Splunk.
 
+⸻
 
-
-
-
-## Day 1 - Check all connections and functionality 
-Have to check everything and make some configurations after that going to creat some events on Windows pc to see if everything works fine on Ubuntu and i can read logs. Let's rock
-
-Faced with a couple errors i guess the reason was my antivirus wich was blocked partly connection between two computers.Everything was solved after on my windows pc through the powershall i made a folder and txt document in spluk directory through this file o power shall command i can send different events on my host ubuntu VM. Sent 1 event first after 10 and 100 with different marks Error, Info, Warn.
-
-Also created a txt file with all commands that i need to check and maintain Windows and Ubuntu when i start working with splunk.
-
+🧠 This marked the completion of the basic environment setup — fully connected, updated, and ready for deeper SOC and SIEM practice.
 <img width="1920" height="923" alt="Screenshot from 2025-09-27 12-38-36" src="https://github.com/user-attachments/assets/b0900b6f-81d7-430c-a73d-2fecbaaead8f" />
 <img width="1025" height="910" alt="Screenshot from 2025-09-27 12-55-11" src="https://github.com/user-attachments/assets/d871db26-7ee2-4201-b39e-78f2623539d0" />
 <img width="1920" height="923" alt="Screenshot from 2025-09-27 12-45-01" src="https://github.com/user-attachments/assets/59a0584b-834c-410b-a45b-f300433a3686" />
