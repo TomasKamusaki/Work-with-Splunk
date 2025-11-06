@@ -4,6 +4,8 @@ Wireshark
 
 # 🧠 Wireshark Network Analysis – SOC Practice Lab
 
+Date: November 6, 2025
+
 ## 📌 Overview
 This repository documents my Wireshark packet analysis practice performed in my isolated home SOC lab.  
 The goal is to learn how to detect malicious or abnormal network behavior using packet captures (pcaps) generated during lab exercises with Kali Linux, Raspberry Pi, and Proxmox servers.
