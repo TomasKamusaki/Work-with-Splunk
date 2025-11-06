@@ -455,7 +455,7 @@ Next Steps / To-Do
 ## Day 9 – Home Lab expanded
 Date: 2025-10-16
 
-Summary:
+## Summary:
 Today I expanded my home lab by integrating my new server (PC3) with the existing environment. The goal was to practice multi-device log forwarding, SSH management, and real-time monitoring in Splunk.
 
 ## Work Completed:
@@ -839,7 +839,7 @@ Today I focused on combining Splunk log monitoring with real network traffic ana
 <img width="1920" height="1080" alt="Captura de pantalla 2025-10-23 191129" src="https://github.com/user-attachments/assets/5a8ac8da-d4fb-4ad2-872b-0c241c112dc3" />
 
 
-## Day 13 - New "Toy"
+## Day 14 - New "Toy"
 
 ## 🖥️ New Server Setup (Supermicro Xeon D-1541)
 
@@ -870,9 +870,9 @@ The system was fully cleaned, inspected in BIOS, and successfully booted into Pr
 <img width="1920" height="1080" alt="Captura de pantalla 2025-10-26 191212" src="https://github.com/user-attachments/assets/b943da35-c411-43d1-ae74-79881d99d625" />
 
 
-## Day 14-17 - networking, automation, and observability
+## Day 15-17 - networking, automation, and observability
 
-Date: October 28-31, 2025
+Date: October 28-30, 2025
 
 Huge progress today across networking, automation, and observability in my home lab.
 
@@ -995,6 +995,11 @@ Validate Raspberry Pi network capture workflow, verify Splunk log ingestion, and
 Status: ✅ Stable & Verified   
 Focus for Next Session: Cron cleanup + advanced capture scheduling + event correlation  
 
+<img width="1920" height="955" alt="Screenshot from 2025-10-29 14-54-07" src="https://github.com/user-attachments/assets/a0edfc1c-54e6-4a72-8341-f829eb47177e" />
+<img width="1920" height="955" alt="Screenshot from 2025-10-29 14-54-55" src="https://github.com/user-attachments/assets/983e2871-2427-4c57-8b5a-d466e0e7c48f" />
+<img width="1920" height="923" alt="Screenshot from 2025-10-30 12-10-33" src="https://github.com/user-attachments/assets/86bc5385-bd68-41b8-9ecb-bbbaa524a8f4" />
+<img width="1920" height="923" alt="Screenshot from 2025-11-01 12-28-21" src="https://github.com/user-attachments/assets/24385e12-556d-46e6-935e-233a57ae250a" />
+<img width="1015" height="890" alt="Screenshot from 2025-11-01 14-09-08" src="https://github.com/user-attachments/assets/7c1ce20b-8c6e-4f6e-bce0-41395ca6f1fc" />
 
 
 
@@ -1028,6 +1033,9 @@ Date: November 3, 2025
 ## Result:
 All systems are stable and functioning as intended. Packet captures and Splunk logs align correctly. The Raspberry Pi automation works as designed, making the lab fully ready for deeper security traffic analysis.
 
+<img width="1918" height="1075" alt="Captura de pantalla 2025-11-03 122946" src="https://github.com/user-attachments/assets/106d3df0-3982-4711-98e8-9a7189a776f8" />
+<img width="1919" height="1074" alt="Captura de pantalla 2025-11-03 155617" src="https://github.com/user-attachments/assets/46db7950-4be1-46e9-8274-7d05492e8109" />
+
 
 ## Day 20 - New day in my Cybersecurity Lab   
 Date: Date: November 4, 2025  
@@ -1055,12 +1063,9 @@ Configured tcpdump for rotating captures:sudo tcpdump -i eth0 -s 0 -U -n \
   -w "/home/admin/captures/test_$(date +%Y%m%d_%H%M%S).pcap" \
   -G 60 -W 60 'tcp[tcpflags] & tcp-syn != 0 or arp'
 - Verified continuous rotation of .pcap files
-
-Томас Камусаки, [06/11/2025 19:25]
 - Confirmed correct timestamps and active interface  
 - Checked disk usage and file sizes
 
----
 
 ### 2. Network Scanning from Kali
 Performed local subnet discovery:sudo netdiscover -r 192.168.1.0/24
@@ -1108,6 +1113,11 @@ Identified patterns:
 ---
 
 📘 *This lab is for educational and ethical testing only, performed on my own isolated network.*
+<img width="1919" height="1073" alt="Captura de pantalla 2025-11-04 130755" src="https://github.com/user-attachments/assets/e3e52740-5bf5-4cf3-89dd-fbb4b0c04631" />
+<img width="1913" height="1071" alt="Captura de pantalla 2025-11-04 133220" src="https://github.com/user-attachments/assets/2802ffaf-fa76-408d-93ea-0af543f4a544" />
+<img width="1919" height="1076" alt="Captura de pantalla 2025-11-04 143810" src="https://github.com/user-attachments/assets/b478009c-7f0d-48d1-a13a-857afae115eb" />
+<img width="1913" height="1075" alt="Captura de pantalla 2025-11-04 202124" src="https://github.com/user-attachments/assets/43f77a1b-6ed6-4669-8bd6-711b7cfe32df" />
+<img width="1919" height="1071" alt="Captura de pantalla 2025-11-04 223319" src="https://github.com/user-attachments/assets/3276e71e-2246-4d31-b1ce-9442ed809626" />
 
 
 ## Day 21 — Network Scanning & Troubleshooting Lab  
@@ -1223,4 +1233,9 @@ scp /home/admin/captures/*.pcap user@192.168.1.50:/captures/
 3. Document a new lab for brute-force login detection using Hydra and Wireshark.  
 4. Start preparing visual report templates for GitHub (screenshots + PCAP metadata).  
 
+<img width="1914" height="1075" alt="Captura de pantalla 2025-11-05 133511" src="https://github.com/user-attachments/assets/00b12385-c26a-4f74-b1d2-6755d84df309" />
+<img width="1913" height="1075" alt="Captura de pantalla 2025-11-05 133622" src="https://github.com/user-attachments/assets/ae4c0fad-1cd3-4249-9a14-117014d8025b" />
+<img width="1911" height="1075" alt="Captura de pantalla 2025-11-05 134649" src="https://github.com/user-attachments/assets/3c9de903-9b4b-48f4-8898-8b7c68b8e79f" />
+<img width="1911" height="1070" alt="Captura de pantalla 2025-11-06 111402" src="https://github.com/user-attachments/assets/7b9249e8-5432-484c-84c8-4930af8f72ec" />
+<img width="1917" height="1077" alt="Captura de pantalla 2025-11-06 112504" src="https://github.com/user-attachments/assets/fffc566c-9117-45ff-b6b6-859774301ff9" />
 
