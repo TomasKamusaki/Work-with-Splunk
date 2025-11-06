@@ -17,7 +17,7 @@ My SOC lab consists of multiple systems connected in an isolated network:
 - Wireshark (Packet Analysis)
 - Tcpdump (Capture automation)
 - Kali Linux (Attack simulation)
-- Proxmox VE (Virtualization)
+- Proxmox VE, VirtualBox (Virtualization)
 - Raspberry Pi 4 (Network sensor)
 - Nmap / Hydra / Netdiscover (Testing & scanning)
 - Scp / SSH (File transfer & remote access)
