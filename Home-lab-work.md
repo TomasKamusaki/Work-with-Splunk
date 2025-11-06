@@ -21,7 +21,7 @@ reinstalled Splunk on new Ubuntu after that checked everything. Firstly configur
 Also was created a shared folder on my host laptop between Windows and VM Ubuntu to share commands, pictures< files etc.
 
 
-23.09.2025
+
 
 
 ## Day 1 - Checked all connections and functionality 
