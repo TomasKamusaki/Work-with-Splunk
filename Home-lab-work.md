@@ -870,15 +870,19 @@ The system was fully cleaned, inspected in BIOS, and successfully booted into Pr
 <img width="1920" height="1080" alt="Captura de pantalla 2025-10-26 191212" src="https://github.com/user-attachments/assets/b943da35-c411-43d1-ae74-79881d99d625" />
 
 
-## Day 14-16 networking, automation, and observability
+## Day 14-17 networking, automation, and observability
 
-Date: October 28-30, 2025
+Date: October 28-31, 2025
 
 Huge progress today across networking, automation, and observability in my home lab.
 
 ## ✅ What I accomplished
 
  • Proxmox & Networking
+
+ • Installed and configured Kali on my Proxmox + UF + static ip
+ 
+ • Installed and configured Windows 10 + UF on my Proxmox + static ip
  
  • Set static IP on my Proxmox Ubuntu VM (ens18) and verified persistence.
 
@@ -937,4 +941,7 @@ Today I connected all moving parts into a cohesive monitoring stack. I’m much 
 <img width="1904" height="1069" alt="Captura de pantalla 2025-10-28 135223" src="https://github.com/user-attachments/assets/6d916c59-c7db-4557-86fa-b19c7ebffd0b" />
 <img width="1915" height="1074" alt="Captura de pantalla 2025-10-28 124926" src="https://github.com/user-attachments/assets/7c4443f2-6dfa-4377-bca7-9c85b1e0f677" />
 <img width="1917" height="1069" alt="Captura de pantalla 2025-10-28 183223" src="https://github.com/user-attachments/assets/a82c5573-f142-40d8-8020-b474863b9930" />
+<img width="1919" height="1067" alt="Captura de pantalla 2025-10-29 154231" src="https://github.com/user-attachments/assets/f5e9b269-7b44-42f0-8e7b-ab4e7aa003bd" />
+<img width="1925" height="2160" alt="Captura de pantalla 2025-10-31 135456" src="https://github.com/user-attachments/assets/19fe1e88-ff08-49ec-89b0-10923154fafc" />
+<img width="1909" height="1068" alt="Captura de pantalla 2025-10-31 135515" src="https://github.com/user-attachments/assets/677bc69a-e7f5-4ea4-b407-832f0f8803e7" />
 
