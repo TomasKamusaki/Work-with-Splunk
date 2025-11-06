@@ -774,7 +774,7 @@ Focus: Log correlation, Splunk dashboarding, alerts, and network packet analysis
  
  • Practice more advanced Splunk search operators (e.g. eval, lookup, stats with conditions).
 
-## Day 13 Network Analysis, Splunk Correlation & SSH Traffic Capture
+## Day 13 - Network Analysis, Splunk Correlation & SSH Traffic Capture
 
 Date: October 23, 2025
 
@@ -839,7 +839,7 @@ Today I focused on combining Splunk log monitoring with real network traffic ana
 <img width="1920" height="1080" alt="Captura de pantalla 2025-10-23 191129" src="https://github.com/user-attachments/assets/5a8ac8da-d4fb-4ad2-872b-0c241c112dc3" />
 
 
-## Day 13 New Toy
+## Day 13 - New "Toy"
 
 ## 🖥️ New Server Setup (Supermicro Xeon D-1541)
 
@@ -870,7 +870,7 @@ The system was fully cleaned, inspected in BIOS, and successfully booted into Pr
 <img width="1920" height="1080" alt="Captura de pantalla 2025-10-26 191212" src="https://github.com/user-attachments/assets/b943da35-c411-43d1-ae74-79881d99d625" />
 
 
-## Day 14-17 networking, automation, and observability
+## Day 14-17 - networking, automation, and observability
 
 Date: October 28-31, 2025
 
@@ -882,7 +882,7 @@ Huge progress today across networking, automation, and observability in my home 
 
  • Installed and configured Kali on my Proxmox + UF + static ip
  
- • Installed and configured Windows 10 + UF on my Proxmox + static ip
+ • Installed and configured Windows 10 on my Proxmox + UF + static ip
  
  • Set static IP on my Proxmox Ubuntu VM (ens18) and verified persistence.
 
@@ -944,4 +944,283 @@ Today I connected all moving parts into a cohesive monitoring stack. I’m much 
 <img width="1919" height="1067" alt="Captura de pantalla 2025-10-29 154231" src="https://github.com/user-attachments/assets/f5e9b269-7b44-42f0-8e7b-ab4e7aa003bd" />
 <img width="1925" height="2160" alt="Captura de pantalla 2025-10-31 135456" src="https://github.com/user-attachments/assets/19fe1e88-ff08-49ec-89b0-10923154fafc" />
 <img width="1909" height="1068" alt="Captura de pantalla 2025-10-31 135515" src="https://github.com/user-attachments/assets/677bc69a-e7f5-4ea4-b407-832f0f8803e7" />
+
+
+## Day 18 - Raspberry Pi network capture workflow
+Date: November 1, 2025
+
+Objective:  
+Validate Raspberry Pi network capture workflow, verify Splunk log ingestion, and confirm visibility of attack events across the lab network.
+
+---
+
+### ✅ Accomplished
+- Confirmed network topology and IP mapping
+  - Windows host (192.168.1.69) running VirtualBox and Ubuntu VM (Splunk 192.168.1.123)  
+  - Raspberry Pi (192.168.1.18) configured for periodic packet captures  
+  - Kali (192.168.1.125) used for SSH brute-force simulations  
+  - Additional Proxmox VMs: Ubuntu 192.168.1.133 + Win10 192.168.1.11  
+
+- Verified Pi capture automation
+  - autocapture.sh runs scheduled 1-minute captures via tcpdump
+  - Files stored under /home/admin/captures/ with automatic cleanup (1 day)
+  - sync_latest_capture.sh automatically transfers newest .pcap to Splunk VM (192.168.1.123)
+  - Auto transfer verified: last capture successfully appeared on host without manual copy
+  - Duplicated cron entries identified (`/usr/local/bin/` vs `/home/admin/`) — fix planned
+
+- Validated data integrity
+  - Downloaded .pcap (`auto_20251029_070001.pcap`) inspected in Wireshark  
+  - Confirmed full SSH session visibility, packet retransmissions, and ACKs  
+  - Splunk dashboard received and indexed “failed SSH login” events correctly
+
+---
+
+### ⚙️ Current State
+- Raspberry Pi fully operational as a passive network sensor  
+- Splunk Enterprise receives correlated host logs and synced captures  
+- Automatic data pipeline working end-to-end  
+- Environment stable and validated  
+
+---
+
+### 🚀 Next Steps
+1. Remove duplicate cron references (`/usr/local/bin/autocapture.sh`)  
+2. Confirm single active schedule at /home/admin/autocapture.sh  
+3. Optionally adjust capture interval to every 5 min for higher granularity  
+4. Start correlating packet data (Pi) with Splunk SSH auth logs  
+5. Begin documenting detection rules for brute-force patterns  
+
+---
+
+Status: ✅ Stable & Verified   
+Focus for Next Session: Cron cleanup + advanced capture scheduling + event correlation  
+
+
+
+
+## Day 19 - Network Capture & Analysis Progress 
+Date: November 3, 2025
+
+## Main work done:
+
+ • Verified that all systems in the lab (Windows, Kali, Ubuntu, and Raspberry Pi) are correctly connected and sending logs.
+ 
+ • Confirmed Raspberry Pi automatic captures are running and sending .pcap files to the host machine successfully.
+ 
+ • Analyzed several captures manually in Wireshark — including SSH and TCP sessions.
+ 
+ • Learned how to interpret multiple packet types, including retransmissions, encrypted SSH data, and ARP exchanges between devices.
+ 
+ • Practiced step-by-step packet interpretation and wrote down manual notes for deeper understanding.
+ 
+ • Validated that the network remains isolated on a closed router (no WAN or external internet).
+ 
+ • Checked and confirmed correct IP mapping for all devices in the local environment.
+
+## Next focus:
+ 
+ • Study TLS and SSH encryption patterns in detail.
+ 
+ • Capture a full 1-minute encrypted session and analyze the handshake process.
+ 
+ • Continue documenting each protocol behavior in personal notes.
+
+## Result:
+All systems are stable and functioning as intended. Packet captures and Splunk logs align correctly. The Raspberry Pi automation works as designed, making the lab fully ready for deeper security traffic analysis.
+
+
+## Day 20 - New day in my Cybersecurity Lab   
+Date: Date: November 4, 2025  
+
+Topic: Network Scanning & ARP Analysis
+
+Environment:  
+- Kali Linux (Attacker / Scanner)  
+- Raspberry Pi (Sniffer running `tcpdump`)  
+- Windows / Proxmox host network (.50 target)  
+- Wireshark for analysis  
+
+---
+
+## 🎯 Objective
+Simulate and analyze basic network reconnaissance techniques in a safe home lab.  
+Today’s focus: detecting ARP sweeps and understanding how they appear in packet captures.
+
+---
+
+## 🧩 Tasks Performed
+
+### 1. Raspberry Pi Packet Capture Setup
+Configured tcpdump for rotating captures:sudo tcpdump -i eth0 -s 0 -U -n \
+  -w "/home/admin/captures/test_$(date +%Y%m%d_%H%M%S).pcap" \
+  -G 60 -W 60 'tcp[tcpflags] & tcp-syn != 0 or arp'
+- Verified continuous rotation of .pcap files
+
+Томас Камусаки, [06/11/2025 19:25]
+- Confirmed correct timestamps and active interface  
+- Checked disk usage and file sizes
+
+---
+
+### 2. Network Scanning from Kali
+Performed local subnet discovery:sudo netdiscover -r 192.168.1.0/24
+Observed typical ARP sweep behavior:
+- Sequential Who has 192.168.1.x? Tell 192.168.1.125
+- Source: Kali VM / Proxmox interface
+- Dozens of ARP requests per second
+
+---
+
+### 3. Wireshark Analysis
+Filter used:arp && eth.src == <scanner_mac>
+Identified patterns:
+- Source repeatedly probing IP range  
+- Requests: “Who has 192.168.1.117 … 192.168.1.148”
+- Confirms active host discovery  
+- Recognized the difference between normal ARP cache traffic vs scanning bursts  
+
+---
+
+## 🧠 Key Learnings
+- How ARP scanning appears in packet captures  
+- Difference between broadcast and directed ARP traffic  
+- Practical use of tcpdump filters for continuous network monitoring  
+- Recognizing scanning behavior from timing and sequence patterns  
+
+---
+
+## 🧰 Tools Used
+| Tool | Purpose |
+|------|----------|
+| tcpdump | Network capture on Raspberry Pi |
+| Wireshark | Deep packet inspection |
+| netdiscover | ARP-based host discovery |
+| nmap *(planned next)* | TCP SYN & port scanning |
+
+---
+
+## ✅ Next Steps
+- Simulate TCP SYN scan with nmap -sS 192.168.1.50 -p 1-1024  
+- Capture and analyze SYN flood patterns  
+- Compare ARP sweep vs TCP scan signatures  
+- Document results in Day 2 report
+
+---
+
+📘 *This lab is for educational and ethical testing only, performed on my own isolated network.*
+
+
+## Day 21 — Network Scanning & Troubleshooting Lab  
+
+Date: November 5, 2025
+  
+
+## 🔧 Summary
+Today’s session focused on end-to-end troubleshooting of my home lab connectivity, followed by network discovery, scanning, and traffic capture analysis.  
+I confirmed my monitoring setup works correctly and successfully identified SYN scan and ARP broadcast patterns in Wireshark.
+
+---
+
+## 🧠 Main Activities
+1. Troubleshooting network and repeater issue  
+   - Server lost Internet connectivity (no ping to 8.8.8.8).  
+   - Diagnosed issue using ip a, ip route, and ethtool.  
+   - Found problem in my Wi-Fi repeater not passing wired traffic.  
+   - Reset repeater → restored connectivity and verified with ping test.  
+
+2. Verifying lab systems  
+   - Started Proxmox server, Kali attacker VM, Raspberry Pi capture node, and Windows host.  
+   - Checked communication between devices — confirmed all reachable via ping.  
+
+3. Network discovery and scanning  
+   Executed from Kali:  
+   sudo netdiscover -r 192.168.1.0/24
+   sudo nmap -sn 192.168.1.0/24
+   nmap -sS -p 1-100 192.168.1.10
+   sudo nmap -sV 192.168.1.50
+     
+   - Observed host discovery packets (ARP + ICMP).  
+   - Detected SYN packets from my Kali to multiple hosts.  
+
+4. Packet capture on Raspberry Pi  
+   - Manual capture command:  
+         sudo tcpdump -i eth0 -w "/home/admin/captures/test_$(date +%Y%m%d_%H%M%S).pcap" -G 60 -W 1
+       
+   - Transferred PCAPs to host using:  
+         scp /home/admin/captures/*.pcap user@host:/path/to/store/
+       
+
+5. Wireshark analysis  
+   - Opened captures from Pi and analyzed them using display filters:  
+         tcp.flags.syn == 1 && tcp.flags.ack == 0
+     tcp.flags.reset == 1
+     icmp.type == 3
+     arp.opcode == 1
+       
+   - Identified SYN scan activity and ARP broadcasts consistent with host discovery tools.  
+   - Verified port scanning pattern from 192.168.1.125 (Kali) to 192.168.1.10, .12, .50.  
+   - Observed RST,ACK replies → confirmed closed ports.  
+   - Captured ICMP “Destination Unreachable” messages from the gateway during scanning.  
+
+
+## 📁 Artifacts Collected
+- PCAPs:  
+  - scan_test2.pcap  
+  - scan_test3.pcap  
+  - auto_20250909_*.pcap  
+- Screenshots:  
+  - ARP flood sequence (`Who has 192.168.1.x Tell 192.168.1.1`).  
+  - SYN/RST exchange pattern.  
+  - ICMP unreachable alerts.  
+  - Server interface outputs (`ip a`, ethtool, `ip route`).  
+
+
+## 📊 Findings
+| Type | Source | Destination | Description |
+|------|---------|--------------|--------------|
+| ARP | Multiple | Broadcast | Normal discovery traffic from netdiscover |
+| SYN Scan | 192.168.1.125 | 192.168.1.10 / .12 / .50 | Port scan (`nmap -sS`) |
+| RST | 192.168.1.10 / .12 | 192.168.1.125 | Closed port responses |
+| ICMP | Router (192.168.1.1) | 192.168.1.125 | Host unreachable messages |
+| Normal Traffic | 192.168.1.1 | External (8.8.8.8) | Confirmed after repeater reset |
+
+
+## 🧩 Interpretation
+- Network discovery: Repeated ARP requests indicate local subnet enumeration.  
+- SYN activity: High rate of SYNs from Kali shows active scanning (reconnaissance).  
+- RST/ACK patterns: Closed ports on scanned hosts respond immediately.  
+- Connectivity fix: Restoring repeater functionality returned full routing to the Internet.  
+
+
+## 🧰 Useful Commands
+
+# Show link state of all interfaces
+ip a
+
+# Display routing table
+ip route
+
+# Check if Ethernet link is detected
+sudo ethtool eno2 | grep "Link detected"
+
+# Start capture (rotate every 60s, 1 file)
+sudo tcpdump -i eth0 -w "/home/admin/captures/test_$(date +%Y%m%d_%H%M%S).pcap" -G 60 -W 1
+
+# Quick copy of captures to host
+scp /home/admin/captures/*.pcap user@192.168.1.50:/captures/
+
+
+## 🧠 Lessons Learned
+- Always verify physical links and repeater/switches first during connectivity issues.  
+- Using Wireshark filters effectively narrows analysis to useful packets.  
+- SYN scan behavior can be visually confirmed via RST/ACK sequences.  
+- ARP bursts are normal during scanning but can flood the network under heavy discovery.  
+
+
+## 🚀 Next Steps
+1. Reproduce today’s scan and build a Suricata rule to detect multiple SYNs per second.  
+2. Extend capture automation on Raspberry Pi with cron + rotation.  
+3. Document a new lab for brute-force login detection using Hydra and Wireshark.  
+4. Start preparing visual report templates for GitHub (screenshots + PCAP metadata).  
+
 
