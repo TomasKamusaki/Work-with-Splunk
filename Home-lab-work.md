@@ -46,7 +46,6 @@ My SOC lab consists of multiple systems connected in an isolated network:
 
  • Router: Old router configured to isolate internal lab network
 
-⸻
 
 ## 🚀 Day 0 — Cybersecurity.Start
 
