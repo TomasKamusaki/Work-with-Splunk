@@ -27,7 +27,9 @@ My SOC lab consists of multiple systems connected in an isolated network:
  
  • Host Laptop: Intel i7 10th Gen, 4 cores, 16 GB DDR4, 1 TB SSD
 
- • Secondary PC: Intel i5 6th Gen, 4 cores, 16 GB DDR4, 120 GB SSD + 2 TB HDD
+ • Secondary PC: Intel i5 6th Gen, 4 cores, 16 GB DDR4, 120 GB SSD
+ 
+ • Server: Intel i5 4th Gen, 4 cores, 16 GB DDR3, 250 GB SSD + 2 TB HDD
 
  • Router: Used to create an isolated lab network (no internet)
  
@@ -40,6 +42,8 @@ My SOC lab consists of multiple systems connected in an isolated network:
  • Server: Supermicro Xeon 8 cores, 128 GB RAM, 500 GB SSD + 2×2 TB HDD (running Proxmox)
  
  • Ubuntu System: Intel i5 6th Gen, 120 GB SSD
+ 
+ • Raspberry Pi 4 8 GB Ram + sd card 64 GB
 
  • Switch: TP-Link 5-Port Gigabit
  
