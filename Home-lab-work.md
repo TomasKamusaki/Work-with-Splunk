@@ -1258,7 +1258,7 @@ Next steps: Export filtered evidence pcaps, map detections to MITRE ATT&CK, and 
 
 ###  Day 24 — TryHackMe: Cyber Security 101 — Study log
 
-Date: 2025-11-10
+Date: November 10, 2025
 
 ### Started focused SOC 1 Analyst path work on TryHackMe; practiced more real-world detection and triage scenarios.  
 
@@ -1325,7 +1325,7 @@ Large number of SYN packets from 192.168.1.125 → 192.168.1.80 and other hosts:
  • Very fast sequence timestamps → automated reconnaissance
  • Visible payload sizes (66 bytes) consistent with SYN packets
 
-Conclusion:
+## Conclusion:
 Wireshark clearly shows traditional scanning behavior, great for demonstrating detection skills.
 
 ## 🌐 3. ARP Activity & Network Enumeration
@@ -1344,12 +1344,6 @@ I began checking how simulated C2 traffic appears:
  • Interesting outbound HTTP requests from 192.168.1.69 (victim) to external-looking IP 4.3.2.1
  • This traffic is likely from the C2 simulation test I started
 
-Next steps:
-I will analyze:
- • Which domain resolves to 4.3.2.1
- • Whether this is beaconing, redirect abuse, or normal web behavior
- • Extract the HTTP stream for deeper analysis
-
 ## 📌 Overall Conclusion
 
 Yesterday’s traffic review successfully confirmed visibility of:
@@ -1360,16 +1354,15 @@ Yesterday’s traffic review successfully confirmed visibility of:
  • ✔️ HTTP traffic useful for C2 simulation
 
 
-Next steps:
+## Next steps:
  1. Build Splunk detection logic for DNS tunneling + brute force
  2. Continue HTTP-based C2 simulation
  3. Compare results in Wireshark vs. Splunk dashboards
 
 
-
 ## Day - 27 Home Lab – Network Attack Simulation & Traffic Analysis 
 
-Date: 13 
+Date: Noviembre 13, 2025 
 
 Today I conducted four different offensive techniques in my isolated SOC home lab and captured all traffic using my Raspberry Pi (monitoring port-mirrored traffic via tp-link switch). My attacker was Kali Linux, the victim was Ubuntu, and all results were analyzed later in Wireshark.
 
@@ -1420,17 +1413,15 @@ Result in Wireshark:
 
 This created realistic C2-like behavior for SOC investigations.
 
-⸻
 
 Final Notes
 
 All traffic was captured via my Raspberry Pi sniffer, stored as .pcap files, and analyzed in Wireshark.
 This session helped me understand how each attack type looks at the packet level and prepares me to build Splunk detections for recon, brute-force, DNS tunneling, and C2 activities.
 
+## Day 28  — Zeek + Splunk Integration Day
 
-14 November 
-
-## Day  — Zeek + Splunk Integration Day
+Date: November 14, 2025
 
 Today’s session was fully focused on integrating Zeek network monitoring with Splunk Enterprise inside my isolated SOC home lab. This was one of the most complex and technical days so far, involving troubleshooting, configuration, log ingestion tuning, and validation.
 
@@ -1506,7 +1497,7 @@ This setup now allows me to perform:
 A huge upgrade for my SOC learning environment.
 
 
-### Day - X  — lab session
+### Day 29 — lab session
 Date: November 15, 2025
 
 ## Summary:  
