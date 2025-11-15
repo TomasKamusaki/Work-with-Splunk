@@ -1278,6 +1278,8 @@ What I did:
 - Continued analysis of lab captures and prepared evidence for GitHub (pcaps, Wireshark screenshots and prepared Splunk search snippets).  
 Artifacts: TryHackMe Certificate saved (certificate image/PDF), Wireshark screenshots, scan_test*.pcap.  v 7-8-10-11 GitHUStart the planned attack simulations in the lab (DNS tunneling, HTTP C2) and develop Splunk alerts/dashboards to detect them. Add Wazuh agents next to correlate host telemetry with network detections.
 
+
+
 ## Day 26 — Network Traffic Analysis: DNS Tunneling, Port Scanning & C2 Investigation
 
 Date: November 12, 2025
@@ -1325,8 +1327,6 @@ Large number of SYN packets from 192.168.1.125 → 192.168.1.80 and other hosts:
  • Very fast sequence timestamps → automated reconnaissance
  • Visible payload sizes (66 bytes) consistent with SYN packets
 
-## Conclusion:
-Wireshark clearly shows traditional scanning behavior, great for demonstrating detection skills.
 
 ## 🌐 3. ARP Activity & Network Enumeration
 
@@ -1352,6 +1352,18 @@ Yesterday’s traffic review successfully confirmed visibility of:
  • ✔️ TCP SYN port scans
  • ✔️ ARP sweeping
  • ✔️ HTTP traffic useful for C2 simulation
+
+
+<img width="1917" height="1077" alt="Captura de pantalla 2025-11-12 135350" src="https://github.com/user-attachments/assets/fdcb0bdb-28bd-4fc1-8be9-da0db940fcf8" />
+
+<img width="1915" height="1071" alt="Captura de pantalla 2025-11-12 130550" src="https://github.com/user-attachments/assets/8421707e-bc5f-406a-bd7b-45339ff06e0d" />
+
+<img width="1919" height="1077" alt="Captura de pantalla 2025-11-12 122938" src="https://github.com/user-attachments/assets/c2fd72bb-1aa7-41c3-be2a-8cee21536d34" />
+
+<img width="1919" height="1077" alt="Captura de pantalla 2025-11-12 122838" src="https://github.com/user-attachments/assets/6139edaf-2e70-4b7c-909e-2b8473ca0285" />
+
+<img width="1919" height="1076" alt="Captura de pantalla 2025-11-12 121428" src="https://github.com/user-attachments/assets/2728e4d1-38d3-4a72-a042-ada49df87fcc" />
+
 
 
 ## Next steps:
@@ -1418,6 +1430,13 @@ This created realistic C2-like behavior for SOC investigations.
 
 All traffic was captured via my Raspberry Pi sniffer, stored as .pcap files, and analyzed in Wireshark.
 This session helped me understand how each attack type looks at the packet level and prepares me to build Splunk detections for recon, brute-force, DNS tunneling, and C2 activities.
+
+<img width="1919" height="1078" alt="Captura de pantalla 2025-11-13 143642" src="https://github.com/user-attachments/assets/e5723525-4ca8-42c9-ad3e-f85760795461" />
+<img width="1919" height="1078" alt="Captura de pantalla 2025-11-13 142327" src="https://github.com/user-attachments/assets/49dce18a-03c5-4f59-b589-61fb834c7de1" />
+<img width="1913" height="1075" alt="Captura de pantalla 2025-11-13 161822" src="https://github.com/user-attachments/assets/56b91e98-d9d6-4728-9fa1-649515c532b3" />
+<img width="1915" height="1071" alt="Captura de pantalla 2025-11-13 150924" src="https://github.com/user-attachments/assets/a5cbc385-3b38-45a6-8113-f9193c0a17e3" />
+<img width="1918" height="1078" alt="Captura de pantalla 2025-11-13 150618" src="https://github.com/user-attachments/assets/e4383386-27a1-4349-8d2d-371c411c9a65" />
+
 
 ## Day 28  — Zeek + Splunk Integration Day
 
@@ -1496,6 +1515,16 @@ This setup now allows me to perform:
 
 A huge upgrade for my SOC learning environment.
 
+<img width="1909" height="1061" alt="Captura de pantalla 2025-11-14 174351" src="https://github.com/user-attachments/assets/2913a0f4-1ba3-4446-9117-8d27098c43fc" />
+
+<img width="1911" height="1073" alt="Captura de pantalla 2025-11-14 173942" src="https://github.com/user-attachments/assets/fc5bfaa2-c64a-4d6e-8ac4-267efe7d2e93" />
+
+<img width="1905" height="1067" alt="Captura de pantalla 2025-11-14 173818" src="https://github.com/user-attachments/assets/b3beddbd-3236-4e4a-bc6e-9119b027880a" />
+
+<img width="1914" height="1079" alt="Captura de pantalla 2025-11-14 172323" src="https://github.com/user-attachments/assets/2055d621-a82d-49b7-91b9-fc6f3cb97b74" />
+
+<img width="1914" height="1078" alt="Captura de pantalla 2025-11-14 163556" src="https://github.com/user-attachments/assets/cc6f2bae-bdd2-48a7-8f65-62da8be72271" />
+
 
 ### Day 29 — lab session
 Date: November 15, 2025
@@ -1507,8 +1536,6 @@ Today I focused on integrating Zeek on the Raspberry Pi with my Splunk indexer. 
 - Pi time was behind (NTP not reachable in offline lab). Fixed by enabling NTP (when network available) or manually setting clock.
 - NIC checksum offloading triggers Zeek warnings; acceptable for now (can run zeek -C or disable offload to remove warnings).
 
-## Next: add more monitors, run iodine DNS-tunnel and HTTP C2 simulations, build a Splunk dashboard for Zeek detections.
-
 <img width="1918" height="1073" alt="Captura de pantalla 2025-11-15 181834" src="https://github.com/user-attachments/assets/4044b401-1578-462f-8c94-c58d2baf3352" />
 
 <img width="1905" height="1069" alt="Captura de pantalla 2025-11-15 183519" src="https://github.com/user-attachments/assets/a6b748da-edbc-4354-b6f1-173c9f838bac" />
@@ -1519,3 +1546,4 @@ Today I focused on integrating Zeek on the Raspberry Pi with my Splunk indexer. 
 
 <img width="1902" height="1065" alt="Captura de pantalla 2025-11-15 184755" src="https://github.com/user-attachments/assets/77719afb-3191-4a91-8103-8601056f41dc" />
 
+## Next: add more monitors, run iodine DNS-tunnel and HTTP C2 simulations, build a Splunk dashboard for Zeek detections.
