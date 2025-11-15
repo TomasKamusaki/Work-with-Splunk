@@ -1414,7 +1414,7 @@ Result in Wireshark:
 This created realistic C2-like behavior for SOC investigations.
 
 
-Final Notes
+## Final Notes
 
 All traffic was captured via my Raspberry Pi sniffer, stored as .pcap files, and analyzed in Wireshark.
 This session helped me understand how each attack type looks at the packet level and prepares me to build Splunk detections for recon, brute-force, DNS tunneling, and C2 activities.
@@ -1508,3 +1508,14 @@ Today I focused on integrating Zeek on the Raspberry Pi with my Splunk indexer. 
 - NIC checksum offloading triggers Zeek warnings; acceptable for now (can run zeek -C or disable offload to remove warnings).
 
 ## Next: add more monitors, run iodine DNS-tunnel and HTTP C2 simulations, build a Splunk dashboard for Zeek detections.
+
+<img width="1918" height="1073" alt="Captura de pantalla 2025-11-15 181834" src="https://github.com/user-attachments/assets/4044b401-1578-462f-8c94-c58d2baf3352" />
+
+<img width="1905" height="1069" alt="Captura de pantalla 2025-11-15 183519" src="https://github.com/user-attachments/assets/a6b748da-edbc-4354-b6f1-173c9f838bac" />
+
+<img width="1911" height="1068" alt="Captura de pantalla 2025-11-15 183722" src="https://github.com/user-attachments/assets/d5b409f1-3374-4a8d-8541-e369c05fb88f" />
+
+<img width="1912" height="1073" alt="Captura de pantalla 2025-11-15 184437" src="https://github.com/user-attachments/assets/a1516b2f-d214-499a-a872-af3490e5052b" />
+
+<img width="1902" height="1065" alt="Captura de pantalla 2025-11-15 184755" src="https://github.com/user-attachments/assets/77719afb-3191-4a91-8103-8601056f41dc" />
+
