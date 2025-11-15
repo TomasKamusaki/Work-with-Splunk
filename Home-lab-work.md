@@ -1276,8 +1276,11 @@ Date: November 11, 2025
 What I did:  
 - Completed final THM labs required for the Cyber Security 101 learning path and downloaded my certificate.  
 - Continued analysis of lab captures and prepared evidence for GitHub (pcaps, Wireshark screenshots and prepared Splunk search snippets).  
-Artifacts: TryHackMe Certificate saved (certificate image/PDF), Wireshark screenshots, scan_test*.pcap.  v 7-8-10-11 GitHUStart the planned attack simulations in the lab (DNS tunneling, HTTP C2) and develop Splunk alerts/dashboards to detect them. Add Wazuh agents next to correlate host telemetry with network detections.
+Start the planned attack simulations in the lab (DNS tunneling, HTTP C2) and develop Splunk alerts/dashboards to detect them. Add Wazuh agents next to correlate host telemetry with network detections.
 
+<img width="1079" height="759" alt="Captura de pantalla 2025-11-16 002049" src="https://github.com/user-attachments/assets/dc6fcab0-800d-4fec-b2fd-ee1d32673866" />
+
+<img width="995" height="720" alt="Captura de pantalla 2025-11-16 002120" src="https://github.com/user-attachments/assets/416e00f7-878c-4c40-a9c9-1cf2de7a3d0d" />
 
 
 ## Day 26 — Network Traffic Analysis: DNS Tunneling, Port Scanning & C2 Investigation
