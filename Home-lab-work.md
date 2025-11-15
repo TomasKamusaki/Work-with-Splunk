@@ -1228,3 +1228,312 @@ scp /home/admin/captures/*.pcap user@192.168.1.:/captures/
 <img width="1911" height="1070" alt="Captura de pantalla 2025-11-06 111402" src="https://github.com/user-attachments/assets/7b9249e8-5432-484c-84c8-4930af8f72ec" />
 <img width="1917" height="1077" alt="Captura de pantalla 2025-11-06 112504" src="https://github.com/user-attachments/assets/fffc566c-9117-45ff-b6b6-859774301ff9" />
 
+
+### Day 22 — TryHackMe: Cyber Security 101 — Study log
+
+Date: 2025-11-07
+
+###Continued TryHackMe Cyber Security 101 learning path — focused on core SOC fundamentals, SIEM basics, and hands-on labs exploring event triage and log investigation.  
+What I did:  
+- Completed several THM rooms covering Splunk basics, alert triage, and log interpretation.  
+- Practiced Splunk searches and basic triage workflows inside THM exercises.  
+Artifacts / notes: No new captures taken today — focused on THM labs and review.  
+Next steps: Return to home lab tomorrow, power up systems, and run controlled reconnaissance tests (nmap) to generate traffic for capture and analysis.
+
+###  Day 23 — TryHackMe: Cyber Security 101 + quick Wireshark lab
+
+Date: 2025-11-08
+  
+Activity: Continued THM SOC 101 path; ran quick attacker tests in my isolated home lab and performed packet analysis.  
+
+## What I did in THM:  
+- Completed additional SOC 101 rooms (incident prioritization, threat hunting fundamentals).  
+What I did in lab:  
+- Powered up lab: Proxmox, Kali (192.168.1.125), victim PC (192.168.1.50), Splunk host (192.168.1.123), Raspberry Pi capture (192.168.1.18).  
+- Ran recon & credential tests from Kali: nmap -sS / -A and 7-8-10-1SSH attempts (controlled).  
+- Saved the PCAP (`scan_test*.pcap`) from the Pi, copied it to the Splunk host, and spent ~1:15 analyzing packets in Wireshark (SYN scans, ARP sweeps, ICMP responses).  
+Findings: Observed ARP sweeps, SYN scans (SYN→RST patterns), ICMP port unreachable (UDP probes) and repeated SSH attempts consistent with a brute-force test.  
+Artifacts: screenshots (Wireshark), pcap files (saved on Splunk host).  
+Next steps: Export filtered evidence pcaps, map detections to MITRE ATT&CK, and begin turning detections into Splunk saved searches.
+
+###  Day 24 — TryHackMe: Cyber Security 101 — Study log
+
+Date: 2025-11-10
+
+### Started focused SOC 1 Analyst path work on TryHackMe; practiced more real-world detection and triage scenarios.  
+
+## What I did:  
+- Completed THM rooms specific to SOC analyst tasks: alert triage, basic threat hunting queries, and simple incident write-ups.  
+- Re-read my recent Wireshark findings and matched packet evidence to THM lessons to strengthen understanding.  
+Artifacts / notes: THM progress screenshot and notes added to my study log.  
+Next steps: Plan a set of controlled attack scenarios in the lab (DNS tunneling & HTTP C2 simulation) and capture traffic for Splunk detection development.
+
+###  Day 25 — TryHackMe: Cyber Security 101 — Certificate achieved + lab follow-up
+
+Date: November 11, 2025
+ 
+## Activity: Finished the TryHackMe Cyber Security 101 learning path (certificate achieved); continued lab work and documentation.  
+What I did:  
+- Completed final THM labs required for the Cyber Security 101 learning path and downloaded my certificate.  
+- Continued analysis of lab captures and prepared evidence for GitHub (pcaps, Wireshark screenshots and prepared Splunk search snippets).  
+Artifacts: TryHackMe Certificate saved (certificate image/PDF), Wireshark screenshots, scan_test*.pcap.  v 7-8-10-11 GitHUStart the planned attack simulations in the lab (DNS tunneling, HTTP C2) and develop Splunk alerts/dashboards to detect them. Add Wazuh agents next to correlate host telemetry with network detections.
+
+## Day 26 — Network Traffic Analysis: DNS Tunneling, Port Scanning & C2 Investigation
+
+Date: November 12, 2025
+
+## Summary:
+Today I focused on analyzing previously captured network traffic (pcap files) from my isolated SOC home lab. My goal was to identify different attacker behaviors that I executed earlier from my Kali machine and verify how they appear in Wireshark. I also checked why DNS tunneling traffic started failing and why the ICMP “Destination Unreachable” messages appeared.
+
+## 🔍 1. DNS Tunneling Traffic Review
+
+I analyzed the DNS packets generated during the iodine DNS tunneling test.
+Findings:
+ • Multiple DNS queries contained the same structure used by iodine, including:
+ • Long encoded subdomain labels
+ • Repetitive query patterns
+ • High-frequency queries
+ • Several responses were labeled as:
+ • Unknown operation
+ • Malformed Packet
+ • This is expected when DNS tunneling tools encode data into DNS payloads.
+
+## Observation:
+Later in the capture, DNS queries suddenly triggered ICMP Type 3 Code 3: Port Unreachable from the target (192.168.1.125).
+This means:
+ • The DNS server port (UDP 53) stopped responding
+ • or DNS listener closed
+ • or iodine server side wasn’t running anymore
+
+This explains why tunneling worked earlier but stopped afterwards.
+
+## 🕵️ 2. Brute Force & Port Scanning Visibility
+
+In another section of the capture, I reviewed:
+
+✔️ Brute Force Attempts
+ • Traffic targeting SSH service
+ • Repeated and sequential login attempts from my Kali machine
+ • Clear pattern of automated authentication failures
+ • Matches expectations of a dictionary attack
+
+✔️ Port Scan Traffic
+
+Large number of SYN packets from 192.168.1.125 → 192.168.1.80 and other hosts:
+ • SYN sweeping across hundreds of ports
+ • No 3-way handshake (classic Nmap scan)
+ • Very fast sequence timestamps → automated reconnaissance
+ • Visible payload sizes (66 bytes) consistent with SYN packets
+
+Conclusion:
+Wireshark clearly shows traditional scanning behavior, great for demonstrating detection skills.
+
+## 🌐 3. ARP Activity & Network Enumeration
+
+I also analyzed ARP-related traffic:
+ • Massive list of “Who has IP → Tell 192.168.1.125” messages
+ • Even some messages showing “duplicate use of 192.168.1.1 detected!”
+ • This happens during ARP scanning (ARP sweep)
+
+This confirms that ARP-based host discovery works and is fully visible in the mirrored capture.
+
+## 🧭 4. C2 (Command & Control) Investigation
+
+I began checking how simulated C2 traffic appears:
+ • The HTTP section of the capture showed many HTTP 303 See Other redirects
+ • Interesting outbound HTTP requests from 192.168.1.69 (victim) to external-looking IP 4.3.2.1
+ • This traffic is likely from the C2 simulation test I started
+
+Next steps:
+I will analyze:
+ • Which domain resolves to 4.3.2.1
+ • Whether this is beaconing, redirect abuse, or normal web behavior
+ • Extract the HTTP stream for deeper analysis
+
+## 📌 Overall Conclusion
+
+Yesterday’s traffic review successfully confirmed visibility of:
+ • ✔️ DNS tunneling
+ • ✔️ Brute force patterns
+ • ✔️ TCP SYN port scans
+ • ✔️ ARP sweeping
+ • ✔️ HTTP traffic useful for C2 simulation
+
+
+Next steps:
+ 1. Build Splunk detection logic for DNS tunneling + brute force
+ 2. Continue HTTP-based C2 simulation
+ 3. Compare results in Wireshark vs. Splunk dashboards
+
+
+
+## Day - 27 Home Lab – Network Attack Simulation & Traffic Analysis 
+
+Date: 13
+
+Today I conducted four different offensive techniques in my isolated SOC home lab and captured all traffic using my Raspberry Pi (monitoring port-mirrored traffic via tp-link switch). My attacker was Kali Linux, the victim was Ubuntu, and all results were analyzed later in Wireshark.
+
+⸻
+
+1️⃣ Port Scanning
+
+I performed a wide TCP SYN scan from Kali (192.168.1.125) against the victim Ubuntu machine (192.168.1.50).
+Result in Wireshark:
+ • Clear SYN flood patterns
+ • Ports responding with RST or SYN/ACK
+ • Many red packets → port closed
+ • Normal behavior for Nmap SYN scan
+
+This confirmed visibility of reconnaissance activity.
+
+⸻
+
+2️⃣ Brute-Force Attack
+
+I simulated SSH brute force login attempts from Kali to the victim using Hydra.
+Result in Wireshark:
+ • High volume of SSH2 “Key Exchange Init”
+ • Repeated encrypted packets
+ • Login failures visible in /var/log/auth.log (Splunk indexed them)
+
+This successfully created brute-force artifacts for SIEM detection.
+
+⸻
+
+3️⃣ DNS Tunneling
+
+Томас Камусаки, [15/11/2025 23:22]
+I simulated exfiltration-like DNS tunneling by sending a file from the victim to Kali’s DNS server.
+
+Result in Wireshark:
+ • Long, unusual DNS queries
+ • Random-looking subdomains
+ • “Malformed Packet” alerts
+ • NXDOMAIN and unusual query sizes
+
+Exactly the kind of strange DNS activity analysts detect when spotting tunneling.
+
+⸻
+
+4️⃣ HTTP C2 Beacon
+
+I deployed a very simple custom HTTP Command & Control setup:
+ • Kali runs the C2 python server
+ • Ubuntu runs a beacon loop that checks for commands every 10 seconds
+
+Result in Wireshark:
+ • Clean HTTP GET → POST pattern
+ • Text/plain commands
+ • Visible heartbeat beaconing behavior
+ • Easy to identify periodic callback traffic
+
+This created realistic C2-like behavior for SOC investigations.
+
+⸻
+
+Final Notes
+
+All traffic was captured via my Raspberry Pi sniffer, stored as .pcap files, and analyzed in Wireshark.
+This session helped me understand how each attack type looks at the packet level and prepares me to build Splunk detections for recon, brute-force, DNS tunneling, and C2 activities.
+
+
+14 November 
+
+✅ Conclusion — Zeek + Splunk Integration Day
+
+Today’s session was fully focused on integrating Zeek network monitoring with Splunk Enterprise inside my isolated SOC home lab. This was one of the most complex and technical days so far, involving troubleshooting, configuration, log ingestion tuning, and validation.
+
+🔧 1. Zeek Installation & Troubleshooting on Raspberry Pi
+ • Installed Zeek manually on Raspberry Pi 4B (8GB).
+ • Fixed multiple issues related to:
+ • zeekctl not starting
+ • missing state.db
+ • wrong permissions on /usr/local/zeek/logs/current
+ • Created missing log directories and applied correct ownership/permissions.
+ • Successfully ran Zeek in standalone mode:
+
+Verified packet capture by generating ICMP traffic (ping tests).
+
+⸻
+
+📁 2. Zeek Log Generation Validation
+
+After fixing the file structure and permissions, Zeek finally started generating logs:
+ • conn.log
+ • dns.log
+ • http.log
+ • weird.log
+ • packet_filter.log
+ • telemetry.log
+ • and others…
+
+These files appeared correctly inside:
+
+This confirmed that Zeek was processing real traffic on the mirrored network port.
+
+⸻
+
+🔗 3. Splunk Universal Forwarder on Raspberry Pi
+ • Verified that the Splunk Forwarder was running and connected to my Splunk indexer:
+
+• Cleaned the configuration so only valid monitored files remained.
+ • Added Zeek log directory to Forwarder monitoring:
+
+ • Confirmed that Splunk Forwarder recognizes the monitored log paths.
+
+⸻
+
+📊 4. Zeek Logs Successfully Ingested Into Splunk
+
+Finally, confirmed in Splunk Web that Zeek logs were arriving:
+
+Received:
+ • DNS events
+ • Connection events
+ • Telemetry events
+ • Other Zeek logs
+
+This proves the entire data pipeline from Raspberry Pi → Zeek → Splunk Forwarder → Splunk Indexer → Search was working.
+
+⸻
+
+🎯 5. End of Day Results
+
+Today I achieved one of the biggest milestones in my SOC home lab:
+
+✔️ Zeek fully functional on Raspberry Pi
+✔️ Real-time packet analysis working
+✔️ Splunk Forwarder correctly configured
+✔️ Zeek logs forwarded into Splunk in real time
+✔️ Validated multiple log sources (DNS, conn, telemetry, etc.)
+✔️ Prepared to build Zeek dashboards and detections
+
+This setup now allows me to perform:
+ • Network forensics
+ • Threat hunting
+ • C2 traffic detection
+ • DNS tunneling detection
+ • HTTP anomaly analysis
+ • And full packet-behavior investigation
+
+A huge upgrade for my SOC learning environment.
+
+
+### 2025-11-15 — lab session
+
+Summary:  
+Today I focused on integrating Zeek on the Raspberry Pi with my Splunk indexer. I got Zeek running on eth0, added the Zeek log folder to the Splunk Universal Forwarder, and verified Zeek logs (conn, dns, http, telemetry, weird) are indexed in Splunk. I also simulated a few attacks (DNS-based exfil patterns and TCP/SSH scans) and verified they appear in both Zeek logs and Splunk searches.
+
+What I ran:
+-ov 7-8-10-11 GitHUb
+
+### 2025-11-07 — Try-ov 7-8-10-11 GitHUb
+
+### 2025-11-07 — TryHackMe: Cyber Security 101 (SOC 101) — Study log
+
+**Time spent:** ~5 - Verified in Splunk with index=main sourcetype=zeek
+Nov 7-8-10-11 GitHUb
+- Pi time was behind (NTP not reachable in offline lab). Fixed by enabling NTP (when network available) or manually setting clock.
+- NIC checksum offloading triggers Zeek warnings; acceptable for now (can run zeek -C or disable offload to remove warnings).
+
+Next: add more monitors, run iodine DNS-tunnel and HTTP C2 simulations, build a Splunk dashboard for Zeek detections.
