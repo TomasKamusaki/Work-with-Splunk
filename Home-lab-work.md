@@ -1887,3 +1887,123 @@ Great progress — and now I have a full attack chain PCAP to use for Splunk det
 <img width="1913" height="1075" alt="Captura de pantalla 2025-11-18 221037" src="https://github.com/user-attachments/assets/70e03e01-6c5a-4e36-94e0-58afc51746b3" />
 <img width="1912" height="1073" alt="Captura de pantalla 2025-11-18 221451" src="https://github.com/user-attachments/assets/94052828-8d4b-479a-a884-550971dd112b" />
 <img width="1916" height="1071" alt="Captura de pantalla 2025-11-18 221300" src="https://github.com/user-attachments/assets/3aab82b2-cac4-4310-87b1-3ec4dcc87ff0" />
+
+
+## Day 32 - Practice and practice and practice 
+
+Today I continued developing my SOC Home Lab by practicing two attack chains:
+ 
+ 1. The short 4-step chain (recon → reverse shell → pivoting → file exfiltration)
+ 
+ 2. The “real-world-style” chain (delivering a malicious script + command-and-control callback + exfiltration attempt)
+
+Even though the second chain wasn’t fully captured by Zeek, I successfully executed most of the steps and validated them through Wireshark and Splunk.
+
+
+## 🛠 1. Short Attack Chain — Full Success
+
+I repeated the compact attack chain I learned yesterday, but this time much faster and more confidently.
+
+## What I completed:
+
+ • ICMP reconnaissance from Kali → victim
+ 
+ • Reverse shell from victim → Kali
+
+ • Port scanning from inside the victim (pivot stage)
+ 
+ • File exfiltration using Netcat (working .txt file)
+
+ • Full Wireshark inspection of:
+
+ • SYN scans
+ 
+ 
+ • ICMP Echo/Replies
+ 
+ • Reverse shell traffic on port 4444
+ 
+ • Exfiltrated file contents (visible in Follow TCP Stream)
+ 
+ • Splunk confirmation using:
+ 
+ • sourcetype=zeek (from earlier test)
+ 
+ • stats count by id.orig_h, id.resp_h, resp_p
+ 
+ • Time-aligned events for the exfiltration packet
+
+## Important win:
+
+I successfully located the exact TCP packet with the exfiltrated text, pulled it by timestamp from Splunk, and confirmed the raw file content in Wireshark.
+This shows I’m learning to correlate network + SIEM — SOC Analyst core skill.
+
+
+## 🛠 2. “Real-World” Attack Chain Attempt
+
+This was more complex:
+deliver a script → victim executes it → callback → optional exfiltration.
+
+## What worked:
+
+
+✔ Built helper_tool.sh manually
+
+✔ Served it over HTTP from Kali (port 8080)
+
+✔ Victim downloaded it with curl -O
+
+✔ Script executed successfully
+
+✔ Script printed fake “Installing system helper…” (malware simulation)
+
+✔ Wireshark captured the HTTP GET request for helper_tool.sh
+
+## What did NOT work today:
+
+
+⚠ Zeek was not capturing → no Zeek logs in Splunk
+
+⚠ Exfiltration stage not completed
+
+⚠ Reverse shell callback failed because I forgot to open listener in time
+
+But: all other stages worked exactly as expected.
+
+## 🔍 3. Wireshark Traffic Analysis (Successful)
+
+I inspected all key packets:
+
+HTTP GET
+
+GET /helper_tool.sh HTTP/1.1 — clearly visible with User-Agent curl/7.x
+
+Reverse Shell Attempts
+
+Traffic on:
+ • Port 4444
+ • Port 8080
+ • Port 9001
+
+Exfiltration analysis
+
+Found the exact packet (Len=28) containing:
+
+top top top secret info
+
+Verified in:
+ • Hex pane
+ • ASCII pane
+ • Full TCP Stream reconstruction
+
+<img width="1909" height="1075" alt="Captura de pantalla 2025-11-19 130225" src="https://github.com/user-attachments/assets/213bd66b-6adc-4e15-9317-9a7f0909c9ce" />
+<img width="1906" height="1065" alt="Captura de pantalla 2025-11-19 130624" src="https://github.com/user-attachments/assets/754f396b-3f8c-4faf-a2d2-ed471468a773" />
+
+<img width="1912" height="1075" alt="Captura de pantalla 2025-11-19 130645" src="https://github.com/user-attachments/assets/46c4865f-5c5a-4d75-bd24-c8423ee38fdf" />
+<img width="1918" height="1077" alt="Captura de pantalla 2025-11-19 133901" src="https://github.com/user-attachments/assets/d5f8a34c-837b-4b80-9b51-5e0b6342aa32" />
+<img width="1904" height="1075" alt="Captura de pantalla 2025-11-19 135523" src="https://github.com/user-attachments/assets/be1510f3-ed07-4ade-b2ea-969b0ba10743" />
+<img width="1906" height="1073" alt="Captura de pantalla 2025-11-19 142117" src="https://github.com/user-attachments/assets/67aadec5-81c3-443f-a143-ea8d1bff0a31" />
+<img width="1919" height="1077" alt="Captura de pantalla 2025-11-19 144356" src="https://github.com/user-attachments/assets/627492fc-e262-4ac2-9d3c-f60ada795c0b" />
+<img width="1901" height="549" alt="Captura de pantalla 2025-11-19 151339" src="https://github.com/user-attachments/assets/06461ea3-4c04-4118-a99c-1a8bdf27b45c" />
+
+
