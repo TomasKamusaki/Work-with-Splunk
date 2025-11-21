@@ -2007,3 +2007,103 @@ Verified in:
 <img width="1901" height="549" alt="Captura de pantalla 2025-11-19 151339" src="https://github.com/user-attachments/assets/06461ea3-4c04-4118-a99c-1a8bdf27b45c" />
 
 
+## Day 33 - Full attack chain inside the isolated SOC Home Lab
+
+Today I focused on validating my full attack chain inside the isolated SOC Home Lab, using Splunk, Zeek, Wireshark and manual command-line analysis.
+This was the most complete and realistic end-to-end test so far.
+
+## 🔹 1. Successful Data Exfiltration Chain
+
+I repeated the full attack workflow:
+
+ • Delivered and executed the helper_tool.sh script from Kali → victim Ubuntu
+ 
+ • Established a reverse shell connection on port 4444
+ 
+ • Generated a binary file (topsecret.bin) and exfiltrated it to Kali over port 9001
+ 
+ • Verified file integrity with md5sum on both machines
+
+Everything worked perfectly.
+
+## 🔹 2. Network Traffic Analysis
+
+I captured and analyzed all stages using both tools:
+
+ • Wireshark → Identified TCP streams for 8080 (initial download), 4444 (reverse shell), 9001 (file exfiltration)
+ 
+ • Used filters like tcp.port==9001 and tcp.stream==1269 to locate the exact transfer
+ 
+ • Followed the TCP stream to see binary fragments of the exfiltrated file
+
+ • Confirmed that the PCAP matched the Splunk/Zeek logs by timestamp
+
+## 🔹 3. Zeek + Splunk Correlation
+
+Zeek generated clean logs for:
+ 
+ • Initial access (port 8080)
+ 
+ • Reverse shell (port 4444)
+ 
+ • Exfiltration (port 9001)
+
+In Splunk I successfully correlated:
+ 
+ • src_ip = 192.168.1.50
+ 
+ • dest_ip = 192.168.1.125
+ 
+ • orig_bytes = 204800 (exact file size!)
+ 
+ • durations, connection flags, and protocol transitions
+
+This confirmed Zeek was capturing the event correctly and Splunk was parsing fields normally (after minor renaming).
+
+## 🔹 4. Dashboard Work (Partial)
+
+I started building a multi-panel Splunk dashboard for:
+ 
+ • Stage 3 summary (total exfil bytes)
+
+ • Exfil timeline (port 9001)
+ 
+ • Full chain overview
+
+I still need to clean the XML and finish all panels → leaving this for another session.
+
+
+📌 Overall Result
+
+Today I completed my first full real-world attack chain in the lab with full visibility:
+
+
+✔ Kali attacker
+
+✔ Victim Ubuntu
+
+✔ Reverse shell
+
+✔ Lateral commands
+
+✔ Data exfiltration
+
+✔ Wireshark PCAP confirmation
+
+✔ Zeek + Splunk correlation
+
+✔ Hash validation of stolen file
+
+<img width="1919" height="1077" alt="Captura de pantalla 2025-11-20 092231" src="https://github.com/user-attachments/assets/963de688-0e23-45e2-a118-364968bd7a54" />
+<img width="1911" height="1066" alt="Captura de pantalla 2025-11-20 094229" src="https://github.com/user-attachments/assets/41337917-4349-4703-b3f3-de674a4a87d8" />
+
+<img width="1918" height="1074" alt="Captura de pantalla 2025-11-20 100635" src="https://github.com/user-attachments/assets/a41a4593-3ca1-490c-8eb2-38653fc3bc5c" />
+
+<img width="1919" height="1074" alt="Captura de pantalla 2025-11-20 091657" src="https://github.com/user-attachments/assets/635132f8-e492-4665-a7d3-499e26c18913" />
+
+<img width="1909" height="1073" alt="Captura de pantalla 2025-11-20 094736" src="https://github.com/user-attachments/assets/acea94b3-65f5-4824-9e32-a8ae1eb18287" />
+<img width="1915" height="1076" alt="Captura de pantalla 2025-11-20 100337" src="https://github.com/user-attachments/assets/371d9eb7-39ba-4f76-9912-cb2f82c539a6" />
+<img width="1915" height="1068" alt="Captura de pantalla 2025-11-20 101023" src="https://github.com/user-attachments/assets/cb024443-eb0e-41c2-b55b-adeedcdd8cb0" />
+<img width="1918" height="1078" alt="Captura de pantalla 2025-11-20 101742" src="https://github.com/user-attachments/assets/fd658373-47ff-4dfe-8c43-462393e8c854" />
+
+<img width="1914" height="1074" alt="Captura de pantalla 2025-11-20 104143" src="https://github.com/user-attachments/assets/1df64ef9-c9bb-46b8-8ebb-a3e41e8328b4" />
