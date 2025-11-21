@@ -1734,7 +1734,7 @@ Each of these techniques now has:
 
 
 ## Day 31 - Purple-Team Attack Chain (Second Run)
-Date: November 17, 2025
+Date: November 18, 2025
 
 Today I completed the entire purple-team attack chain again inside my offline SOC Home Lab. The goal was to simulate a realistic, multi-stage intrusion and observe every phase with my Raspberry Pi packet-capture sensor and Wireshark.
 
@@ -1866,7 +1866,6 @@ Raspberry Pi capture + Wireshark analysis gave me full visibility of every attac
 
 I’m becoming much more comfortable building realistic offensive scenarios and then analyzing them from a defender’s perspective.
 
-Great progress — and now I have a full attack chain PCAP to use for Splunk detection exercises later.
 
 <img width="1906" height="1073" alt="Captura de pantalla 2025-11-18 122154" src="https://github.com/user-attachments/assets/2e321ef6-815b-464e-bc37-6aebfcccd629" />
 <img width="1917" height="1072" alt="Captura de pantalla 2025-11-18 122211" src="https://github.com/user-attachments/assets/e237f6d7-dac0-4044-9b7a-e7aba5880f41" />
@@ -1890,6 +1889,7 @@ Great progress — and now I have a full attack chain PCAP to use for Splunk det
 
 
 ## Day 32 - Practice and practice and practice 
+Date: November 19, 2025
 
 Today I continued developing my SOC Home Lab by practicing two attack chains:
  
@@ -2008,6 +2008,7 @@ Verified in:
 
 
 ## Day 33 - Full attack chain inside the isolated SOC Home Lab
+Date: November 20, 2025
 
 Today I focused on validating my full attack chain inside the isolated SOC Home Lab, using Splunk, Zeek, Wireshark and manual command-line analysis.
 This was the most complete and realistic end-to-end test so far.
@@ -2107,3 +2108,107 @@ Today I completed my first full real-world attack chain in the lab with full vis
 <img width="1918" height="1078" alt="Captura de pantalla 2025-11-20 101742" src="https://github.com/user-attachments/assets/fd658373-47ff-4dfe-8c43-462393e8c854" />
 
 <img width="1914" height="1074" alt="Captura de pantalla 2025-11-20 104143" src="https://github.com/user-attachments/assets/1df64ef9-c9bb-46b8-8ebb-a3e41e8328b4" />
+
+## Day 34 - Full Attack Chain – Complete End-to-End Replication
+Date: November 21, 2025
+
+Today I successfully repeated the full attack chain scenario in my isolated SOC home lab. This included:
+
+## 1. Reverse Shell (Port 4444)
+ 
+ • Re-established a functional reverse shell from attacker (Kali) → victim (Ubuntu).
+ 
+ • Verified full packet flow in Wireshark (tcp.stream analysis).
+ 
+ • Confirmed Zeek detection (known_services.log, conn.log).
+ 
+ • Splunk dashboard displayed real-time events with correct field mappings.
+
+## 2. HTTP Tool Delivery (Port 8080)
+ 
+ • Served helper_tool.sh from the attacker using Python HTTP server.
+ 
+ • Victim downloaded it via curl (HTTP/1.1 200 OK).
+ 
+ • Verified the activity in:
+ 
+ • Wireshark (HTTP GET, MIME type text/x-shellscript)
+ 
+ • Zeek HTTP logs
+ 
+ • Splunk visualization panel
+
+## 3. File Exfiltration (Port 9001)
+ 
+ • Created two files on the victim:
+ 
+ • .txt
+ 
+ • .bin
+ 
+ • Exfiltrated both to the attacker over TCP port 9001 using Netcat.
+ 
+ • Verified:
+ 
+ • Packet payloads in Wireshark (PSH+ACK with data)
+ 
+ • File size correlation in Zeek (orig_bytes / resp_bytes)
+ 
+ • Real-time Splunk dashboard updates
+ 
+ • Recomputed MD5 on both sides → integrity confirmed.
+
+## 4. Reconnaissance & Movement
+ 
+ • Generated ICMP network scans + SSH activity to map sessions.
+ 
+ • Observed scan traffic in Wireshark and Zeek.
+ 
+ • Viewed SSH sessions (encrypted traffic) to validate MITRE mapping.
+
+## 5. Dashboard Testing (Real-Time)
+
+ • Built a simplified Splunk dashboard showing:
+ 
+ • Port 4444 (reverse shell)
+ 
+ • Port 8080 (HTTP transfer)
+ 
+ • Port 9001 (exfiltration)
+ 
+ • Ran the entire attack chain again → dashboard showed all stages in real time.
+
+
+📘 MITRE ATT&CK Mapping Added to Notes
+
+Today I finalized correct ATT&CK classification for each phase:
+ 
+ • T1046 – Network Scanning
+ 
+ • T1059 – Command Execution
+ 
+ • T1105 – Ingress Tool Transfer
+ 
+ • T1021.004 – Remote Services (SSH)
+ 
+ • T1041 / T1048 – Data Exfiltration
+ 
+ • T1078 / T1110 – Valid Accounts / Brute Force
+
+This mapping will be used later for building detection rules and documentation
+
+<img width="1913" height="1073" alt="Captura de pantalla 2025-11-21 122555" src="https://github.com/user-attachments/assets/21187ddf-b613-4d45-a6f7-d9d20010c7db" />
+<img width="1916" height="1072" alt="Captura de pantalla 2025-11-21 122603" src="https://github.com/user-attachments/assets/121f7e7f-8a62-4629-9bd3-a2f7bba3bb52" />
+<img width="1907" height="1074" alt="Captura de pantalla 2025-11-21 122843" src="https://github.com/user-attachments/assets/295eb0ed-cd68-4193-b00e-eabe5bc68210" />
+
+<img width="1912" height="1068" alt="Captura de pantalla 2025-11-21 123717" src="https://github.com/user-attachments/assets/25c9c128-723f-4e0b-ae0d-d689456a6152" />
+
+<img width="1909" height="1074" alt="Captura de pantalla 2025-11-21 124228" src="https://github.com/user-attachments/assets/8a686920-7ade-4811-a6e2-0011c4da7b02" />
+
+<img width="1908" height="1077" alt="Captura de pantalla 2025-11-21 133216" src="https://github.com/user-attachments/assets/262ed9fc-6e4e-476e-a3b4-d72687d332a9" />
+
+<img width="1915" height="909" alt="Captura de pantalla 2025-11-21 134447" src="https://github.com/user-attachments/assets/9eef8d2c-ca4f-4b8b-b6d4-2c304d7a6eae" />
+<img width="1911" height="1074" alt="Captura de pantalla 2025-11-21 135046" src="https://github.com/user-attachments/assets/d730347e-4ce7-4d4b-a245-714e8921549c" />
+
+<img width="1919" height="1076" alt="Captura de pantalla 2025-11-21 135446" src="https://github.com/user-attachments/assets/94f328da-5fdf-4b87-9c0e-15cf514b90b1" />
+<img width="1910" height="622" alt="Captura de pantalla 2025-11-21 135549" src="https://github.com/user-attachments/assets/035ef734-8df4-4336-961a-e3bc651ce63a" />
