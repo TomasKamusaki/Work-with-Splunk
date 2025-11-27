@@ -2303,3 +2303,120 @@ Date:November 26, 2025
   - Start building focused dashboards for:
     - Forwarder health
     - Network events from Proxmox and PC2
+
+## Day 37 - Daily Lab Progress
+Date:November 27, 2025
+
+## 🟩 1. Proxmox Internet + Lab Network Fully Repaired
+Today I finally fixed the long-standing problem where Proxmox lost internet every time I connected lab cables.  
+Main achievements:
+- Correct NIC mapping confirmed:
+  - eno1 → Internet (home router)
+  - eno2 → Lab network (isolated SOC environment)
+- Both NICs now work simultaneously without breaking the Proxmox Web GUI.
+- System successfully updated via apt update && apt upgrade.
+- Stable connectivity from the new ThinkPad host.
+
+## 🟩 2. Raspberry Pi Sensor (Zeek + tcpdump)
+- SSH trust (ED25519 keys) recreated after hostname changes.
+- Pi sending screenshots and pcaps automatically again.
+- Pi forwarder visible in Splunk.
+- Zeek works, but field normalization requires the Splunk TA (pending).
+
+## 🟩 3. Splunk: All Forwarders Active
+- Host ThinkPad, Proxmox, Kali, Raspberry Pi, and PC2 are sending logs.
+- Splunk Web is stable after hostname change.
+- Time sync across devices fixed — no timestamp mismatches.
+
+## 🟩 4. PC2 (Old ASUS N71J) Added to Lab
+- Installed Linux Mint on the €5 laptop.
+- Enabled SSH with lid closed (headless mode).
+- Installed Splunk Universal Forwarder → logs visible instantly.
+- Cleaned fans and verified stable temps and performance.
+
+---
+
+# 🟦 5. ATTACK CHAIN TESTING
+Today I successfully executed two attack chains:
+
+---
+
+## 🔹 Attack Chain #1 — Short Version
+- Recon → SSH brute-force → persistence → reverse shell
+- Events captured in:
+  - Splunk (SSH failures, successful login, process creation)
+  - Pi tcpdump (network traffic)
+  - Wireshark (packet-level detail)
+
+---
+
+## 🔹 Attack Chain #2 — Full Payload Chain
+This was the main highlight of the day — a more realistic intrusion flow using a downloaded payload.
+
+### Steps performed:
+1. Initial Access (Social Engineering Simulation)
+   - Victim downloaded a script:  
+     helper/update_script.sh
+   - Script created a directory and downloaded a malicious payload inside the victim machine.
+
+2. Payload / Malware Deployment
+   - Payload executed by the victim.
+   - Created persistence directory.
+   - Dropped reverse shell components.
+
+3. Command & Control
+   - Reverse shell established back to Kali on port 4444.
+   - Attacker operated inside the victim.
+
+4. Internal Recon
+   - ifconfig, arp -a, netstat, directory listing.
+   - Splunk: Events appeared correctly.
+
+5. Lateral Movement
+   - Attacker probed PC2 and other lab systems.
+
+6. Data Exfiltration
+   - Two files exfiltrated:  
+     - 1x TXT  
+     - 1x BIN  
+   - Verified in Splunk via packet size and timestamp.
+   - Found matching packet in Wireshark (line *694557*).
+
+Everything was successfully detected in Splunk & Wireshark.  
+Zeek logs will be added tomorrow after TA installation.
+
+---
+
+# 🟣 6. Additional Work
+- Installed VS Code and optimized terminal tools.
+- Configured ThinkPad dual-monitor setup (USB-C + HDMI).
+- Set up SSH usage while PC2 lid is closed.
+- Verified stable capturing on Raspberry Pi.
+
+---
+
+# 🟢 Overall Status (End of Day)
+- ✅ Proxmox fixed  
+- ✅ Pi sending captures  
+- ✅ All Splunk forwarders online  
+- ✅ Full attack chain completed (twice)  
+- ✅ Payload chain working  
+- ⚠️ Zeek TA still missing (install tomorrow)  
+- ⚠️ Multi-panel dashboards pending  
+
+---
+
+# 🎯 Plan for Tomorrow (28 November 2025)
+- Install Splunk TA for Zeek & verify field extractions.  
+- Run the full payload chain again but with Zeek + Splunk dashboards.  
+- Save and analyze PCAP in Wireshark (deep dive).  
+- Strengthen dashboards for Recon → Execution → C2 → Exfiltration.  
+- 30 min TryHackMe SOC rooms.
+
+
+<img width="5760" height="1080" alt="Screenshot from 2025-11-27 13-41-47" src="https://github.com/user-attachments/assets/d903d5b2-0a51-4919-87b5-70cdeb8ec191" />
+<img width="5760" height="1080" alt="c" src="https://github.com/user-attachments/assets/828372f5-2e0f-4e44-9146-cb1d3ad9761d" />
+<img width="5760" height="1080" alt="Screenshot from 2025-11-27 13-55-56" src="https://github.com/user-attachments/assets/59ae7151-6161-49ea-b886-1c49e1f05758" />
+<img width="5760" height="1080" alt="Screenshot from 2025-11-27 14-11-12" src="https://github.com/user-attachments/assets/21c5faa9-556c-4955-9735-ada689c4208b" />
+<img width="5760" height="1080" alt="Screenshot from 2025-11-27 14-48-12" src="https://github.com/user-attachments/assets/58325e45-1bca-44b2-890d-d48d2785d98b" />
+<img width="5760" height="1080" alt="Screenshot from 2025-11-27 14-50-00" src="https://github.com/user-attachments/assets/b86bc7fc-5d1f-428f-bdcc-5741ed4bf1f3" />
