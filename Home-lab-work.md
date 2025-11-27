@@ -2213,9 +2213,54 @@ This mapping will be used later for building detection rules and documentation
 <img width="1919" height="1076" alt="Captura de pantalla 2025-11-21 135446" src="https://github.com/user-attachments/assets/94f328da-5fdf-4b87-9c0e-15cf514b90b1" />
 <img width="1910" height="622" alt="Captura de pantalla 2025-11-21 135549" src="https://github.com/user-attachments/assets/035ef734-8df4-4336-961a-e3bc651ce63a" />
 
-## Day 35 
+## Day 35-36  — New Host Laptop Setup & Integration
+Date:November 24-25, 2025
 
-## Day 36 — Rebuilding Lab Connectivity & New Splunk Forwarder
+## 🟩 1. Searching + Buying New Host Laptop
+During these two days I focused on upgrading my main host machine.  
+Key steps:
+- Spent time comparing laptops (HP Pavilion vs ThinkPad models).
+- Finally found and bought a ThinkPad T14 Gen 1 (Ryzen 5).
+- Checked its hardware, installed RAM, and verified all ports (USB-C, HDMI, Ethernet).
+
+## 🟩 2. Hardware Preparation
+- Opened the laptop, cleaned dust, replaced thermal paste.
+- Added an extra RAM module (temporary 4 GB → total 20 GB).
+- Swapped the NVMe SSD from old HP → new ThinkPad.
+- Verified temperatures, fans, and system stability.
+
+## 🟩 3. Installing Linux Mint (New Host OS)
+- Created bootable USB and installed Linux Mint as main OS.
+- Completed initial updates, drivers, and system tweaks.
+- Installed essential packages:
+  - Terminal tools (htop, neofetch, networking tools)
+  - Python + VS Code
+  - SSH, OpenSSH Server
+  - Git, Curl, QEMU support
+
+## 🟩 4. Preparing the Host for the SOC Lab
+- Configured all networking settings for isolated lab use.
+- Ensured compatibility with:
+  - Splunk Enterprise (indexer)
+  - SSH access to Kali, Pi, and PC2
+  - Multi-monitor setup for SOC workflow
+- Tested ports, firewall, and routing behavior.
+- Verified the ThinkPad works stable as the main SOC Host Machine.
+
+## 🟩 5. Migration from Old Host Laptop
+- Backed up VirtualBox VMs (optional storage).
+- Moved all previous SOC project files.
+- Confirmed everything needed for:
+  - Splunk dashboards
+  - Wireshark analysis
+  - Proxmox Web management
+  - Raspberry Pi capture workflow
+
+## 🟢 Result (End of 25 November)
+- New ThinkPad host fully installed, optimized, and integrated.
+- Ready for reconnection with Proxmox, Kali, Pi, Splunk Enterprise, and PC2.
+- System running fast, cool, and smooth → perfect for SOC workflows.
+## Day 37 — Rebuilding Lab Connectivity & New Splunk Forwarder
 Date:November 26, 2025 
 
 ### Goals
@@ -2304,7 +2349,7 @@ Date:November 26, 2025
     - Forwarder health
     - Network events from Proxmox and PC2
 
-## Day 37 - Daily Lab Progress
+## Day 38 - Daily Lab Progress
 Date:November 27, 2025
 
 ## 🟩 1. Proxmox Internet + Lab Network Fully Repaired
