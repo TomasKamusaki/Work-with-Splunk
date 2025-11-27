@@ -2248,19 +2248,10 @@ Date:November 26, 2025
   - Verified:
     - ping 1.1.1.1 and ping 8.8.8.8 succeed.
     - ping google.com works again.
-
-#### 2. Proxmox apt / repo issues
-- Ran apt update on the Proxmox host.
-- Saw warnings about:
-  - Unsigned Debian/Proxmox repositories.
-  - https://enterprise.proxmox.com/... returning 401 Unauthorized.
-- Decision:
-  - For now, accept the limitation and do not use the paid Proxmox Enterprise repo.
-  - Plan to switch to the community repo later when needed.
-
+    - 
 ---
 
-### 3. New Linux Mint forwarder on ASUS N71J (PC2)
+### 2. New Linux Mint forwarder on ASUS N71J (PC2)
 - Picked up a used ASUS N71J laptop (no RAM/SSD/charger originally).
 - Installed RAM + SSD I already had.
 - Booted from USB and installed Linux Mint as the OS.
@@ -2279,16 +2270,9 @@ Date:November 26, 2025
     - PC2 (ASUS N71J Linux Mint)
   - Source types and hosts look as expected.
 
-### 4. Hardware / thermal notes (PC2)
-- Installed psensor on PC2 and checked temperatures:
-  - CPU cores around 50–60°C at light load.
-- Fan is a bit noisy but temps are acceptable for now.
-- Decided not to fully disassemble the laptop yet (plastic is old and fragile).
-  - Plan: later clean the fan through the bottom cover and maybe change thermal paste only if necessary.
-
 ---
 
-### 5. ThinkPad boot / PXE annoyance
+### 3. ThinkPad boot / PXE annoyance
 - Sometimes the ThinkPad tried to PXE boot over IPv4 when the Ethernet cable was connected.
 - Opened BIOS and:
   - Moved PXE boot entries to the Excluded from Boot Priority Order list.
