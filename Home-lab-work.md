@@ -2212,3 +2212,110 @@ This mapping will be used later for building detection rules and documentation
 
 <img width="1919" height="1076" alt="Captura de pantalla 2025-11-21 135446" src="https://github.com/user-attachments/assets/94f328da-5fdf-4b87-9c0e-15cf514b90b1" />
 <img width="1910" height="622" alt="Captura de pantalla 2025-11-21 135549" src="https://github.com/user-attachments/assets/035ef734-8df4-4336-961a-e3bc651ce63a" />
+
+## Day 35 
+
+## Day 36 — Rebuilding Lab Connectivity & New Splunk Forwarder
+Date:November 26, 2025 
+
+### Goals
+- Give the Proxmox server controlled access to the Internet without breaking the isolated lab network.
+- Rebuild my Linux Mint “PC2” forwarder on an old ASUS laptop and connect it to Splunk.
+- Make sure the lab can run with screens closed / headless when needed.
+
+### Work Performed
+
+#### 1. Proxmox server networking re-work (eno1 + eno2)
+- Reviewed current network state on the Proxmox host:
+  - ip a, ip route
+  - Interfaces: eno1, eno2, eno3, eno4, and bridge vmbr0 (lab IP `192.168.1.10/24`).
+- Goal:  
+  - eno2 + vmbr0 → internal lab network (as before).  
+  - eno1 → Internet via home router (same 192.168.1.0/24 subnet).
+- Edited /etc/network/interfaces on the Proxmox host to:
+  - Keep vmbr0 static: address 192.168.1.10/24, gateway 192.168.1.1, bridge-ports eno2.
+  - Configure eno1 with DHCP:
+       auto eno1
+    iface eno1 inet dhcp
+    - Restarted networking and validated:
+  - ip a show eno1 → got a DHCP address from the router.
+  - ip route → default route via eno1.
+- Fixed DNS resolution:
+  - Created /etc/resolv.conf or equivalent to use public DNS:
+    - nameserver 1.1.1.1
+    - nameserver 8.8.8.8
+    - fallback 1.0.0.1
+  - Verified:
+    - ping 1.1.1.1 and ping 8.8.8.8 succeed.
+    - ping google.com works again.
+
+#### 2. Proxmox apt / repo issues
+- Ran apt update on the Proxmox host.
+- Saw warnings about:
+  - Unsigned Debian/Proxmox repositories.
+  - https://enterprise.proxmox.com/... returning 401 Unauthorized.
+- Decision:
+  - For now, accept the limitation and do not use the paid Proxmox Enterprise repo.
+  - Plan to switch to the community repo later when needed.
+
+---
+
+### 3. New Linux Mint forwarder on ASUS N71J (PC2)
+- Picked up a used ASUS N71J laptop (no RAM/SSD/charger originally).
+- Installed RAM + SSD I already had.
+- Booted from USB and installed Linux Mint as the OS.
+- Configured power management:
+  - Turn off screen after inactivity.
+  - Never suspend on AC.
+  - Allow the laptop to keep running with the lid closed (good for SSH/headless use).
+- Installed Splunk Universal Forwarder on PC2:
+  - Enabled the service and checked status with:
+       sudo /opt/splunkforwarder/bin/splunk status
+      - Confirmed splunkd and helper processes are running.
+- Configured the forwarder to send logs to my Splunk indexer on the host laptop.
+- Verified in Splunk Web:
+  - New events are arriving from:
+    - Proxmox server (host)
+    - PC2 (ASUS N71J Linux Mint)
+  - Source types and hosts look as expected.
+
+### 4. Hardware / thermal notes (PC2)
+- Installed psensor on PC2 and checked temperatures:
+  - CPU cores around 50–60°C at light load.
+- Fan is a bit noisy but temps are acceptable for now.
+- Decided not to fully disassemble the laptop yet (plastic is old and fragile).
+  - Plan: later clean the fan through the bottom cover and maybe change thermal paste only if necessary.
+
+---
+
+### 5. ThinkPad boot / PXE annoyance
+- Sometimes the ThinkPad tried to PXE boot over IPv4 when the Ethernet cable was connected.
+- Opened BIOS and:
+  - Moved PXE boot entries to the Excluded from Boot Priority Order list.
+  - Ensured the main boot order is:
+    1. Ubuntu
+    2. NVMe0
+    3. Windows Boot Manager
+- Result: laptop now boots straight into Ubuntu even with Ethernet plugged in.
+
+---
+
+### Results / Status
+- Proxmox:
+  - Has working Internet through eno1 while still serving the lab via eno2 + vmbr0.
+  - Can update packages again and resolve DNS properly.
+- PC2:
+  - Linux Mint installed, configured, and running as a Splunk forwarder.
+  - Can run with lid closed and be managed via SSH from the host.
+- ThinkPad host:
+  - Boot sequence is stable (no more PXE over IPv4 surprise when Ethernet is connected).
+
+---
+
+### Next Steps
+- Add/verify a Zeek
+- Clean up Splunk:
+  - Tag and normalize hosts (`host=proxmox-server`, host=pc2-n71j, etc.).
+  - Start building focused dashboards for:
+    - Forwarder health
+    - Network events from Proxmox and PC2
