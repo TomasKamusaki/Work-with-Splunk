@@ -54,8 +54,6 @@ My SOC lab consists of multiple systems connected in an isolated network:
 
 
 ## 🚀 Day 0 — Cybersecurity.Start
-
-Date: September 23, 2025
  
  • Installed a clean Windows 10, then upgraded to Windows 11 to avoid compatibility issues.
  
