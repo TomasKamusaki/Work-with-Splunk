@@ -2669,3 +2669,62 @@ Tomorrow’s goals:
 <img width="5760" height="1080" alt="escal" src="https://github.com/user-attachments/assets/c6d7e7b4-0cbe-42a9-923b-cf8f753e2b79" />
 <img width="5760" height="1080" alt="ex" src="https://github.com/user-attachments/assets/4ee9fea3-9ce4-4d8c-8e10-c51043776e51" />
 
+## Day 41 - MITRE
+
+## 📅 Day Summary — 1 December 2025
+  
+I spent many hours working on Wazuh rule customization, trying to map my simulated attack chain to the MITRE ATT&CK framework using custom local_rules.xml.
+
+### 🔧 What I worked on
+- Troubleshooting Wazuh configuration errors caused by invalid XML syntax.
+- Learning how the manager validates rules and rejects incorrect attributes.
+- Successfully updating the Wazuh repository and verifying version integrity.
+- Creating and testing my first working custom MITRE rule for detecting cron persistence:
+  - Technique: T1053.003 (Cron)
+  - Triggered correctly after simulating a malicious cron modification.
+- Investigated other attack steps: netcat exfiltration, SSH intrusion, privilege escalation.
+- Identified which techniques require:
+  - Custom decoders  
+  - Regex adjustments  
+  - Or deeper log visibility
+
+### 🧪 Attack chain tested today
+I executed a full attack simulation:
+- Nmap scan from Kali  
+- SSH intrusion  
+- Privilege escalation  
+- Cron persistence backdoor  
+- Data exfiltration with nc  
+
+Wazuh successfully detected:
+- SSH login activity  
+- Sudo privilege changes  
+- Cron-based persistence (custom rule working!)  
+
+Still pending detection:
+- Netcat exfiltration (T1048)  
+- Some lateral movement and manipulation steps
+
+### 🧠 What I learned
+- Wazuh is extremely strict with XML — one wrong tag breaks the entire manager.
+- MITRE mappings must follow the correct <mitre><id>…</id></mitre> format.
+- Custom detection is possible, but it requires:
+  - Understanding how Wazuh decoders parse logs  
+  - Matching the right SID  
+  - Building rules step-by-step, testing each one  
+
+### 📌 Next steps (Tomorrow)
+- Create reliable custom rules for:
+  - T1048 — Data Exfiltration (Netcat)
+  - Additional privilege escalation steps
+  - Command monitoring for attacker TTPs  
+- Add missing log visibility on PC2 for better detection.  
+- Build a clean set of reusable MITRE rules for future attacks.
+
+Despite how exhausting today was, I finished with a working MITRE rule and a better understanding of Wazuh internals.
+
+<img width="5760" height="1080" alt="hydra1-12" src="https://github.com/user-attachments/assets/e56c0c76-0212-4773-9b25-42d2305a0481" />
+<img width="5760" height="1080" alt="Screenshot from 2025-12-01 12-32-45" src="https://github.com/user-attachments/assets/1f8b3be0-6cc4-4a57-9477-8877fec9055f" />
+<img width="5760" height="1080" alt="Screenshot from 2025-12-01 13-12-45" src="https://github.com/user-attachments/assets/8e27a6c8-1207-4409-807e-298e12d5dfd0" />
+<img width="5760" height="1080" alt="Screenshot from 2025-12-01 19-08-28" src="https://github.com/user-attachments/assets/c2d4c211-95a9-454a-8f69-29407982ec37" />
+<img width="5760" height="1080" alt="Screenshot from 2025-12-01 19-09-58" src="https://github.com/user-attachments/assets/21a24949-8943-4023-8f6c-aeffd30a4b5e" />
