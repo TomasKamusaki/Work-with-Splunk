@@ -216,7 +216,6 @@ Key Steps Completed
 <img width="1920" height="922" alt="Screenshot from 2025-10-02 12-47-40" src="https://github.com/user-attachments/assets/5d9a3e69-fed6-44bf-9c86-d96795aa2d35" />
 <img width="1920" height="922" alt="Screenshot from 2025-10-02 12-44-59" src="https://github.com/user-attachments/assets/dfacacc0-3d2d-42b4-9bf0-fb7730ce9bae" />
 <img width="1920" height="922" alt="Screenshot from 2025-10-02 12-35-49" src="https://github.com/user-attachments/assets/64536968-89a0-4a38-9b56-1d10000efd0c" />
-<img width="1920" height="922" alt="Screenshot from 2025-10-02 12-20-43" src="https://github.com/user-attachments/assets/44b97a8d-625a-4ee7-8127-f242e8b5a503" />
 <img width="1805" height="698" alt="Screenshot from 2025-10-02 14-58-41" src="https://github.com/user-attachments/assets/3cfa4a2f-82d5-4470-98a3-327e7fb9e130" />
 
 ## Day 5 - Splunk Log Forwarding and Dashboard Practice
@@ -252,7 +251,6 @@ Configuration Steps:
 This session reinforced core SOC concepts:
 > Log collection → Event categorization → Alerting → Visualization → Incident awareness.
 
-<img width="1920" height="922" alt="Screenshot from 2025-10-02 12-20-43" src="https://github.com/user-attachments/assets/c10a84bf-cd62-46e0-b761-ad8727fc1147" />
 <img width="1920" height="922" alt="Screenshot from 2025-10-02 12-47-40" src="https://github.com/user-attachments/assets/80aeeb0e-1698-4868-8832-a41dd7278376" />
 <img width="1920" height="922" alt="Screenshot from 2025-10-02 13-31-13" src="https://github.com/user-attachments/assets/3c020aa0-3814-4412-90e6-fa0d9e9a595c" />
 <img width="1920" height="922" alt="Screenshot from 2025-10-02 13-48-49" src="https://github.com/user-attachments/assets/70b8344c-1441-4cfd-b6c3-ba7212cd141f" />
@@ -1115,7 +1113,6 @@ Identified patterns:
 <img width="1919" height="1073" alt="Captura de pantalla 2025-11-04 130755" src="https://github.com/user-attachments/assets/e3e52740-5bf5-4cf3-89dd-fbb4b0c04631" />
 <img width="1913" height="1071" alt="Captura de pantalla 2025-11-04 133220" src="https://github.com/user-attachments/assets/2802ffaf-fa76-408d-93ea-0af543f4a544" />
 <img width="1919" height="1076" alt="Captura de pantalla 2025-11-04 143810" src="https://github.com/user-attachments/assets/b478009c-7f0d-48d1-a13a-857afae115eb" />
-<img width="1913" height="1075" alt="Captura de pantalla 2025-11-04 202124" src="https://github.com/user-attachments/assets/43f77a1b-6ed6-4669-8bd6-711b7cfe32df" />
 <img width="1919" height="1071" alt="Captura de pantalla 2025-11-04 223319" src="https://github.com/user-attachments/assets/3276e71e-2246-4d31-b1ce-9442ed809626" />
 
 
@@ -1222,10 +1219,7 @@ scp /home/admin/captures/*.pcap user@192.168.1.:/captures/
 4. Start preparing visual report templates for GitHub (screenshots + PCAP metadata).  
 
 <img width="1914" height="1075" alt="Captura de pantalla 2025-11-05 133511" src="https://github.com/user-attachments/assets/00b12385-c26a-4f74-b1d2-6755d84df309" />
-<img width="1913" height="1075" alt="Captura de pantalla 2025-11-05 133622" src="https://github.com/user-attachments/assets/ae4c0fad-1cd3-4249-9a14-117014d8025b" />
 <img width="1911" height="1075" alt="Captura de pantalla 2025-11-05 134649" src="https://github.com/user-attachments/assets/3c9de903-9b4b-48f4-8898-8b7c68b8e79f" />
-<img width="1911" height="1070" alt="Captura de pantalla 2025-11-06 111402" src="https://github.com/user-attachments/assets/7b9249e8-5432-484c-84c8-4930af8f72ec" />
-<img width="1917" height="1077" alt="Captura de pantalla 2025-11-06 112504" src="https://github.com/user-attachments/assets/fffc566c-9117-45ff-b6b6-859774301ff9" />
 
 
 ### Day 22 — TryHackMe: Cyber Security 101 — Study log
@@ -1356,7 +1350,6 @@ Yesterday’s traffic review successfully confirmed visibility of:
  • ✔️ HTTP traffic useful for C2 simulation
 
 
-<img width="1917" height="1077" alt="Captura de pantalla 2025-11-12 135350" src="https://github.com/user-attachments/assets/fdcb0bdb-28bd-4fc1-8be9-da0db940fcf8" />
 
 <img width="1915" height="1071" alt="Captura de pantalla 2025-11-12 130550" src="https://github.com/user-attachments/assets/8421707e-bc5f-406a-bd7b-45339ff06e0d" />
 
@@ -1538,7 +1531,6 @@ Today I focused on integrating Zeek on the Raspberry Pi with my Splunk indexer. 
 - Pi time was behind (NTP not reachable in offline lab). Fixed by enabling NTP (when network available) or manually setting clock.
 - NIC checksum offloading triggers Zeek warnings; acceptable for now (can run zeek -C or disable offload to remove warnings).
 
-<img width="1918" height="1073" alt="Captura de pantalla 2025-11-15 181834" src="https://github.com/user-attachments/assets/4044b401-1578-462f-8c94-c58d2baf3352" />
 
 <img width="1905" height="1069" alt="Captura de pantalla 2025-11-15 183519" src="https://github.com/user-attachments/assets/a6b748da-edbc-4354-b6f1-173c9f838bac" />
 
