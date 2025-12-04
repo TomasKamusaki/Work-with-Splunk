@@ -2553,7 +2553,7 @@ Covered SOC fundamentals, alerts, network logs, etc.
 
 
 ## Day 40 - New day - new experience
-Date: November — 30 Nov 2025  
+Date: November 30, 2025  
 
 Today was one of the longest and most intense work sessions in my entire SOC Home Lab journey. I spent 8 full hours configuring, testing, troubleshooting, breaking, fixing, and validating multiple components of my offline environment. Even with unexpected issues, the session ended successfully with valuable experience gained.
 
@@ -2670,8 +2670,7 @@ Tomorrow’s goals:
 <img width="5760" height="1080" alt="ex" src="https://github.com/user-attachments/assets/4ee9fea3-9ce4-4d8c-8e10-c51043776e51" />
 
 ## Day 41 - MITRE
-
-## 📅 Day Summary — 1 December 2025
+Date: December 1, 2025
   
 I spent many hours working on Wazuh rule customization, trying to map my simulated attack chain to the MITRE ATT&CK framework using custom local_rules.xml.
 
@@ -2728,3 +2727,99 @@ Despite how exhausting today was, I finished with a working MITRE rule and a bet
 <img width="5760" height="1080" alt="Screenshot from 2025-12-01 13-12-45" src="https://github.com/user-attachments/assets/8e27a6c8-1207-4409-807e-298e12d5dfd0" />
 <img width="5760" height="1080" alt="Screenshot from 2025-12-01 19-08-28" src="https://github.com/user-attachments/assets/c2d4c211-95a9-454a-8f69-29407982ec37" />
 <img width="5760" height="1080" alt="Screenshot from 2025-12-01 19-09-58" src="https://github.com/user-attachments/assets/21a24949-8943-4023-8f6c-aeffd30a4b5e" />
+
+
+## Day 42 - First Report
+Date: December 2, 2025
+
+Today was one of the most productive sessions in my SOC Level 1 training so far. I completed a full end-to-end attack chain inside my offline SOC lab, validated traffic visibility across all layers, tested detections in Splunk and Wazuh, collected network forensics using Zeek and Wireshark, and finished my first complete SOC incident report based on real evidence.
+
+This session combined offensive testing + defensive monitoring + forensic analysis + reporting, giving me a complete real-world SOC workflow experience.
+
+
+## 🔥 1. Attack Chain Execution (Kali → PC2 Ubuntu)
+
+I executed the full chain from the attacker machine (Kali 192.168.1.) against PC2 (192.168.1.), all performed inside my isolated home lab.
+
+## Steps executed:
+ 
+ • Nmap network discovery (T1046)
+ • Nmap service scan (T1046/T1045)
+ • Hydra SSH brute-force on PC2 (T1110)
+ • Successful SSH login using brute-forced credentials (T1078)
+ • Sudo privilege escalation check (T1069)
+ • Malicious file download using wget (T1105)
+ • Data exfiltration using curl HTTP POST (T1041)
+
+## 📡 2. Capture & Monitoring Setup (Zeek, tcpdump, Wireshark)
+
+Before starting the attack, I launched:
+ • Zeek on my Raspberry Pi sensor to capture structured logs
+ • tcpdump to record a full PCAP for Wireshark analysis
+ • Wireshark later to analyze encrypted SSH, Nmap phases, HTTP GET/POST, and connections
+
+## 📊 3. SIEM Visibility (Splunk)
+
+Splunk received logs from PC2 and correctly indexed all major stages:
+ • Failed SSH logins (Hydra brute-force)
+ • Successful SSH login by attacker
+ • sudo activity performed after compromise
+ • wget download visible from shell history + syslog
+ • curl exfiltration also visible
+ • Timestamps aligned with Zeek and Wireshark data
+
+## 🛡️ 4. Wazuh Visibility (Host-Based Detection)
+
+Wazuh detected several important parts of the attack chain:
+ • SSH brute-force attempts
+ • Successful SSH authentication
+ • sudo privilege escalation attempt
+ • wget / curl command execution logs
+
+Some parts (like exfiltration detection, Nmap, persistence, or tool transfer details) require custom rule creation, which I will configure in future sessions.
+
+## 🔍 5. Forensic Analysis (Wireshark + Zeek Logs)
+
+In Wireshark I analyzed:
+ • Nmap scan patterns (SYN, ICMP, ARP)
+ • SSH brute-force handshake loops
+ • Full SSH session establishment
+ • HTTP GET request for payload download
+ • HTTP POST exfiltration including visible payload size
+ • Packet length, streams, seq/ack timeline
+
+Zeek validated all of this with:
+ • conn.log: connection states and timing
+ • http.log: GET and POST events
+ • ssh.log: authentication attempts
+ • notice.log: scanning behaviors (where applicable)
+
+## 🧩 6. MITRE Technique Mapping
+
+I mapped every stage to ATT&CK:
+ • T1046 — Network Discovery
+ • T1110 — Brute Force
+ • T1078 — Valid Accounts
+ • T1069 — Privilege Escalation
+ • T1105 — Ingress Tool Transfer
+ • T1041 — Data Exfiltration Over C2/HTTP
+
+## 📝 7. Reporting Work
+
+I wrote my first complete SOC incident report, including:
+ • Executive summary
+ • Full timeline
+ • MITRE mapping
+ • Splunk findings
+ • Wazuh detections
+ • Zeek + Wireshark evidence
+ • Impact analysis
+ • Recommendations
+
+This report is ready for LinkedIn
+
+<img width="5760" height="1080" alt="payload16" src="https://github.com/user-attachments/assets/0fb41e62-19e9-4c7b-b1c9-2e42c1eaf734" />
+<img width="5760" height="1080" alt="sshdone" src="https://github.com/user-attachments/assets/e7effac2-d607-4d4b-a692-8898c5b688be" />
+<img width="5760" height="1080" alt="hydra16" src="https://github.com/user-attachments/assets/499a137e-c6c1-4aac-bd0a-98c6cef3383e" />
+<img width="5760" height="1080" alt="nmap17" src="https://github.com/user-attachments/assets/a88fba0b-b881-4508-91aa-7d32164ae14b" />
+<img width="5760" height="1080" alt="startcapt" src="https://github.com/user-attachments/assets/65ba6fc7-4e19-4210-b517-8a5c46db51ca" />
