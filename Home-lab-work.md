@@ -15,7 +15,7 @@ My SOC lab consists of multiple systems connected in an isolated network:
 ## 🧰 Tools Used
 
 - Splunk (SIEM)
-- Wazu
+- Wazuh
 - Wireshark (Packet Analysis)
 - Tcpdump (Capture automation)
 - Kali Linux (Attack simulation)
