@@ -2662,4 +2662,10 @@ Tomorrow’s goals:
 - Trigger new events and analyze them  
 - Prepare notes for future SOC interviews
 
+<img width="3840" height="1080" alt="Screenshot from 2025-11-30 16-43-54" src="https://github.com/user-attachments/assets/1384efbd-567b-4602-be3e-5c427d862c13" />
+<img width="5760" height="1080" alt="Screenshot from 2025-11-30 17-03-18" src="https://github.com/user-attachments/assets/81f5e962-acd3-460e-a915-e9272d41a3ca" />
+<img width="5760" height="1080" alt="bruteforce" src="https://github.com/user-attachments/assets/8da4f551-de0c-43d4-8253-79367de54eec" />
+<img width="5760" height="1080" alt="nmap" src="https://github.com/user-attachments/assets/f6494e8b-507a-46f6-a91a-f1ec1f85ba5d" />
+<img width="5760" height="1080" alt="escal" src="https://github.com/user-attachments/assets/c6d7e7b4-0cbe-42a9-923b-cf8f753e2b79" />
+<img width="5760" height="1080" alt="ex" src="https://github.com/user-attachments/assets/4ee9fea3-9ce4-4d8c-8e10-c51043776e51" />
 
