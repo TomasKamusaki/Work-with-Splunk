@@ -9,7 +9,7 @@ My SOC lab consists of multiple systems connected in an isolated network:
 - Kali Linux: Attack simulation system  
 - Ubuntu Server (Splunk): Log collection & SIEM analysis  
 - Raspberry Pi 4: Network packet capture node (tcpdump automation)  
-- Windows Host: Analysis and documentation workstation  
+- Linux Mint Host: Analysis and documentation workstation  
 - Wireshark: For traffic inspection and forensic packet analysis
 
 ## 🧰 Tools Used
@@ -2552,7 +2552,114 @@ Covered SOC fundamentals, alerts, network logs, etc.
 
 
 
+## Day 40 - New day - new experience
+Date: November — 30 Nov 2025  
+
+Today was one of the longest and most intense work sessions in my entire SOC Home Lab journey. I spent 8 full hours configuring, testing, troubleshooting, breaking, fixing, and validating multiple components of my offline environment. Even with unexpected issues, the session ended successfully with valuable experience gained.
+
+## 🔧 1. Wazuh Agent & System Recovery
+
+### 🔥 Critical Issue: /etc/passwd Corruption  
+While testing a command, the system attempted to overwrite /etc/passwd, causing:
+- Loss of user account visibility  
+- sudo failing with “you do not exist in the passwd database”  
+- Wazuh agent failing to start (“Invalid user 'wazuh' or group 'wazuh'”)  
+- SSH refusing connections  
+- System booting into read-only recovery mode
+
+### 🛠 Recovery Steps
+I fully recovered PC2 using real sysadmin techniques:
+- Booted into Recovery Mode
+- Remounted filesystem:
+- Restored:
+- /etc/passwd from /etc/passwd-
+- /etc/shadow from /etc/shadow-
+- Repaired file permissions  
+- Rebooted successfully  
+- Confirmed working login + sudo access  
+- Restarted and verified Wazuh agent
+
+This was a very realistic real-world troubleshooting experience, similar to what SOC/IT teams face during incidents.
+
+## 🌐 2. Network & Device Stabilization
+
+- Raspberry Pi reverted to DHCP; reconfigured to static 192.168.1.18
+- Verified all hosts inside the offline lab:
+- Kali  
+- PC2  
+- Pi  
+- ThinkPad  
+- Proxmox VMs  
+- Ensured proper communication between devices  
+- Confirmed SSH functionality and Splunk/Wazuh connectivity
+
+## 🛡 3. Attack Simulations & Detection Testing
+
+Performed multiple attack steps to generate security alerts:
+
+### ✔ SSH Brute Force Simulation  
+Detected in Wazuh as:
+- Failed password attempts  
+- Authentication failures  
+- Credential guessing  
+- MITRE mappings: T1110 (Brute Force)
+
+### ✔ Web Server Probing  
+Tested via browser/manual requests (404 / 405 error generation).  
+Wazuh detected:
+- Apache access logs  
+- Web error codes  
+- Nmap Scripting Engine user-agent  
+- MITRE mapping: Initial Access → Reconnaissance
+
+### ✔ Unauthorized Command Execution Detection  
+Executed:
+
+Wazuh correctly flagged it as:
+- Privilege escalation attempt  
+- Unauthorized system file modification  
+- “First time user executed sudo”  
+- MITRE mappings:  
+  - Credential Access  
+  - Persistence  
+  - Privilege Escalation  
+  - Lateral Movement
+
+### 📊 Confirmed all logs are visible under:
+- wazuh-alerts-*
+
+This validated that the agent fully works after restoration.
 
 
+## 📈 4. Real SOC-Level Learning
+
+- Real-world troubleshooting  
+- Full OS recovery  
+- Understanding sensitive system files  
+- Wazuh agent behavior  
+- Log generation  
+- Event correlation  
+- Attack chain visibility  
+- Hands-on SIEM workflow
+
+
+## 📝 5. Final Notes
+
+Today I achieved deep technical progress across:
+- System administration  
+- Wazuh configuration  
+- Log analysis  
+- Offense/Defense testing  
+- Network stability  
+- Incident recovery  
+- Attack chain documentation
+
+Even after breaking part of the system, I successfully restored everything and continued working until the lab was fully operational again.
+
+Tomorrow’s goals:
+- Add missing auditd/sysmon monitoring rules in Wazuh  
+- Create structured attack chain documentation  
+- Trigger new events and analyze them  
+- Prepare notes for future SOC interviews
 
 
