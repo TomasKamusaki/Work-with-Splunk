@@ -2864,22 +2864,97 @@ Alerts appear in wazuh-alerts-* with:
 <img width="5760" height="1080" alt="sshcon" src="https://github.com/user-attachments/assets/d8056579-342d-49e8-b249-4e7f1a106ac2" />
 <img width="5760" height="1080" alt="exfil01" src="https://github.com/user-attachments/assets/9efa33da-9766-4db3-a600-307acd4e90fa" />
 
+## Day 44 - Full end-to-end attack chain
+Date: December 9, 2025
 
-## Day - MITM Practice — Conclusion
+
+Today I completed a full end-to-end attack chain in my isolated SOC home lab, covering all major phases of a realistic intrusion: recon → brute force → valid access → file transfer → local execution → lateral movement → exfiltration → persistence.  
+This session helped me understand not only how an attacker moves but also how each stage appears in Wazuh, Splunk and Wireshark, giving me a full multi-layered view of detection engineering.
+
+## 🔍 What I accomplished today
+- Performed Nmap reconnaissance against my victim machine and confirmed detection across Wireshark, Splunk (`auth.log`, `apache2 logs`) and Wazuh (scan behavior via web enumeration).
+- Simulated SSH brute-force with Hydra and analyzed the pattern of failed → successful login attempts in Wazuh and Splunk.
+- Achieved valid access (T1078) and captured the SSH session establishment in Wireshark with full packet inspection.
+- Identified and documented a potential ingress tool transfer (T1105) via additional SSH connection from Kali → PC2, observing the activity in Splunk, Wazuh session logs, and network traces.
+- Executed my simulated malicious script on PC2 (`/tmp/script.sh`) and mapped it to T1059 Command Execution, analyzing how my audit logs and Wazuh custom rule responded.
+- Performed lateral movement attempts from PC2 to another internal machine (.133), capturing outbound SSH attempts in Wireshark and Splunk’s authentication logs.
+- Simulated exfiltration (nc + curl + python HTTP server) and confirmed detection in Wireshark and Splunk; Wazuh also captured custom-rule triggers.
+- Created a cron persistence mechanism (T1053.003) on PC2 and verified it through Wazuh FIM/audit logs.
+
+## 🧠 Learning outcomes
+- I practiced building a coherent attack timeline and validated how each action creates specific log artifacts across the environment.  
+- I confirmed that each tool (Nmap, Hydra, SSH, SCP, nc, curl) leaves different network and host-level fingerprints that can be correlated.
+- I strengthened my ability to troubleshoot and interpret audit logs, network flows, and SIEM detections.
+- I verified which parts of the chain triggered detections and which required improved rules — perfect preparation for tomorrow’s exercises.
+- The full chain took around 4 hours, matching a realistic incident-response workflow: investigation, correlation, verification, and report preparation.
+
+<img width="5760" height="1080" alt="Screenshot from 2025-12-09 11-15-41" src="https://github.com/user-attachments/assets/66045d81-f290-403f-9c05-1d7c22164a96" />
+<img width="5760" height="1080" alt="scp1" src="https://github.com/user-attachments/assets/b6a44c70-8e1f-44b1-8b04-dc5abe276a99" />
+<img width="5760" height="1080" alt="Screenshot from 2025-12-09 11-49-10" src="https://github.com/user-attachments/assets/38706187-4da2-4df1-b00e-42044b904eb7" />
+
+## Day 45 - SOC Home Lab Practice (Phishing)
+Date: December 10, 2025
+
+### Overview
+Today I continued expanding the realism of my SOC home lab by working on phishing-simulation tools, credential harvesting workflows, and resolving Raspberry Pi network issues to restore my packet-capture sensor. No offensive execution yet — today was focused on setup, validation, and preparing the environment for tomorrow’s full phishing, keylogging, and MITM chains.
+
+## 1. Phishing Framework Setup (MITRE T1566 – Phishing)
+- Installed a templated phishing page environment.
+- Started testing a fake login page to understand how credential POST traffic looks in Wireshark.
+- Verified that captured traffic shows the HTTP POST request with username/password, which will be used later for correlation in Splunk/Wazuh.
+- Prepared directory structure for harvesting logs.
+
+Detection Insight:  
+Focus tomorrow on:
+- Monitoring HTTP POST patterns  
+- Detecting unusual internal web servers  
+- Flagging connections from victim machines to suspicious local IPs  
+
+MITRE: T1566.002 (Spearphishing via Link)
+
+## 2. Raspberry Pi 4 – Network Sensor Fix
+- Spent almost 2 hours troubleshooting Pi’s Ethernet not connecting.
+- Issue was caused by IP conflict (same IP used on eno1 by the server).
+- Resolved by:
+  - Resetting network config  
+  - Assigning a fresh dynamic IP  
+  - Rebooting server and Pi  
+- Pi is now back online and capturing packets normally.
+
+Detection Insight:  
+Pi connectivity issues can break:
+- live Zeek/tcpdump capture  
+- MITM tests  
+- phishing credential harvesting visibility 
+
+## Tools Validated Today
+- Wireshark (packet analysis)
+- Local phishing page (HTML/JS template)
+- Raspberry Pi capture interface
+
+Splunk on Pi still needs fixes — will revisit after phishing chain.
+
+![photo_2025-12-12_21-24-12](https://github.com/user-attachments/assets/7b9a4a64-8c33-485b-9b2b-060245fcbc69)
+![photo_2025-12-12_21-20-18](https://github.com/user-attachments/assets/681e3670-d72c-47f0-9a63-2d3f3714eb9c)
+![photo_2025-12-12_21-20-30](https://github.com/user-attachments/assets/02f616d6-242a-4956-b713-ecbdedcb83d2)
+![photo_2025-12-12_21-20-23](https://github.com/user-attachments/assets/9d75b572-3ce9-4710-a8b0-a16697110b99)
+
+
+## Day 46 - MITM Practice
 December 11 2025 
 
 During this session, I practiced a Man-in-the-Middle (MITM) attack inside my fully offline home lab using only my own machines and an isolated network. The goal was not exploitation, but understanding how MITM activity looks from a detection and investigation perspective.
 
 I simulated ARP-based MITM traffic between a victim host and the network gateway and observed the behavior across different telemetry sources.
 
-### 1.Key Observations
+### 1. Key Observations
 
 - Network traffic was successfully redirected through the attacker machine, creating abnormal communication paths.
 - HTTP sessions showed unexpected redirects, repeated TCP retransmissions, and connection resets.
 - DNS and HTTP traffic patterns deviated from normal baseline behavior.
 - From the victim’s perspective, browsing appeared mostly normal, which highlights why MITM is difficult to detect without visibility.
 
-### 2.Detection & Analysis
+### 2. Detection & Analysis
 
 - Wireshark:  
   Identified ARP poisoning indicators, duplicated ARP replies, unusual TCP retransmissions, and HTTP 30x redirects pointing to unexpected internal hosts.
@@ -2888,7 +2963,7 @@ I simulated ARP-based MITM traffic between a victim host and the network gateway
 - Splunk:  
   Correlating Zeek logs made it easier to spot repeated redirects, abnormal session behavior, and inconsistent source/destination relationships over time.
 
-### 3.SOC Perspective Takeaways
+### 3. SOC Perspective Takeaways
 
 - MITM attacks often leave behavioral indicators, not obvious alerts.
 - Detection relies heavily on baseline knowledge of normal network behavior.
@@ -2899,6 +2974,7 @@ I simulated ARP-based MITM traffic between a victim host and the network gateway
 
 - T1557 — Adversary-in-the-Middle
 - T1040 — Network Sniffing
+
 <img width="1913" height="1071" alt="mitm" src="https://github.com/user-attachments/assets/e6a0f95e-7c56-4125-94e5-45ee3b478ff5" />
 <img width="1915" height="1046" alt="ph" src="https://github.com/user-attachments/assets/ea5bd2bb-89a7-4080-b9a0-2e68c3a2168d" />
 
