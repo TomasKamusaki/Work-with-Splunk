@@ -2864,3 +2864,41 @@ Alerts appear in wazuh-alerts-* with:
 <img width="5760" height="1080" alt="sshcon" src="https://github.com/user-attachments/assets/d8056579-342d-49e8-b249-4e7f1a106ac2" />
 <img width="5760" height="1080" alt="exfil01" src="https://github.com/user-attachments/assets/9efa33da-9766-4db3-a600-307acd4e90fa" />
 
+
+## Day - MITM Practice — Conclusion
+December 11 2025 
+
+During this session, I practiced a Man-in-the-Middle (MITM) attack inside my fully offline home lab using only my own machines and an isolated network. The goal was not exploitation, but understanding how MITM activity looks from a detection and investigation perspective.
+
+I simulated ARP-based MITM traffic between a victim host and the network gateway and observed the behavior across different telemetry sources.
+
+### 1.Key Observations
+
+- Network traffic was successfully redirected through the attacker machine, creating abnormal communication paths.
+- HTTP sessions showed unexpected redirects, repeated TCP retransmissions, and connection resets.
+- DNS and HTTP traffic patterns deviated from normal baseline behavior.
+- From the victim’s perspective, browsing appeared mostly normal, which highlights why MITM is difficult to detect without visibility.
+
+### 2.Detection & Analysis
+
+- Wireshark:  
+  Identified ARP poisoning indicators, duplicated ARP replies, unusual TCP retransmissions, and HTTP 30x redirects pointing to unexpected internal hosts.
+- Zeek:  
+  Logs captured abnormal connection behavior, HTTP status anomalies, and unexpected DNS resolution paths.
+- Splunk:  
+  Correlating Zeek logs made it easier to spot repeated redirects, abnormal session behavior, and inconsistent source/destination relationships over time.
+
+### 3.SOC Perspective Takeaways
+
+- MITM attacks often leave behavioral indicators, not obvious alerts.
+- Detection relies heavily on baseline knowledge of normal network behavior.
+- Correlation between packet-level data (Wireshark) and log-level data (Zeek + Splunk) is critical.
+- MITM is best detected through network anomalies, not endpoint alerts alone.
+
+### 4.MITRE ATT&CK Mapping
+
+- T1557 — Adversary-in-the-Middle
+- T1040 — Network Sniffing
+<img width="1913" height="1071" alt="mitm" src="https://github.com/user-attachments/assets/e6a0f95e-7c56-4125-94e5-45ee3b478ff5" />
+<img width="1915" height="1046" alt="ph" src="https://github.com/user-attachments/assets/ea5bd2bb-89a7-4080-b9a0-2e68c3a2168d" />
+
