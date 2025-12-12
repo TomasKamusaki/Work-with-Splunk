@@ -2815,3 +2815,52 @@ This report is ready for LinkedIn
 <img width="5760" height="1080" alt="hydra16" src="https://github.com/user-attachments/assets/499a137e-c6c1-4aac-bd0a-98c6cef3383e" />
 <img width="5760" height="1080" alt="nmap17" src="https://github.com/user-attachments/assets/a88fba0b-b881-4508-91aa-7d32164ae14b" />
 <img width="5760" height="1080" alt="startcapt" src="https://github.com/user-attachments/assets/65ba6fc7-4e19-4210-b517-8a5c46db51ca" />
+
+## Day 43 - Attack Chain + Wazuh Fix + Custom Detections
+Date: December 6, 2025
+
+### 1️⃣ Attack Chain Executed
+- Nmap recon and service discovery  
+- SSH brute-force simulation (Hydra)  
+- Successful SSH access  
+- Post-compromise commands (bash, wget, curl)  
+- Data exfiltration test  
+- Traffic captured and analyzed in Wireshark + Splunk  
+
+### 2️⃣ Initial Detection Issues
+- Wazuh not showing alerts  
+- auditd logs missing or incomplete  
+- local_rules.xml syntax errors  
+- Custom rules not loading  
+- No MITRE mapping visible  
+
+### 3️⃣ Fixes Performed
+- Rebuilt local_rules.xml with correct XML structure  
+- Added MITRE tags, rule groups, descriptions  
+- Removed invalid regex and simplified matching  
+- Restarted Wazuh Manager → no errors in ossec.log  
+- Confirmed custom rules load correctly  
+
+### 4️⃣ Custom Rule Detections Working
+Wazuh now generates alerts for:
+- Suspicious command execution (`wget`, curl, `python3`) → MITRE T1059  
+- Netcat exfiltration rule structure functional → MITRE T1048  
+- Cron persistence rule loaded → MITRE T1053.003  
+
+Alerts appear in wazuh-alerts-* with:
+- rule.id  
+- rule.level  
+- rule.description  
+- MITRE technique metadata  
+- Full audit/command log context  
+
+### 5️⃣ Key Takeaways
+- auditd parent SIDs must trigger before custom rules  
+- XML errors break the entire ruleset  
+- Netcat may not produce audit logs → needs separate detection method  
+- First successful custom Wazuh detections working end-to-end
+
+<img width="5760" height="1080" alt="rules" src="https://github.com/user-attachments/assets/ac5d2327-86f0-4759-93dd-2a5bfb270c2a" />
+<img width="5760" height="1080" alt="sshcon" src="https://github.com/user-attachments/assets/d8056579-342d-49e8-b249-4e7f1a106ac2" />
+<img width="5760" height="1080" alt="exfil01" src="https://github.com/user-attachments/assets/9efa33da-9766-4db3-a600-307acd4e90fa" />
+
